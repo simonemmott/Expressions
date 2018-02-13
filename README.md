@@ -161,6 +161,38 @@ All predicates are generated though the PredicateBuilder. The `PredicateBuilder`
 | isNull(...)               | True if the given argument is null |
 | or(...)                   | True if any of the arguments are true |
 
+## Working With Evaluators
+
+The `Evaluator` interface doesn't itself define methods to extract parameter or getter values. Rather the Evaluator interface allows an object to be passed through
+and assembly of expressions to allow expressions that require the evaluator to provide a value to get that value without each expression that the evaluator passes through to have to be aware that the evaluator can provide values from the given source type.
+
+This allows extension of the Evaluator interface to provide values from any source so long as the Expression requiring the value is prepared to check and cast the evaluator into the relevant Extended evaluator interface.
+
+This project provides two extensions to the `Evaluator` interface. `GetterEvaluator` and `ParameterEvaluator`. Getter evaluator allow getter expressions to get their value from the `Evaluator` and parameter evaluators allow parameter expressions to get their value from the `Evaluator`
+
+### SimpleParameterEvaluator
+
+The simple parameter evaluator provides a basic implementation of the `ParameterEvaluator` interface. This implementation provides the basis for the other implementations of the `Evaluator` interface in this project.
+
+The simple parameter evaluator only implements the `ParameterEvaluator` interface and as such cannot be used to provide values for getter expressions. If a simple parameter evaluator is used to provide values for getter expressions they will return a null value.
+
+### GenericEvaluator
+
+The generic evaluator implements both the `ParameterEvaluator` interface and the `GetterEvaluator` interface. As such it can provide values for both parameter expressions and getter expressions.
+
+### ParameterOrObjectEvaluator
+
+The parameter or object evaluator implements both the `ParameterEvaluator` interface and the `GetterEvaluator` interface. However, as opposed to the `GenericEvaluator`
+The expression requiring a value can get its value from either the parameter values set on the evaluator or the object set on the evaluator. Suitable values are identified by the type of the required value and the alias of the expression. 
+
+If there is no parameter that is capable of providing the required value the object is inspected to attain a value. If neither set parameters or the getters available through the object can provide the required value a null value is provided.
+
+### ObjectOrParameterEvaluator
+
+The object or parameter evaluator implements both the `ParameterEvaluator` interface and the `GetterEvaluator` interface. However, as opposed to the `GenericEvaluator`
+The expression requiring a value can get its value from either the parameter values set on the evaluator or the object set on the evaluator. Suitable values are identified by the type of the required value and the alias of the expression. 
+
+If the getters available through the object set on the evaluator are unable to provide a value for the expression then the parameters set on the evaluator are inspected to provide a value for the expression. If neither set parameters or the getters available through the object can provide the required value a null value is provided.
 
 
 

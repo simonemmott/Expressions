@@ -1,0 +1,50 @@
+package com.k2.Expressions.expression;
+
+import java.lang.invoke.MethodHandles;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import com.k2.Expressions.Evaluator;
+
+public class ExprMod extends AbstractExpression<Integer> implements Expression<Integer> {
+	
+	@SuppressWarnings("unused")
+	private static final Logger logger = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
+
+	Expression<Integer> num1Expr;
+	Expression<Integer> num2Expr;
+	Integer num1;
+	Integer num2;
+
+	public ExprMod(Expression<Integer> num1, Expression<Integer> num2) {
+		super(Integer.class);
+		this.num1Expr = num1;
+		this.num2Expr = num2;
+	}
+
+	public ExprMod(Expression<Integer> num1, Integer num2) {
+		super(Integer.class);
+		this.num1Expr = num1;
+		this.num2 = num2;
+	}
+
+	public ExprMod(Integer num1, Expression<Integer> num2) {
+		super(Integer.class);
+		this.num1 = num1;
+		this.num2Expr = num2;
+	}
+
+	@Override
+	public Integer evaluate(Evaluator eval) {
+		
+		Integer n1 = (num1Expr == null) ? num1: num1Expr.evaluate(eval);
+		Integer n2 = (num2Expr == null) ? num2: num2Expr.evaluate(eval);
+		
+		if (n1 == null || n2 == null) return null;
+		
+		return n1 % n2;
+
+	}
+
+}

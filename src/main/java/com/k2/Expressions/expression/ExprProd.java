@@ -7,6 +7,13 @@ import org.slf4j.LoggerFactory;
 
 import com.k2.Expressions.Evaluator;
 
+/**
+ * The product expression returns the product the two numbers passed to it
+ * 
+ * @author simon
+ *
+ * @param <N>	The numerical type of this product expression
+ */
 public class ExprProd<N extends Number> extends AbstractExpression<N> implements Expression<N> {
 	
 	@SuppressWarnings("unused")
@@ -17,18 +24,33 @@ public class ExprProd<N extends Number> extends AbstractExpression<N> implements
 	N num1 = null;
 	N num2 = null;
 
+	/**
+	 * Create a product expression to calculate the product of two numerical expressions
+	 * @param num1	The first numerical expression
+	 * @param num2	The second numerical expression
+	 */
 	public ExprProd(Expression<? extends N> num1, Expression<? extends N> num2) {
 		super(num1.getJavaType());
 		this.num1Exp = num1;
 		this.num2Exp = num2;
 	}
 
+	/**
+	 * Create a product expression to calculate the product a numerical expression and a literal value
+	 * @param num1	The numerical expression
+	 * @param num2	The literal value
+	 */
 	public ExprProd(Expression<? extends N> num1, N num2) {
 		super(num1.getJavaType());
 		this.num1Exp = num1;
 		this.num2 = num2;
 	}
 
+	/**
+	 * Create a product expression to calculate the product of a numerical expression and a literal value
+	 * @param num1	The literal value
+	 * @param num2	The numerical expression
+	 */
 	public ExprProd(N num1, Expression<? extends N> num2) {
 		super(num2.getJavaType());
 		this.num1 = num1;

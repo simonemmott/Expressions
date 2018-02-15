@@ -8,6 +8,12 @@ import org.slf4j.LoggerFactory;
 import com.k2.Expressions.Evaluator;
 import com.k2.Util.DoubleUtil;
 
+/**
+ * The square root expression calculates the square root of a numerical value
+ * 
+ * @author simon
+ *
+ */
 public class ExprSqrt extends AbstractExpression<Double> implements Expression<Double> {
 	
 	@SuppressWarnings("unused")
@@ -15,6 +21,10 @@ public class ExprSqrt extends AbstractExpression<Double> implements Expression<D
 
 	Expression<? extends Number> num;
 
+	/**
+	 * Create a numerical expression to calculate the square root of the numerical expression
+	 * @param num	The numerical expression to be square rooted
+	 */
 	public ExprSqrt(Expression<? extends Number> num) {
 		super(Double.class);
 		this.num = num;

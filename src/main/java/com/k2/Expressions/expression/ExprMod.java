@@ -7,6 +7,12 @@ import org.slf4j.LoggerFactory;
 
 import com.k2.Expressions.Evaluator;
 
+/**
+ * The mod expression provides the mathematical modulus function
+ * 
+ * @author simon
+ *
+ */
 public class ExprMod extends AbstractExpression<Integer> implements Expression<Integer> {
 	
 	@SuppressWarnings("unused")
@@ -17,18 +23,33 @@ public class ExprMod extends AbstractExpression<Integer> implements Expression<I
 	Integer num1;
 	Integer num2;
 
+	/**
+	 * Create a modulus expression to calculate the modulus to the two numerical values
+	 * @param num1	The numerator
+	 * @param num2	The denominator
+	 */
 	public ExprMod(Expression<Integer> num1, Expression<Integer> num2) {
 		super(Integer.class);
 		this.num1Expr = num1;
 		this.num2Expr = num2;
 	}
 
+	/**
+	 * Create a modulus expression to calculate the modulus to the two numerical values
+	 * @param num1	The numerator
+	 * @param num2	The denominator
+	 */
 	public ExprMod(Expression<Integer> num1, Integer num2) {
 		super(Integer.class);
 		this.num1Expr = num1;
 		this.num2 = num2;
 	}
 
+	/**
+	 * Create a modulus expression to calculate the modulus to the two numerical values
+	 * @param num1	The numerator
+	 * @param num2	The denominator
+	 */
 	public ExprMod(Integer num1, Expression<Integer> num2) {
 		super(Integer.class);
 		this.num1 = num1;

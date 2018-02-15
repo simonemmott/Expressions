@@ -8,8 +8,19 @@ import org.slf4j.LoggerFactory;
 
 import com.k2.Expressions.Evaluator;
 
+/**
+ * This implementation of the Expression interface provides the current date. Other current date, current time or current
+ * timestamp expressions will return values derived from the date of the first instance of current * expressions to be 
+ * evaluated consequently all current * expressions will return consistent value for the same evaluator
+ * 
+ * @author simon
+ *
+ */
 public class ExprCurrentDate extends AbstractExpression<Date> implements Expression<Date> {
 	
+	/**
+	 * Create an instance of the current date expression
+	 */
 	public ExprCurrentDate() {
 		super(Date.class);
 	}
@@ -19,7 +30,7 @@ public class ExprCurrentDate extends AbstractExpression<Date> implements Express
 
 	@Override
 	public Date evaluate(Evaluator eval) {
-		return eval.getCurrentTime().getCurrentDate();
+		return eval.getCurrentTime().getDate();
 	}
 
 

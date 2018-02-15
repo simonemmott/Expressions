@@ -8,6 +8,12 @@ import org.slf4j.LoggerFactory;
 import com.k2.Expressions.Evaluator;
 import com.k2.Util.StringUtil;
 
+/**
+ * The to String expression converts the given expression in to a String expression
+ * 
+ * @author simon
+ *
+ */
 public class ExprToString extends AbstractExpression<String> implements Expression<String> {
 	
 	@SuppressWarnings("unused")
@@ -15,6 +21,10 @@ public class ExprToString extends AbstractExpression<String> implements Expressi
 
 	Expression<?> expr;
 
+	/**
+	 * Create a to String expression to convert the given expression into a String expression
+	 * @param expr	The expression to convert to a String expression
+	 */
 	public ExprToString(Expression<?> expr) {
 		super(String.class);
 		this.expr = expr;

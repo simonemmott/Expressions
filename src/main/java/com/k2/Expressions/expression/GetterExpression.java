@@ -1,115 +1,44 @@
 package com.k2.Expressions.expression;
 
-import java.util.Collection;
-
 import javax.persistence.TemporalType;
 
 import com.k2.Expressions.Evaluator;
 import com.k2.Expressions.GetterEvaluator;
-import com.k2.Expressions.predicate.*;
 import com.k2.Util.Getter;
 
-public class GetterExpression<E,T> implements Expression<T>{
+/**
+ * The getter expression derives its value through the evaluator to supply a value for the given getter
+ * 
+ * @author simon
+ *
+ * @param <E>	The type of the object through which the getter will get its value
+ * @param <T>	The type of the value supplied by the getter and returned by this expression
+ */
+public class GetterExpression<E,T> extends AbstractExpression<T> implements Expression<T>{
 	
 	Getter<E,T> getter;
-	String alias;
 	TemporalType temporalType = TemporalType.DATE;
 	
+	/**
+	 * Create a getter expression for the given getter
+	 * @param getter		The getter that gets the value for this expression
+	 */
 	public GetterExpression(Getter<E,T> getter) {
+		super(getter.getAlias(), getter.getJavaType());
 		this.getter = getter;
 	}
 
-
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((alias == null) ? 0 : alias.hashCode());
-		result = prime * result + ((getter == null) ? 0 : getter.hashCode());
-		return result;
-	}
-
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		GetterExpression<?,?> other = (GetterExpression<?,?>) obj;
-		if (alias == null) {
-			if (other.alias != null)
-				return false;
-		} else if (!alias.equals(other.alias))
-			return false;
-		if (getter == null) {
-			if (other.getter != null)
-				return false;
-		} else if (!getter.equals(other.getter))
-			return false;
-		return true;
-	}
-
-
-	public String getName() {
-		return getter.getAlias();
-	}
-	
+	/**
+	 * Get the getter for this expression
+	 * @return	The getter that supplies the value for this expression
+	 */
 	public Getter<E,T> getter() { return getter; }
 
-	@Override
-	public Predicate isNull() {
-		return new PredicateNull(this);
-	}
-
-	@Override
-	public Predicate isNotNull() {
-		return new PredicateNotNull(this);
-	}
-
-	@Override
-	public Predicate in(Object... values) {
-		return new PredicateIn(this, values);
-	}
-
-	@Override
-	public Predicate in(Expression<?>... values) {
-		return new PredicateIn(this, values);
-	}
-
-	@Override
-	public Predicate in(Collection<?> values) {
-		return new PredicateIn(this, values);
-	}
-
-	@Override
-	public Predicate in(Expression<Collection<?>> values) {
-		return new PredicateIn(this, values);
-	}
-
-	@Override
-	public <X> Expression<X> as(Class<X> type) {
-		return new GenericExpression<X>(this, type);
-	}
-
-	@Override
-	public Expression<T> alias(String alias) {
-		this.alias = alias;
-		return this;
-	}
-
-	@Override
-	public Class<? extends T> getJavaType() {
-		return getter.getJavaType();
-	}
-
-	@Override
-	public String getAlias() {
-		return alias;
-	}
-
+	/**
+	 * Set the temporal type for this getter expression
+	 * @param temporalType	The temporal type to set for this getter expression
+	 * @return	This expression for method chaining
+	 */
 	public GetterExpression<E,T> setTemporalType(TemporalType temporalType) {
 		this.temporalType = temporalType;
 		return this;

@@ -8,6 +8,12 @@ import org.slf4j.LoggerFactory;
 
 import com.k2.Expressions.Evaluator;
 
+/**
+ * The to big integer expression converts the given numerical expression in to a BigInteger
+ * 
+ * @author simon
+ *
+ */
 public class ExprToBigInteger extends AbstractExpression<BigInteger> implements Expression<BigInteger> {
 	
 	@SuppressWarnings("unused")
@@ -15,6 +21,10 @@ public class ExprToBigInteger extends AbstractExpression<BigInteger> implements 
 
 	Expression<? extends Number> num;
 
+	/**
+	 * Create a toBigInteger expression for the given numerical expression
+	 * @param num	The numerical expression to convert into a BigIntger
+	 */
 	public ExprToBigInteger(Expression<? extends Number> num) {
 		super(BigInteger.class);
 		this.num = num;

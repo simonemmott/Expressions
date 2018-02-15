@@ -4,16 +4,32 @@ import com.k2.Expressions.Evaluator;
 import com.k2.Expressions.expression.Expression;
 import com.k2.Expressions.expression.ParameterExpression;
 
+/**
+ * The gt predicate checks whether the first numerical value is greater than the second numerical value
+ * 
+ * @author simon
+ *
+ */
 public class PredicateGT extends AbstractPredicate implements Predicate {
 	
 	private Expression<? extends Number> value1;
 	private Object value2;
 
+	/**
+	 * Create a gt predicate to check whether the first numerical expression is greater then the second numerical expression
+	 * @param expr1	The first expression
+	 * @param expr2	The second expression
+	 */
 	public PredicateGT(Expression<? extends Number> expr1, Expression<? extends Number> expr2) {
 		value1 = expr1;
 		value2 = expr2;
 	}
 
+	/**
+	 * Create a gt predicate to check whether the first numerical expression is greater then the second numerical value
+	 * @param expr	The expression
+	 * @param num	The literal value
+	 */
 	public PredicateGT(Expression<? extends Number> expr, Number num) {
 		value1 = expr;
 		value2 = num;

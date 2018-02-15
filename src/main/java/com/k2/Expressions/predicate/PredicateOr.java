@@ -11,6 +11,11 @@ import com.k2.Expressions.Evaluator;
 import com.k2.Expressions.expression.Expression;
 import com.k2.Expressions.expression.ParameterExpression;
 
+/**
+ * The or predicate is a compound predicate and returns true if any of the boolean expressions in it are true
+ * @author simon
+ *
+ */
 public class PredicateOr extends AbstractPredicate implements Predicate {
 
 	private static final Logger logger = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
@@ -19,6 +24,10 @@ public class PredicateOr extends AbstractPredicate implements Predicate {
 	Expression<Boolean> boolExpr1 = null;
 	Expression<Boolean> boolExpr2 = null;
 	
+	/**
+	 * Create an or predicate for the list of predicates
+	 * @param predicates		The array of predicates that are child predicates for this or predicate
+	 */
 	public PredicateOr(Predicate... predicates) {
 		super(BooleanOperator.OR);
 		logger.trace("or: predicated list");
@@ -26,6 +35,11 @@ public class PredicateOr extends AbstractPredicate implements Predicate {
 		this.predicates = predicates;
 	}
 
+	/**
+	 * Create an or predicate for the given pair of boolean expressions
+	 * @param boolExpr1	The first boolean expression
+	 * @param boolExpr2	The second boolean expression
+	 */
 	public PredicateOr(Expression<Boolean> boolExpr1, Expression<Boolean> boolExpr2) {
 		super(BooleanOperator.OR);
 		logger.trace("or: pair of expressions");

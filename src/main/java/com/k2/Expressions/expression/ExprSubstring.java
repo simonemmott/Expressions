@@ -7,6 +7,12 @@ import org.slf4j.LoggerFactory;
 
 import com.k2.Expressions.Evaluator;
 
+/**
+ * The substring expression extracts a substring from a given string
+ * 
+ * @author simon
+ *
+ */
 public class ExprSubstring extends AbstractExpression<String> implements Expression<String> {
 	
 	@SuppressWarnings("unused")
@@ -18,18 +24,34 @@ public class ExprSubstring extends AbstractExpression<String> implements Express
 	Expression<Integer> lengthExp = null;
 	Integer length = null;
 
+	/**
+	 * Create a substring expression to extract the substring from the given string from the given position
+	 * @param string		The string from which to extract the substring
+	 * @param from		The location of the beginning of the substring
+	 */
 	public ExprSubstring(Expression<String> string, Expression<Integer> from) {
 		super(String.class);
 		this.stringExp = string;
 		this.fromExp = from;
 	}
 
+	/**
+	 * Create a substring expression to extract the substring from the given string from the given position
+	 * @param string		The string from which to extract the substring
+	 * @param from		The location of the beginning of the substring
+	 */
 	public ExprSubstring(Expression<String> string, int from) {
 		super(String.class);
 		this.stringExp = string;
 		this.from = from;
 	}
 
+	/**
+	 * Create a substring expression to extract the substring from the given string from the given position with the given length
+	 * @param string		The string from which to extract the substring
+	 * @param from		The location of the beginning of the substring
+	 * @param length		The length of the substring to extract
+	 */
 	public ExprSubstring(Expression<String> string, Expression<Integer> from, Expression<Integer> length) {
 		super(String.class);
 		this.stringExp = string;
@@ -37,6 +59,12 @@ public class ExprSubstring extends AbstractExpression<String> implements Express
 		this.lengthExp = length;
 	}
 
+	/**
+	 * Create a substring expression to extract the substring from the given string from the given position with the given length
+	 * @param string		The string from which to extract the substring
+	 * @param from		The location of the beginning of the substring
+	 * @param length		The length of the substring to extract
+	 */
 	public ExprSubstring(Expression<String> string, int from, int length) {
 		super(String.class);
 		this.stringExp = string;

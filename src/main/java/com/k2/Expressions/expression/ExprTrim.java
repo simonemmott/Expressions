@@ -10,6 +10,12 @@ import org.slf4j.LoggerFactory;
 import com.k2.Expressions.Evaluator;
 import com.k2.Util.StringUtil;
 
+/**
+ * The Trim expression trims leading and or trailing characters from a string
+ * 
+ * @author simon
+ *
+ */
 public class ExprTrim extends AbstractExpression<String> implements Expression<String> {
 	
 	@SuppressWarnings("unused")
@@ -20,23 +26,43 @@ public class ExprTrim extends AbstractExpression<String> implements Expression<S
 	char trimChar = ' ';
 	Trimspec trimSpec = Trimspec.BOTH;
 
+	/**
+	 * Create a trim expression to to trim the leading and trailing spaces from a string
+	 * @param string		The string to trim
+	 */
 	public ExprTrim(Expression<String> string) {
 		super(String.class);
 		this.string = string;
 	}
 
+	/**
+	 * Create a trim expression to to trim the leading and trailing characters from a string
+	 * @param trimChar	The character to trim from the string
+	 * @param string		The string to trim
+	 */
 	public ExprTrim(Expression<Character> trimChar, Expression<String> string) {
 		super(String.class);
 		this.string = string;
 		this.trimCharExp = trimChar;
 	}
 
+	/**
+	 * Create a trim expression to to trim the leading and trailing characters from a string
+	 * @param trimChar	The character to trim from the string
+	 * @param string		The string to trim
+	 */
 	public ExprTrim(char trimChar, Expression<String> string) {
 		super(String.class);
 		this.string = string;
 		this.trimChar = trimChar;
 	}
 
+	/**
+	 * Create a trim expression to to trim the leading and/or trailing characters from a string
+	 * @param trimSpec	The enumeration to identify whether to trim lead character, trailing characters or both
+	 * @param trimChar	The character to trim from the string
+	 * @param string		The string to trim
+	 */
 	public ExprTrim(Trimspec trimSpec, Expression<Character> trimChar, Expression<String> string) {
 		super(String.class);
 		this.string = string;
@@ -44,6 +70,12 @@ public class ExprTrim extends AbstractExpression<String> implements Expression<S
 		this.trimSpec = trimSpec;
 	}
 
+	/**
+	 * Create a trim expression to to trim the leading and/or trailing characters from a string
+	 * @param trimSpec	The enumeration to identify whether to trim lead character, trailing characters or both
+	 * @param trimChar	The character to trim from the string
+	 * @param string		The string to trim
+	 */
 	public ExprTrim(Trimspec trimSpec, char trimChar, Expression<String> string) {
 		super(String.class);
 		this.string = string;
@@ -51,6 +83,11 @@ public class ExprTrim extends AbstractExpression<String> implements Expression<S
 		this.trimSpec = trimSpec;
 	}
 
+	/**
+	 * Create a trim expression to to trim the leading and/or trailing spaces from a string
+	 * @param trimSpec	The enumeration to identify whether to trim lead character, trailing characters or both
+	 * @param string		The string to trim
+	 */
 	public ExprTrim(Trimspec trimSpec, Expression<String> string) {
 		super(String.class);
 		this.string = string;

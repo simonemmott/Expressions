@@ -76,7 +76,7 @@ public class SimpleParameterEvaluatorTest {
 		
 		SimpleParameterEvaluator spe = new SimpleParameterEvaluator();
 		
-		Date currentDate = spe.getCurrentTime().getCurrentDate();
+		Date currentDate = spe.getCurrentTime().getDate();
 		
 		logger.trace("Current date is: {}", expr1.evaluate(spe));
 		
@@ -92,7 +92,7 @@ public class SimpleParameterEvaluatorTest {
 		
 		SimpleParameterEvaluator spe = new SimpleParameterEvaluator();
 		
-		Time currentTime = spe.getCurrentTime().getCurrentTime();
+		Time currentTime = spe.getCurrentTime().getTime();
 
 		logger.trace("Current time is: {}", expr1.evaluate(spe));
 		
@@ -108,7 +108,7 @@ public class SimpleParameterEvaluatorTest {
 		
 		SimpleParameterEvaluator spe = new SimpleParameterEvaluator();
 		
-		Timestamp currentTimestamp = spe.getCurrentTime().getCurrentTimestamp();
+		Timestamp currentTimestamp = spe.getCurrentTime().getTimestamp();
 
 		logger.trace("Current timestamp is: {}", expr1.evaluate(spe));
 		

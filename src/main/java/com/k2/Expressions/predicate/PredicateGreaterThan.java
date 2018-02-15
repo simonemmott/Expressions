@@ -4,17 +4,35 @@ import com.k2.Expressions.Evaluator;
 import com.k2.Expressions.expression.Expression;
 import com.k2.Expressions.expression.ParameterExpression;
 
+/**
+ * The greater than predicate checks whether a comparable value is greater than another comparable value
+ * 
+ * @author simon
+ *
+ */
 public class PredicateGreaterThan extends AbstractPredicate implements Predicate {
 	
 	private Expression<? extends Comparable<?>> expr1 = null;
 	private Expression<? extends Comparable<?>> expr2 = null;
 	private Comparable<?> comp = null;
 
+	/**
+	 * Create a greater than predicate to check whether the first comparable expression is greater then the second comparable expression
+	 * @param expr1	The first expression
+	 * @param expr2	The second expression
+	 * @param <Y> The comparable type of this predicate
+	 */
 	public <Y extends Comparable<? super Y>> PredicateGreaterThan(Expression<? extends Y> expr1, Expression<? extends Y> expr2) {
 		this.expr1 = expr1;
 		this.expr2 = expr2;
 	}
 
+	/**
+	 * Create a greater than predicate to check whether the comparable expression is greater then the comparable value
+	 * @param expr	The expression
+	 * @param comp	The value
+	 * @param <Y> The comparable type of this predicate
+	 */
 	public <Y extends Comparable<? super Y>> PredicateGreaterThan(Expression<? extends Y> expr, Y comp) {
 		this.expr1 = expr;
 		this.comp = comp;

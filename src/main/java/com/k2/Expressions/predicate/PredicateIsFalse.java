@@ -9,6 +9,12 @@ import com.k2.Expressions.Evaluator;
 import com.k2.Expressions.expression.Expression;
 import com.k2.Expressions.expression.ParameterExpression;
 
+/**
+ * The is false predicate checks whether its given value is false
+ * 
+ * @author simon
+ *
+ */
 public class PredicateIsFalse extends AbstractPredicate implements Predicate {
 	
 	@SuppressWarnings("unused")
@@ -16,6 +22,10 @@ public class PredicateIsFalse extends AbstractPredicate implements Predicate {
 
 	private Expression<Boolean> bool;
 
+	/**
+	 * Create an is false predicate to check whether the given expression returns a false value
+	 * @param bool	The boolean expression to check
+	 */
 	public PredicateIsFalse(Expression<Boolean> bool) {
 		this.bool = bool;
 	}

@@ -2,12 +2,17 @@ package com.k2.Expressions.predicate;
 
 import com.k2.Expressions.Evaluator;
 
+/**
+ * The true predicate returns true
+ * 
+ * @author simon
+ *
+ */
 public class PredicateTrue extends AbstractPredicate implements Predicate {
 
 	@Override
 	public Boolean evaluate(Evaluator eval) {
-		if (this.isNegated()) return false;
-		return true;
+		return isNegatedRVal(true);
 	}
 
 	@Override

@@ -8,6 +8,12 @@ import org.slf4j.LoggerFactory;
 import com.k2.Expressions.Evaluator;
 import com.k2.Util.FloatUtil;
 
+/**
+ * The to Float expression converts the given expression in to a Float expression
+ * 
+ * @author simon
+ *
+ */
 public class ExprToFloat extends AbstractExpression<Float> implements Expression<Float> {
 	
 	@SuppressWarnings("unused")
@@ -15,6 +21,10 @@ public class ExprToFloat extends AbstractExpression<Float> implements Expression
 
 	Expression<?> expr;
 
+	/**
+	 * Create a to Float expression to convert the given expression into a Float expression
+	 * @param expr	The expression to convert to a Float expression
+	 */
 	public ExprToFloat(Expression<?> expr) {
 		super(Float.class);
 		this.expr = expr;

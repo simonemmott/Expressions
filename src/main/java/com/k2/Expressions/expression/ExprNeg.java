@@ -7,6 +7,13 @@ import org.slf4j.LoggerFactory;
 
 import com.k2.Expressions.Evaluator;
 
+/**
+ * The negative expression returns the negative value of the numerical value it receives
+ * 
+ * @author simon
+ *
+ * @param <N>	The numeric type of this expression
+ */
 public class ExprNeg<N extends Number> extends AbstractExpression<N> implements Expression<N> {
 	
 	@SuppressWarnings("unused")
@@ -14,6 +21,10 @@ public class ExprNeg<N extends Number> extends AbstractExpression<N> implements 
 
 	Expression<N> num;
 
+	/**
+	 * Create a negative expression for the given numerical expression
+	 * @param num	The numerical expression to convert to a numerical value
+	 */
 	public ExprNeg(Expression<N> num) {
 		super(num.getJavaType());
 		this.num = num;

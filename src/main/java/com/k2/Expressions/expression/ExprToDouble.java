@@ -8,6 +8,12 @@ import org.slf4j.LoggerFactory;
 import com.k2.Expressions.Evaluator;
 import com.k2.Util.DoubleUtil;
 
+/**
+ * The to Double expression converts the given expression in to a Double expression
+ * 
+ * @author simon
+ *
+ */
 public class ExprToDouble extends AbstractExpression<Double> implements Expression<Double> {
 	
 	@SuppressWarnings("unused")
@@ -15,6 +21,10 @@ public class ExprToDouble extends AbstractExpression<Double> implements Expressi
 
 	Expression<?> expr;
 
+	/**
+	 * Create a to Double expression to convert the given expression into a Double expression
+	 * @param expr	The expression to convert to a Double expression
+	 */
 	public ExprToDouble(Expression<?> expr) {
 		super(Double.class);
 		this.expr = expr;

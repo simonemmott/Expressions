@@ -8,6 +8,12 @@ import org.slf4j.LoggerFactory;
 import com.k2.Expressions.Evaluator;
 import com.k2.Util.IntegerUtil;
 
+/**
+ * The to Integer expression converts the given expression in to a Integer expression
+ * 
+ * @author simon
+ *
+ */
 public class ExprToInteger extends AbstractExpression<Integer> implements Expression<Integer> {
 	
 	@SuppressWarnings("unused")
@@ -15,6 +21,10 @@ public class ExprToInteger extends AbstractExpression<Integer> implements Expres
 
 	Expression<?> expr;
 
+	/**
+	 * Create a to Integer expression to convert the given expression into a Integer expression
+	 * @param expr	The expression to convert to a Integer expression
+	 */
 	public ExprToInteger(Expression<?> expr) {
 		super(Integer.class);
 		this.expr = expr;

@@ -2,10 +2,22 @@ package com.k2.Expressions.expression;
 
 import com.k2.Expressions.Evaluator;
 
+/**
+ * This implementation of the Expression interface provides implements an mathematical absolute method that returns the
+ * absolute value of the given numerical expression
+ * 
+ * @author simon
+ *
+ * @param <N> The numerical type of this absolute expression
+ */
 public class ExprAbsolute<N extends Number> extends AbstractExpression<N> implements Expression<N> {
 	
 	Expression<N> num;
 
+	/**
+	 * Create the absolute expression setting the source expression
+	 * @param num	The numeric value for which an absolute value is required
+	 */
 	@SuppressWarnings("unchecked")
 	public ExprAbsolute(Expression<N> num) {
 		super((Class<? extends N>) num.getClass());

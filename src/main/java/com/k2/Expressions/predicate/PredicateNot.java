@@ -4,10 +4,20 @@ import com.k2.Expressions.Evaluator;
 import com.k2.Expressions.expression.Expression;
 import com.k2.Expressions.expression.ParameterExpression;
 
+/**
+ * The not predicate negates its given boolean expression
+ * 
+ * @author simon
+ *
+ */
 public class PredicateNot extends AbstractPredicate implements Predicate {
 
 	Expression<Boolean> expr;
 	
+	/**
+	 * Create a negating predicate for the given boolean expression
+	 * @param expr	The boolean expression to negate
+	 */
 	public PredicateNot(Expression<Boolean> expr) {
 		this.expr = expr;
 	}

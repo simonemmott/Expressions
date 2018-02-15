@@ -11,6 +11,11 @@ import com.k2.Expressions.Evaluator;
 import com.k2.Expressions.expression.Expression;
 import com.k2.Expressions.expression.ParameterExpression;
 
+/**
+ * The like predicate checks whether the given string matches the given pattern
+ * @author simon
+ *
+ */
 public class PredicateLike extends AbstractPredicate implements Predicate {
 	
 	private static final Logger logger = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
@@ -21,34 +26,70 @@ public class PredicateLike extends AbstractPredicate implements Predicate {
 	private String pattern;
 	private char escapeChar = '\\';
 
+	/**
+	 * Create a predicate to check whether the value of the first expression matches the pattern supplied by the second expression
+	 * @param stringExp		The string expression
+	 * @param patternExp		The pattern expression
+	 */
 	public PredicateLike(Expression<String> stringExp, Expression<String> patternExp) {
 		this.stringExp = stringExp;
 		this.patternExp = patternExp;
 	}
 
+	/**
+	 * Create a predicate to check whether the value of the first expression matches the literal string pattern
+	 * @param stringExp		The string expression
+	 * @param pattern		The pattern expression
+	 */
 	public PredicateLike(Expression<String> stringExp, String pattern) {
 		this.stringExp = stringExp;
 		this.pattern = pattern;
 	}
 
+	/**
+	 * Create a predicate to check whether the value of the first expression matches the pattern supplied by the second expression using the escape character supplied
+	 * by the last expression
+	 * @param stringExp		The string expression
+	 * @param patternExp		The pattern expression
+	 * @param escapeCharExp	The escape character expression
+	 */
 	public PredicateLike(Expression<String> stringExp, Expression<String> patternExp, Expression<Character> escapeCharExp) {
 		this.stringExp = stringExp;
 		this.patternExp = patternExp;
 		this.escapeCharExp = escapeCharExp;
 	}
 
+	/**
+	 * Create a predicate to check whether the value of the first expression matches the pattern supplied by the second expression using the literal escape character
+	 * @param stringExp		The string expression
+	 * @param patternExp		The pattern expression
+	 * @param escapeChar		The escape character
+	 */
 	public PredicateLike(Expression<String> stringExp, Expression<String> patternExp, char escapeChar) {
 		this.stringExp = stringExp;
 		this.patternExp = patternExp;
 		this.escapeChar = escapeChar;
 	}
 
+	/**
+	 * Create a predicate to check whether the value of the first expression matches the literal string pattern  using the escape character supplied
+	 * by the last expression
+	 * @param stringExp		The string expression
+	 * @param pattern		The literal pattern
+	 * @param escapeCharExp	The escape character expression
+	 */
 	public PredicateLike(Expression<String> stringExp, String pattern, Expression<Character> escapeCharExp) {
 		this.stringExp = stringExp;
 		this.pattern = pattern;
 		this.escapeCharExp = escapeCharExp;
 	}
 
+	/**
+	 * Create a predicate to check whether the value of the first expression matches the literal pattern using the literal escape character
+	 * @param stringExp		The string expression
+	 * @param pattern		The literal pattern
+	 * @param escapeChar		The literal escape character
+	 */
 	public PredicateLike(Expression<String> stringExp, String pattern, char escapeChar) {
 		this.stringExp = stringExp;
 		this.pattern = pattern;

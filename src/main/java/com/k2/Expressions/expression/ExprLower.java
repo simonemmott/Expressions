@@ -7,12 +7,22 @@ import org.slf4j.LoggerFactory;
 
 import com.k2.Expressions.Evaluator;
 
+/**
+ * The lower expression converts a string into lower case
+ * 
+ * @author simon
+ *
+ */
 public class ExprLower extends AbstractExpression<String> implements Expression<String> {
 	
 	private static final Logger logger = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
 	Expression<String> string;
 
+	/**
+	 * Create an expression to convert a string to lower case
+	 * @param string		The string to convert to lower case
+	 */
 	public ExprLower(Expression<String> string) {
 		super(String.class);
 		this.string = string;

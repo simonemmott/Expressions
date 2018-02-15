@@ -125,10 +125,11 @@ All expressions are generated though the ExpressionBuilder. The `ExpressionBuile
 | trim(...)          | String                     | Trims leading and/or trailing characters from the given string |
 | upper(...)         | String                     | Converts the given string to upper case |
 
-Expressions define the following predicate methods
+Expressions define the following methods
 
 | Method      | Description |
 |-------------|-------------|
+| as(Class)   | Provides an expression that casts the expressed value of the expression into the given class |
 | isNull()    | Provides a predicate that returns true if the expression returns null |
 | isNotNull() | Provides a predicate that returns true if the expression does not return null |
 | in (...)    | Provides a predicate that returns true is the expression is in the given arguments |

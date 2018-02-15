@@ -6,19 +6,33 @@ import com.k2.Expressions.Evaluator;
 import com.k2.Expressions.expression.Expression;
 import com.k2.Expressions.expression.ParameterExpression;
 
-
+/**
+ * This predicate is a compound predicate and returns true if all the boolean expressions in it are true
+ * 
+ * @author simon
+ *
+ */
 public class PredicateAnd extends AbstractPredicate implements Predicate {
 
 	Predicate[] predicates = null;
 	Expression<Boolean> boolExpr1 = null;
 	Expression<Boolean> boolExpr2 = null;
 	
+	/**
+	 * Create an and predicate for the list of predicates
+	 * @param predicates		The array of predicates that are child predicates for this and predicate
+	 */
 	public PredicateAnd(Predicate... predicates) {
 		super(BooleanOperator.AND);
 		for (Predicate p : predicates) addExpression(p);
 		this.predicates = predicates;
 	}
 
+	/**
+	 * Create an and predicate for the given pair of boolean expressions
+	 * @param boolExpr1	The first boolean expression
+	 * @param boolExpr2	The second boolean expression
+	 */
 	public PredicateAnd(Expression<Boolean> boolExpr1, Expression<Boolean> boolExpr2) {
 		super(BooleanOperator.AND);
 		this.boolExpr1 = boolExpr1;

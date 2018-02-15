@@ -8,6 +8,12 @@ import org.slf4j.LoggerFactory;
 
 import com.k2.Expressions.Evaluator;
 
+/**
+ * The to big decimal expression converts the given numerical expression in to a BigDecimal
+ * 
+ * @author simon
+ *
+ */
 public class ExprToBigDecimal extends AbstractExpression<BigDecimal> implements Expression<BigDecimal> {
 	
 	@SuppressWarnings("unused")
@@ -15,6 +21,10 @@ public class ExprToBigDecimal extends AbstractExpression<BigDecimal> implements 
 
 	Expression<? extends Number> num;
 
+	/**
+	 * Create a toBigDcimal expression for the given numerical expression
+	 * @param num	The numerical expression to convert into a BigDecimal
+	 */
 	public ExprToBigDecimal(Expression<? extends Number> num) {
 		super(BigDecimal.class);
 		this.num = num;

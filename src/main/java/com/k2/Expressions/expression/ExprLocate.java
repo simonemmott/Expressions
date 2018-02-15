@@ -8,6 +8,12 @@ import org.slf4j.LoggerFactory;
 
 import com.k2.Expressions.Evaluator;
 
+/**
+ * The locate expression identifies the location of one string within another
+ * 
+ * @author simon
+ *
+ */
 public class ExprLocate extends AbstractExpression<Integer> implements Expression<Integer> {
 	
 	private static final Logger logger = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
@@ -18,18 +24,37 @@ public class ExprLocate extends AbstractExpression<Integer> implements Expressio
 	String pattern;
 	int from = 0;
 
+	/**
+	 * Create a location expression that locates the string returned by the pattern string expression in the string returned by
+	 * the string expression
+	 * @param string		The string expression
+	 * @param pattern	The pattern expression
+	 */
 	public ExprLocate(Expression<String> string, Expression<String> pattern) {
 		super(Integer.class);
 		this.stringExp = string;
 		this.patternExp = pattern;
 	}
 
+	/**
+	 * Create a location expression that locates the pattern string expression in the string returned by
+	 * the string expression
+	 * @param string		The string expression
+	 * @param pattern	The pattern expression
+	 */
 	public ExprLocate(Expression<String> string, String pattern) {
 		super(Integer.class);
 		this.stringExp = string;
 		this.pattern = pattern;
 	}
 
+	/**
+	 * Create a location expression that locates the string returned by the pattern string expression in the string returned by
+	 * the string expression starting from a given location
+	 * @param string		The string expression
+	 * @param pattern	The pattern expression
+	 * @param from		The location within the string to start searching for the pattern
+	 */
 	public ExprLocate(Expression<String> string, Expression<String> pattern, Expression<Integer> from) {
 		super(Integer.class);
 		this.stringExp = string;
@@ -37,6 +62,13 @@ public class ExprLocate extends AbstractExpression<Integer> implements Expressio
 		this.fromExp = from;
 	}
 
+	/**
+	 * Create a location expression that locates the pattern string expression in the string returned by
+	 * the string expression starting from a given location
+	 * @param string		The string expression
+	 * @param pattern	The pattern expression
+	 * @param from		The location within the string to start searching for the pattern
+	 */
 	public ExprLocate(Expression<String> string, String pattern, int from) {
 		super(Integer.class);
 		this.stringExp = string;

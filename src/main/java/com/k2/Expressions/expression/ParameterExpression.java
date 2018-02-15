@@ -1,128 +1,61 @@
 package com.k2.Expressions.expression;
 
-import java.util.Collection;
-
 import javax.persistence.TemporalType;
 
 import com.k2.Expressions.Evaluator;
 import com.k2.Expressions.ParameterEvaluator;
-import com.k2.Expressions.predicate.*;
 
-public class ParameterExpression<T> implements Expression<T>{
+/**
+ * Parameter expressions derive their value from the parameters set on the evaluator
+ * 
+ * @author simon
+ *
+ * @param <T>	The type of the value returned by this parameter expression
+ */
+public class ParameterExpression<T> extends AbstractExpression<T> implements Expression<T>{
 	
-	Class<T> cls;
-	String alias;
-	String name;
 	Integer pos;
 	TemporalType temporalType = TemporalType.DATE;
 	
+	/**
+	 * Create a parameter expression for the given class and name
+	 * @param cls	The class of the parameter expression
+	 * @param name	The name of the parameter expression
+	 */
 	public ParameterExpression(Class<T> cls, String name) {
-		this.cls = cls;
-		this.name = name;
-	}
-	
-	
-
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((getAlias() == null) ? 0 : getAlias().hashCode());
-		result = prime * result + ((cls == null) ? 0 : cls.getName().hashCode());
-		return result;
+		super(name, cls);
 	}
 
-
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		ParameterExpression<?> other = (ParameterExpression<?>) obj;
-		if (getAlias() == null) {
-			if (other.getAlias() != null)
-				return false;
-		} else if (!getAlias().equals(other.getAlias()))
-			return false;
-		if (cls == null) {
-			if (other.cls != null)
-				return false;
-		} else if (!cls.getName().equals(other.cls.getName()))
-			return false;
-		return true;
-	}
-
-
-	public String getName() {
-		return name;
-	}
-
+	/**
+	 * Set the position of this parameter expression
+	 * @param pos	The integer position of this parameter
+	 */
 	public void setPosition(Integer pos) {
 		if (this.pos == null) this.pos = pos;
 	}
+	
+	/**
+	 * Get the integer postion of this parameter expression if it has been set
+	 * @return	The integer postion of this parameter exprerssion
+	 */
 	public Integer getPosition() {
 		return pos;
 	}
 
+	/**
+	 * Get the java type of this parameter expression
+	 * @return	The java type of this parameter expression
+	 */
+	@SuppressWarnings("unchecked")
 	public Class<T> getParameterType() {
-		return cls;
+		return (Class<T>) super.getJavaType();
 	}
 
-	@Override
-	public Predicate isNull() {
-		return new PredicateNull(this);
-	}
-
-	@Override
-	public Predicate isNotNull() {
-		return new PredicateNotNull(this);
-	}
-
-	@Override
-	public Predicate in(Object... values) {
-		return new PredicateIn(this, values);
-	}
-
-	@Override
-	public Predicate in(Expression<?>... values) {
-		return new PredicateIn(this, values);
-	}
-
-	@Override
-	public Predicate in(Collection<?> values) {
-		return new PredicateIn(this, values);
-	}
-
-	@Override
-	public Predicate in(Expression<Collection<?>> values) {
-		return new PredicateIn(this, values);
-	}
-
-	@Override
-	public <X> Expression<X> as(Class<X> type) {
-		return new GenericExpression<X>(this, type);
-	}
-
-	@Override
-	public Expression<T> alias(String alias) {
-		this.alias = alias;
-		return this;
-	}
-
-	@Override
-	public Class<? extends T> getJavaType() {
-		return cls;
-	}
-
-	@Override
-	public String getAlias() {
-		return (alias == null) ? name : alias;
-	}
-
+	/**
+	 * Set the temporal type of this parameter expression
+	 * @param temporalType	The parameter type to set for this parameter expression
+	 * @return	This parameter expression for method chaining
+	 */
 	public ParameterExpression<T> setTemporalType(TemporalType temporalType) {
 		this.temporalType = temporalType;
 		return this;

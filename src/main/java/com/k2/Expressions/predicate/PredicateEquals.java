@@ -9,6 +9,12 @@ import com.k2.Expressions.Evaluator;
 import com.k2.Expressions.expression.Expression;
 import com.k2.Expressions.expression.ParameterExpression;
 
+/**
+ * The equals predicate checks for equality between its arguments
+ * 
+ * @author simon
+ *
+ */
 public class PredicateEquals extends AbstractPredicate implements Predicate {
 	
 	private static final Logger logger = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
@@ -16,11 +22,21 @@ public class PredicateEquals extends AbstractPredicate implements Predicate {
 	private Expression<?> value1;
 	private Object value2;
 
+	/**
+	 * Create an equality predicate to check for equality between two expressions
+	 * @param expr1	The first expression
+	 * @param expr2	The second expression
+	 */
 	public PredicateEquals(Expression<?> expr1, Expression<?> expr2) {
 		value1 = expr1;
 		value2 = expr2;
 	}
 
+	/**
+	 * Create an equality predicate to check for equality between an expression and a literal value
+	 * @param expr	The expression
+	 * @param obj	The literal value
+	 */
 	public PredicateEquals(Expression<?> expr, Object obj) {
 		value1 = expr;
 		value2 = obj;

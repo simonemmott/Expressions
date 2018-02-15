@@ -4,10 +4,20 @@ import com.k2.Expressions.Evaluator;
 import com.k2.Expressions.expression.Expression;
 import com.k2.Expressions.expression.ParameterExpression;
 
+/**
+ * THe null predicate checks whether the value of its argument is null
+ * 
+ * @author simon
+ *
+ */
 public class PredicateNull extends AbstractPredicate implements Predicate {
 
 	Expression<?> expr;
 	
+	/**
+	 * Create a predicate to check whether the value of the given expression is null
+	 * @param expr	The expression whose value is to be checked for null
+	 */
 	public PredicateNull(Expression<?> expr) {
 		this.expr = expr;
 	}
@@ -21,8 +31,7 @@ public class PredicateNull extends AbstractPredicate implements Predicate {
 	@Override
 	public Boolean evaluate(Evaluator eval) {
 		Object value = expr.evaluate(eval);
-		if (value == null) return (isNegated()) ? false: true;
-		return (isNegated()) ? true: false;
+		return isNegatedRVal(value == null);
 	}
 
 }

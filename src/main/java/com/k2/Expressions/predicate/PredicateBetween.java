@@ -4,7 +4,11 @@ import com.k2.Expressions.Evaluator;
 import com.k2.Expressions.expression.Expression;
 import com.k2.Expressions.expression.ParameterExpression;
 
-
+/**
+ * The between predicate tests whether a comparable value is between a beginning and end value
+ * @author simon
+ *
+ */
 public class PredicateBetween extends AbstractPredicate implements Predicate {
 
 	Expression<? extends Comparable<?>> check;
@@ -15,6 +19,13 @@ public class PredicateBetween extends AbstractPredicate implements Predicate {
 	@SuppressWarnings("rawtypes")
 	Comparable end = null;
 	
+	/**
+	 * Create a between predicate for the given expressions
+	 * @param check		The expression to check
+	 * @param beginExpr	The beginning expression
+	 * @param endExpr	The end expression
+	 * @param <Y> 	The comparable type of this expression
+	 */
 	public <Y extends Comparable<? super Y>> PredicateBetween(Expression<? extends Y> check,
 			Expression<? extends Y> beginExpr, Expression<? extends Y> endExpr) {
 		this.check = check;
@@ -22,6 +33,13 @@ public class PredicateBetween extends AbstractPredicate implements Predicate {
 		this.endExpr = endExpr;
 	}
 
+	/**
+	 * Create a between predicate for the given expressions
+	 * @param check		The expression to check
+	 * @param begin	The beginning literal value
+	 * @param end	The end literal value
+	 * @param <Y> 	The comparable type of this expression
+	 */
 	public <Y extends Comparable<? super Y>> PredicateBetween(Expression<? extends Y> check, Y begin, Y end) {
 		this.check = check;
 		this.begin = begin;

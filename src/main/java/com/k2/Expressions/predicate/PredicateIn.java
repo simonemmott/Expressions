@@ -9,6 +9,11 @@ import org.slf4j.LoggerFactory;
 import com.k2.Expressions.Evaluator;
 import com.k2.Expressions.expression.*;
 
+/**
+ * The in predicate checks whether the first value is in the subsquent values
+ * @author simon
+ *
+ */
 public class PredicateIn extends AbstractPredicate implements Predicate {
 
 	private static final Logger logger = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
@@ -19,24 +24,44 @@ public class PredicateIn extends AbstractPredicate implements Predicate {
 	Collection<?> collection = null;
 	Expression<Collection<?>> collectionExpr = null;
 	
+	/**
+	 * Create an in predicate to check whether the value of the expression is in the array of objects
+	 * @param expr	The expression
+	 * @param objects	The array of objects
+	 */
 	public PredicateIn(Expression<?> expr, Object[] objects) {
 		logger.trace("in: list of objects");
 		this.expr = expr;
 		this.objects = objects;
 	}
 
+	/**
+	 * Create an in predicate to check whether the value of the expression is in the values of the array of expressions
+	 * @param expr		The expression to check
+	 * @param expressions	The array of expressions
+	 */
 	public PredicateIn(Expression<?> expr, Expression<?>... expressions) {
 		logger.trace("in: list of expressions");
 		this.expr = expr;
 		this.expressions = expressions;
 	}
 
+	/**
+	 * Create an in predicate to check whether the value of the expression is in a collection
+	 * @param expr	The expression
+	 * @param collection		The collection
+	 */
 	public PredicateIn(Expression<?> expr, Collection<?> collection) {
 		logger.trace("in: collection");
 		this.expr = expr;
 		this.collection = collection;
 	}
 	
+	/**
+	 * Create an in predicate to check whether the value of the expression in the the expressed collection
+	 * @param expr	The expression to check
+	 * @param collectionExpr		The expression supplying a collection
+	 */
 	public PredicateIn(Expression<?> expr, Expression<Collection<?>> collectionExpr) {
 		logger.trace("in: collection expression");
 		this.expr = expr;
@@ -61,11 +86,7 @@ public class PredicateIn extends AbstractPredicate implements Predicate {
 	public Boolean evaluate(Evaluator eval) {
 		Object value = expr.evaluate(eval);
 		if (value == null) return false;
-		if (isNegated()) {
-			return !evaluateIn(value, eval);
-		} else {
-			return evaluateIn(value, eval);
-		}
+		return isNegatedRVal(evaluateIn(value, eval));
 	}
 	
 	private boolean evaluateIn(Object value, Evaluator eval) {

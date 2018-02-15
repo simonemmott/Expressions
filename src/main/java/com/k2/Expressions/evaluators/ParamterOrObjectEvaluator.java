@@ -12,6 +12,19 @@ import com.k2.Expressions.expression.GetterExpression;
 import com.k2.Expressions.expression.ParameterExpression;
 import com.k2.Util.ObjectUtil;
 
+/**
+ * This class extends the generic evaluator and allows the values returned for parameter expressions to be fulfilled by values from 
+ * the generic evaluators value source and the values set on the evaluator. It also allows getter expressions to be fulfilled by 
+ * set parameter values.  
+ * 
+ * If a value is available from the set parameter values then that value is returned for either
+ * a suitable parameter expression or a getter expression. If a value is not available from the set parameter values
+ * then the set generic valuators value source is inspected for a suitable value for the requested parameter or getter expression.
+ * 
+ * @author simon
+ *
+ * @param <E>	The type of the object that provides values for getter expressions.
+ */
 public class ParamterOrObjectEvaluator<E> extends GenericEvaluator<E> implements Evaluator, ParameterEvaluator, GetterEvaluator<E> {
 
 	@SuppressWarnings("unused")

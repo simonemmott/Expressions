@@ -1,42 +1,62 @@
 package com.k2.Expressions.predicate;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 import javax.persistence.criteria.Predicate.BooleanOperator;
 
+import com.k2.Expressions.expression.AbstractExpression;
 import com.k2.Expressions.expression.Expression;
-import com.k2.Expressions.expression.GenericExpression;
 
-public abstract class AbstractPredicate implements Predicate {
+/**
+ * This abstract class forms the basis of all the predicate classes
+ * @author simon
+ *
+ */
+public abstract class AbstractPredicate extends AbstractExpression<Boolean> implements Predicate {
 	
-	private String alias;
-	private String name;
 	private boolean negated = false;
-	private BooleanOperator operator = null;
+	private BooleanOperator operator = BooleanOperator.AND;
 	private List<Expression<Boolean>> expressions = null;
 	
+	/**
+	 * Create a predicate
+	 */
 	AbstractPredicate() {
+		super(Boolean.class);
 	}
 
+	/**
+	 * Create a predicate with the given name
+	 * @param name
+	 */
 	AbstractPredicate(String name) {
-		this.name = name;
+		super(name, Boolean.class);
 	}
 
+	/**
+	 * Create a given predicate for the given boolean operator
+	 * @param operator	The boolean operator for the predicate
+	 */
 	AbstractPredicate(BooleanOperator operator) {
+		super(Boolean.class);
 		this.operator = operator;
 	}
 
-	AbstractPredicate(String alias, BooleanOperator operator) {
-		this.alias = alias;
+	/**
+	 * Create a predicate for the given name and boolan operator
+	 * @param name		The name of this predicate
+	 * @param operator	The operator for this predicate
+	 */
+	AbstractPredicate(String name, BooleanOperator operator) {
+		super(name, Boolean.class);
 		this.operator = operator;
 	}
 	
-	public String getName() {
-		return name;
-	}
-	
+	/**
+	 * Add the expression to this predicates list of expressions
+	 * @param expr	The expression that is a child boolean expression of this predicate
+	 */
 	void addExpression(Expression<Boolean> expr) {
 		if (expressions == null) expressions = new ArrayList<Expression<Boolean>>();
 		expressions.add(expr);
@@ -48,63 +68,14 @@ public abstract class AbstractPredicate implements Predicate {
 		return expressions;
 	}
 
-
+	/**
+	 * This method reverses the boolean value of this predicate if the predicate has been negated
+	 * 
+	 * @param rVal	The boolean value evaluated for this predicate irrespective of whether the predicate has been negated
+	 * @return	The negated variant of the given value if this predicate has been negated or the given value if it has not beed negated
+	 */
 	boolean isNegatedRVal(boolean rVal) {
 		return (isNegated()) ? !rVal: rVal;
-	}
-
-	@Override
-	public Predicate in(Object... values) {
-		return new PredicateIn(this, values);
-	}
-
-	@Override
-	public Predicate in(Expression<?>... values) {
-		return new PredicateIn(this, values);
-	}
-
-	@Override
-	public Predicate in(Collection<?> values) {
-		return new PredicateIn(this, values);
-	}
-
-	@Override
-	public Predicate in(Expression<Collection<?>> values) {
-		return new PredicateIn(this, values);
-	}
-
-	@Override
-	public Predicate isNotNull() {
-		return new PredicateNotNull(this);
-	}
-
-	@Override
-	public Predicate isNull() {
-		return new PredicateNull(this);
-	}
-
-	@Override
-	public <X> Expression<X> as(Class<X> cls) {
-		return new GenericExpression<X>(this, cls);
-	}
-
-	public static Predicate getTrue() { return new PredicateTrue(); }
-	public static Predicate getFalse() { return new PredicateFalse(); }
-
-	@Override
-	public Expression<Boolean> alias(String alias) {
-		this.alias = alias;
-		return this;
-	}
-
-	@Override
-	public String getAlias() {
-		return alias;
-	}
-
-	@Override
-	public Class<? extends Boolean> getJavaType() {
-		return Boolean.class;
 	}
 
 	@Override

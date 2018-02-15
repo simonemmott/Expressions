@@ -65,7 +65,7 @@ public abstract class AbstractExpression<T> implements Expression<T>{
 			return true;
 		if (obj == null)
 			return false;
-		if (getClass() != obj.getClass())
+		if (!obj.getClass().isAssignableFrom(getClass()))
 			return false;
 		AbstractExpression<?> other = (AbstractExpression<?>) obj;
 		if (getAlias() == null) {

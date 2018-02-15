@@ -52,5 +52,10 @@ public class ParamterOrObjectEvaluator<E> extends GenericEvaluator<E> implements
 		if (parameterValues.containsKey(param)) return (T) parameterValues.get(param);
 		return ObjectUtil.get(valueSource, param.getJavaType(), param.getAlias());
 	}
+	
+	public ParamterOrObjectEvaluator<E> with (E valueSource) {
+		this.valueSource = valueSource;
+		return this;
+	}
 
 }

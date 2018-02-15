@@ -15,7 +15,7 @@ import com.k2.Expressions.expression.GetterExpression;
  */
 public class GenericEvaluator<E> extends SimpleParameterEvaluator implements Evaluator, ParameterEvaluator, GetterEvaluator<E> {
 
-	E valueSource;
+	protected E valueSource;
 	
 	/**
 	 * Create an instance of the generic evaluator without setting it's value source

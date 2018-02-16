@@ -14,7 +14,7 @@ to provide values for the expressions that require values from an external value
 On its own the Expression project doesn't do anything particularly useful, however the it provides support services to any project that
 needs to decouple the assembly of data from the source of the data e.g. the javax persistence API or a proforma style project.
 
-Javadoc documentation of this project can be found [here](https://simonemmott.github.io/Proforma/index.html)
+Javadoc documentation of this project can be found [here](https://simonemmott.github.io/Expressions/index.html)
 
 
 ### License

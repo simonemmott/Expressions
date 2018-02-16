@@ -21,7 +21,7 @@ import com.k2.Expressions.predicate.Predicate;
 public class SimpleParameterEvaluator implements Evaluator, ParameterEvaluator {
 
 	Set<ParameterExpression<?>> requiredParameters = new HashSet<ParameterExpression<?>>();
-	Map<ParameterExpression<?>, Object> parameterValues = new HashMap<ParameterExpression<?>, Object>();
+	protected Map<ParameterExpression<?>, Object> parameterValues = new HashMap<ParameterExpression<?>, Object>();
 	
 	/**
 	 * Create am instance of the SimpleParameterEvaluator

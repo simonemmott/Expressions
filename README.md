@@ -1,4 +1,4 @@
-# Expressions - v0.0.1
+# Expressions - v0.1.0
 The Expressions project provides an implementation of Expressions and Predicates suitable for implementation as javax persistence 
 Expressions and Predicates.  The Expressions and Predicates themselves do not implement the javax persistence API Expression and Predicate 
 interfaces entirely though could be extended to support them. In essence they provide the same functionality without being tied to 

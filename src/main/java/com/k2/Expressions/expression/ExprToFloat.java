@@ -14,18 +14,18 @@ import com.k2.Util.FloatUtil;
  * @author simon
  *
  */
-public class ExprToFloat extends AbstractExpression<Float> implements Expression<Float> {
+public class ExprToFloat extends AbstractExpression<Float> implements K2Expression<Float> {
 	
 	@SuppressWarnings("unused")
 	private static final Logger logger = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
-	Expression<?> expr;
+	K2Expression<?> expr;
 
 	/**
 	 * Create a to Float expression to convert the given expression into a Float expression
 	 * @param expr	The expression to convert to a Float expression
 	 */
-	public ExprToFloat(Expression<?> expr) {
+	public ExprToFloat(K2Expression<?> expr) {
 		super(Float.class);
 		this.expr = expr;
 	}

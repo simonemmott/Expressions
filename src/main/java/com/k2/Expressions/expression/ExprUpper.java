@@ -13,17 +13,17 @@ import com.k2.Expressions.Evaluator;
  * @author simon
  *
  */
-public class ExprUpper extends AbstractExpression<String> implements Expression<String> {
+public class ExprUpper extends AbstractExpression<String> implements K2Expression<String> {
 	
 	private static final Logger logger = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
-	Expression<String> string;
+	K2Expression<String> string;
 
 	/**
 	 * Create an expression to convert the given string to upper case
 	 * @param string		The string expression to convert to upper case
 	 */
-	public ExprUpper(Expression<String> string) {
+	public ExprUpper(K2Expression<String> string) {
 		super(String.class);
 		this.string = string;
 	}

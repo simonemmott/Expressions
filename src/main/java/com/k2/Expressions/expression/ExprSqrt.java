@@ -14,18 +14,18 @@ import com.k2.Util.DoubleUtil;
  * @author simon
  *
  */
-public class ExprSqrt extends AbstractExpression<Double> implements Expression<Double> {
+public class ExprSqrt extends AbstractExpression<Double> implements K2Expression<Double> {
 	
 	@SuppressWarnings("unused")
 	private static final Logger logger = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
-	Expression<? extends Number> num;
+	K2Expression<? extends Number> num;
 
 	/**
 	 * Create a numerical expression to calculate the square root of the numerical expression
 	 * @param num	The numerical expression to be square rooted
 	 */
-	public ExprSqrt(Expression<? extends Number> num) {
+	public ExprSqrt(K2Expression<? extends Number> num) {
 		super(Double.class);
 		this.num = num;
 	}

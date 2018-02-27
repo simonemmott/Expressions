@@ -2,7 +2,7 @@ package com.k2.Expressions;
 
 import com.k2.Expressions.expression.CurrentTime;
 import com.k2.Expressions.expression.ParameterExpression;
-import com.k2.Expressions.predicate.Predicate;
+import com.k2.Expressions.predicate.K2Predicate;
 
 /**
  * The evaluator interface defines the minimum methods that are to be implemented by all Evaluators.
@@ -25,7 +25,7 @@ public interface Evaluator {
 	 * @param predicates		The predicates that contain parameter expressions to be evaluated by this evaluator
 	 * @return		True if all the parameter expression contained in the list of predicates has a value defined by this evaluator
 	 */
-	public boolean checkParametersSet(Predicate ... predicates);
+	public boolean checkParametersSet(K2Predicate ... predicates);
 	
 	/**
 	 * Get the current time from this evaluator. Repeated calls to this method will return the same value for the current time.

@@ -1,9 +1,7 @@
 package com.k2.Expressions.predicate;
 
-import javax.persistence.criteria.Predicate.BooleanOperator;
-
 import com.k2.Expressions.Evaluator;
-import com.k2.Expressions.expression.Expression;
+import com.k2.Expressions.expression.K2Expression;
 import com.k2.Expressions.expression.ParameterExpression;
 
 /**
@@ -12,20 +10,22 @@ import com.k2.Expressions.expression.ParameterExpression;
  * @author simon
  *
  */
-public class PredicateAnd extends AbstractPredicate implements Predicate {
+public class PredicateAnd extends AbstractPredicate implements K2Predicate {
 
-	Predicate[] predicates = null;
-	Expression<Boolean> boolExpr1 = null;
-	Expression<Boolean> boolExpr2 = null;
+	K2Predicate[] predicates = null;
+	K2Expression<Boolean> boolExpr1 = null;
+	K2Expression<Boolean> boolExpr2 = null;
 	
 	/**
 	 * Create an and predicate for the list of predicates
 	 * @param predicates		The array of predicates that are child predicates for this and predicate
 	 */
-	public PredicateAnd(Predicate... predicates) {
+	public PredicateAnd(K2Predicate... predicates) {
 		super(BooleanOperator.AND);
-		for (Predicate p : predicates) addExpression(p);
 		this.predicates = predicates;
+		for (K2Predicate p : predicates) {
+			addExpression(p);
+		}
 	}
 
 	/**
@@ -33,7 +33,7 @@ public class PredicateAnd extends AbstractPredicate implements Predicate {
 	 * @param boolExpr1	The first boolean expression
 	 * @param boolExpr2	The second boolean expression
 	 */
-	public PredicateAnd(Expression<Boolean> boolExpr1, Expression<Boolean> boolExpr2) {
+	public PredicateAnd(K2Expression<Boolean> boolExpr1, K2Expression<Boolean> boolExpr2) {
 		super(BooleanOperator.AND);
 		this.boolExpr1 = boolExpr1;
 		addExpression(boolExpr1);
@@ -53,7 +53,7 @@ public class PredicateAnd extends AbstractPredicate implements Predicate {
 					return isNegatedRVal(false);
 				}
 			} else {
-				for (Predicate p : predicates) {
+				for (K2Predicate p : predicates) {
 					if (!p.evaluate(eval)) {
 						return isNegatedRVal(false);
 					}
@@ -69,7 +69,7 @@ public class PredicateAnd extends AbstractPredicate implements Predicate {
 			if(boolExpr2 instanceof ParameterExpression<?>) eval.add((ParameterExpression<?>)boolExpr2);
 
 		} else {
-			for (Predicate p : predicates) {
+			for (K2Predicate p : predicates) {
 				p.populateParameters(eval);
 			}
 		}

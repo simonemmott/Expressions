@@ -14,18 +14,18 @@ import com.k2.Util.LongUtil;
  * @author simon
  *
  */
-public class ExprToLong extends AbstractExpression<Long> implements Expression<Long> {
+public class ExprToLong extends AbstractExpression<Long> implements K2Expression<Long> {
 	
 	@SuppressWarnings("unused")
 	private static final Logger logger = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
-	Expression<?> expr;
+	K2Expression<?> expr;
 
 	/**
 	 * Create a to Long expression to convert the given expression into a Long expression
 	 * @param expr	The expression to convert to a Long expression
 	 */
-	public ExprToLong(Expression<?> expr) {
+	public ExprToLong(K2Expression<?> expr) {
 		super(Long.class);
 		this.expr = expr;
 	}

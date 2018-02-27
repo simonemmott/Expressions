@@ -13,7 +13,7 @@ import com.k2.Expressions.evaluators.GenericEvaluator;
 import com.k2.Expressions.evaluators.ObjectOrParameterEvaluator;
 import com.k2.Expressions.evaluators.ParamterOrObjectEvaluator;
 import com.k2.Expressions.expression.ExpressionBuilder;
-import com.k2.Expressions.predicate.Predicate;
+import com.k2.Expressions.predicate.K2Predicate;
 import com.k2.Expressions.predicate.PredicateBuilder;
 import com.k2.Util.StringUtil;
 
@@ -57,14 +57,14 @@ public class EvaluatorsTest {
 	@Test
 	public void genericEvaluatorTest()
     {
-		Predicate predId = pb.equals(xb.get(Foo.class, Long.class, "id"), 1L);
-		Predicate predIntVal = pb.equals(xb.get(Foo.class, Integer.class, "intVal"), 10);
-		Predicate predLongVal = pb.equals(xb.get(Foo.class, Long.class, "longVal"), 123456789012345L);
-		Predicate predDateVal = pb.equals(xb.get(Foo.class, Date.class, "dateVal"), StringUtil.toDate("2018/01/01", "yyyy/MM/dd"));
-		Predicate predBoolVal = pb.equals(xb.get(Foo.class, Boolean.class, "boolVal"), true);
-		Predicate predFloatVal = pb.equals(xb.get(Foo.class, Float.class, "floatVal"), (float)1.234);
-		Predicate predDoubleVal = pb.equals(xb.get(Foo.class, Double.class, "doubleVal"), 1234.5678);
-		Predicate predStrVal = pb.equals(xb.get(Foo.class, String.class, "strVal"), xb.param(String.class, "p1"));
+		K2Predicate predId = pb.equals(xb.get(Foo.class, Long.class, "id"), 1L);
+		K2Predicate predIntVal = pb.equals(xb.get(Foo.class, Integer.class, "intVal"), 10);
+		K2Predicate predLongVal = pb.equals(xb.get(Foo.class, Long.class, "longVal"), 123456789012345L);
+		K2Predicate predDateVal = pb.equals(xb.get(Foo.class, Date.class, "dateVal"), StringUtil.toDate("2018/01/01", "yyyy/MM/dd"));
+		K2Predicate predBoolVal = pb.equals(xb.get(Foo.class, Boolean.class, "boolVal"), true);
+		K2Predicate predFloatVal = pb.equals(xb.get(Foo.class, Float.class, "floatVal"), (float)1.234);
+		K2Predicate predDoubleVal = pb.equals(xb.get(Foo.class, Double.class, "doubleVal"), 1234.5678);
+		K2Predicate predStrVal = pb.equals(xb.get(Foo.class, String.class, "strVal"), xb.param(String.class, "p1"));
 		
 		Foo foo = new Foo(	1L, 
 							10, 
@@ -93,14 +93,14 @@ public class EvaluatorsTest {
 	@Test
 	public void parameterOrObjectEvaluatorTest()
     {
-		Predicate predId = pb.equals(xb.get(Foo.class, Long.class, "id"), 1L);
-		Predicate predIntVal = pb.equals(xb.get(Foo.class, Integer.class, "intVal"), 10);
-		Predicate predLongVal = pb.equals(xb.get(Foo.class, Long.class, "longVal"), 1000L);
-		Predicate predDateVal = pb.equals(xb.get(Foo.class, Date.class, "dateVal"), StringUtil.toDate("2018/01/01", "yyyy/MM/dd"));
-		Predicate predBoolVal = pb.equals(xb.get(Foo.class, Boolean.class, "boolVal"), true);
-		Predicate predFloatVal = pb.equals(xb.get(Foo.class, Float.class, "floatVal"), (float)1.234);
-		Predicate predDoubleVal = pb.equals(xb.get(Foo.class, Double.class, "doubleVal"), 1234.5678);
-		Predicate predStrVal = pb.equals(xb.get(Foo.class, String.class, "strVal"), xb.param(String.class, "p1"));
+		K2Predicate predId = pb.equals(xb.get(Foo.class, Long.class, "id"), 1L);
+		K2Predicate predIntVal = pb.equals(xb.get(Foo.class, Integer.class, "intVal"), 10);
+		K2Predicate predLongVal = pb.equals(xb.get(Foo.class, Long.class, "longVal"), 1000L);
+		K2Predicate predDateVal = pb.equals(xb.get(Foo.class, Date.class, "dateVal"), StringUtil.toDate("2018/01/01", "yyyy/MM/dd"));
+		K2Predicate predBoolVal = pb.equals(xb.get(Foo.class, Boolean.class, "boolVal"), true);
+		K2Predicate predFloatVal = pb.equals(xb.get(Foo.class, Float.class, "floatVal"), (float)1.234);
+		K2Predicate predDoubleVal = pb.equals(xb.get(Foo.class, Double.class, "doubleVal"), 1234.5678);
+		K2Predicate predStrVal = pb.equals(xb.get(Foo.class, String.class, "strVal"), xb.param(String.class, "p1"));
 		
 		Foo foo = new Foo(	1L, 
 							10, 
@@ -130,14 +130,14 @@ public class EvaluatorsTest {
 	@Test
 	public void objectOrParameterEvaluatorTest()
     {
-		Predicate predId = pb.equals(xb.get(Foo.class, Long.class, "id"), 1L);
-		Predicate predIntVal = pb.equals(xb.get(Foo.class, Integer.class, "intVal"), 10);
-		Predicate predLongVal = pb.equals(xb.param(Long.class, "longVal"), 123456789012345L);
-		Predicate predDateVal = pb.equals(xb.get(Foo.class, Date.class, "dateVal"), StringUtil.toDate("2018/01/01", "yyyy/MM/dd"));
-		Predicate predBoolVal = pb.equals(xb.get(Foo.class, Boolean.class, "boolVal"), true);
-		Predicate predFloatVal = pb.equals(xb.get(Foo.class, Float.class, "floatVal"), (float)1.234);
-		Predicate predDoubleVal = pb.equals(xb.get(Foo.class, Double.class, "doubleVal"), 1234.5678);
-		Predicate predStrVal = pb.equals(xb.get(Foo.class, String.class, "strVal"), xb.param(String.class, "p1"));
+		K2Predicate predId = pb.equals(xb.get(Foo.class, Long.class, "id"), 1L);
+		K2Predicate predIntVal = pb.equals(xb.get(Foo.class, Integer.class, "intVal"), 10);
+		K2Predicate predLongVal = pb.equals(xb.param(Long.class, "longVal"), 123456789012345L);
+		K2Predicate predDateVal = pb.equals(xb.get(Foo.class, Date.class, "dateVal"), StringUtil.toDate("2018/01/01", "yyyy/MM/dd"));
+		K2Predicate predBoolVal = pb.equals(xb.get(Foo.class, Boolean.class, "boolVal"), true);
+		K2Predicate predFloatVal = pb.equals(xb.get(Foo.class, Float.class, "floatVal"), (float)1.234);
+		K2Predicate predDoubleVal = pb.equals(xb.get(Foo.class, Double.class, "doubleVal"), 1234.5678);
+		K2Predicate predStrVal = pb.equals(xb.get(Foo.class, String.class, "strVal"), xb.param(String.class, "p1"));
 		
 		Foo foo = new Foo(	1L, 
 							10, 

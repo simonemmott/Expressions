@@ -14,18 +14,18 @@ import com.k2.Expressions.Evaluator;
  * @author simon
  *
  */
-public class ExprToBigDecimal extends AbstractExpression<BigDecimal> implements Expression<BigDecimal> {
+public class ExprToBigDecimal extends AbstractExpression<BigDecimal> implements K2Expression<BigDecimal> {
 	
 	@SuppressWarnings("unused")
 	private static final Logger logger = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
-	Expression<? extends Number> num;
+	K2Expression<? extends Number> num;
 
 	/**
 	 * Create a toBigDcimal expression for the given numerical expression
 	 * @param num	The numerical expression to convert into a BigDecimal
 	 */
-	public ExprToBigDecimal(Expression<? extends Number> num) {
+	public ExprToBigDecimal(K2Expression<? extends Number> num) {
 		super(BigDecimal.class);
 		this.num = num;
 	}

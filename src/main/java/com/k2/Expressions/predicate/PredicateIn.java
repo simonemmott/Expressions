@@ -14,22 +14,22 @@ import com.k2.Expressions.expression.*;
  * @author simon
  *
  */
-public class PredicateIn extends AbstractPredicate implements Predicate {
+public class PredicateIn extends AbstractPredicate implements K2Predicate {
 
 	private static final Logger logger = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
-	Expression<?> expr;
+	K2Expression<?> expr;
 	Object[] objects = null;
-	Expression<?>[] expressions = null;
+	K2Expression<?>[] expressions = null;
 	Collection<?> collection = null;
-	Expression<Collection<?>> collectionExpr = null;
+	K2Expression<Collection<?>> collectionExpr = null;
 	
 	/**
 	 * Create an in predicate to check whether the value of the expression is in the array of objects
 	 * @param expr	The expression
 	 * @param objects	The array of objects
 	 */
-	public PredicateIn(Expression<?> expr, Object[] objects) {
+	public PredicateIn(K2Expression<?> expr, Object[] objects) {
 		logger.trace("in: list of objects");
 		this.expr = expr;
 		this.objects = objects;
@@ -40,7 +40,7 @@ public class PredicateIn extends AbstractPredicate implements Predicate {
 	 * @param expr		The expression to check
 	 * @param expressions	The array of expressions
 	 */
-	public PredicateIn(Expression<?> expr, Expression<?>... expressions) {
+	public PredicateIn(K2Expression<?> expr, K2Expression<?>... expressions) {
 		logger.trace("in: list of expressions");
 		this.expr = expr;
 		this.expressions = expressions;
@@ -51,7 +51,7 @@ public class PredicateIn extends AbstractPredicate implements Predicate {
 	 * @param expr	The expression
 	 * @param collection		The collection
 	 */
-	public PredicateIn(Expression<?> expr, Collection<?> collection) {
+	public PredicateIn(K2Expression<?> expr, Collection<?> collection) {
 		logger.trace("in: collection");
 		this.expr = expr;
 		this.collection = collection;
@@ -62,7 +62,7 @@ public class PredicateIn extends AbstractPredicate implements Predicate {
 	 * @param expr	The expression to check
 	 * @param collectionExpr		The expression supplying a collection
 	 */
-	public PredicateIn(Expression<?> expr, Expression<Collection<?>> collectionExpr) {
+	public PredicateIn(K2Expression<?> expr, K2Expression<Collection<?>> collectionExpr) {
 		logger.trace("in: collection expression");
 		this.expr = expr;
 		this.collectionExpr = collectionExpr;
@@ -74,7 +74,7 @@ public class PredicateIn extends AbstractPredicate implements Predicate {
 		if (objects != null) {
 			return;
 		} else if (expressions != null) {
-			for (Expression<?> e : expressions) if (e instanceof ParameterExpression<?>) eval.add((ParameterExpression<?>)e);
+			for (K2Expression<?> e : expressions) if (e instanceof ParameterExpression<?>) eval.add((ParameterExpression<?>)e);
 		} else if (collection != null) {
 			for (Object o : collection) if (o instanceof ParameterExpression<?>) eval.add((ParameterExpression<?>)o);
 		} else if (collectionExpr != null) {
@@ -95,7 +95,7 @@ public class PredicateIn extends AbstractPredicate implements Predicate {
 		if (objects != null) {
 			for (Object o : objects) if (value.equals(o)) return true;
 		} else if (expressions != null) {
-			for (Expression<?> e : expressions) if (value.equals(e.evaluate(eval))) return true;
+			for (K2Expression<?> e : expressions) if (value.equals(e.evaluate(eval))) return true;
 		} else if (collection != null) {
 			for (Object o : collection) if (value.equals(o)) return true;
 		} else if (collectionExpr != null) {

@@ -3,17 +3,17 @@ package com.k2.Expressions.predicate;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.criteria.Predicate.BooleanOperator;
+import javax.persistence.criteria.Expression;
 
 import com.k2.Expressions.expression.AbstractExpression;
-import com.k2.Expressions.expression.Expression;
+import com.k2.Expressions.expression.K2Expression;
 
 /**
  * This abstract class forms the basis of all the predicate classes
  * @author simon
  *
  */
-public abstract class AbstractPredicate extends AbstractExpression<Boolean> implements Predicate {
+public abstract class AbstractPredicate extends AbstractExpression<Boolean> implements K2Predicate {
 	
 	private boolean negated = false;
 	private BooleanOperator operator = BooleanOperator.AND;
@@ -57,7 +57,7 @@ public abstract class AbstractPredicate extends AbstractExpression<Boolean> impl
 	 * Add the expression to this predicates list of expressions
 	 * @param expr	The expression that is a child boolean expression of this predicate
 	 */
-	void addExpression(Expression<Boolean> expr) {
+	void addExpression(K2Expression<Boolean> expr) {
 		if (expressions == null) expressions = new ArrayList<Expression<Boolean>>();
 		expressions.add(expr);
 	}
@@ -84,7 +84,7 @@ public abstract class AbstractPredicate extends AbstractExpression<Boolean> impl
 	}
 
 	@Override
-	public Predicate not() {
+	public K2Predicate not() {
 		negated = true;
 		return this;
 	}

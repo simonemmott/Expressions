@@ -1,9 +1,16 @@
 package com.k2.Expressions.expression;
 
 import java.util.Collection;
+import java.util.List;
+
+import javax.persistence.criteria.Expression;
+import javax.persistence.criteria.Predicate;
+import javax.persistence.criteria.Selection;
 
 import com.k2.Expressions.exceptions.ExpressionError;
-import com.k2.Expressions.predicate.*;
+import com.k2.Expressions.predicate.PredicateIn;
+import com.k2.Expressions.predicate.PredicateNotNull;
+import com.k2.Expressions.predicate.PredicateNull;
 
 /**
  * This abstract class forms the basis of the Expression classes
@@ -16,7 +23,7 @@ import com.k2.Expressions.predicate.*;
  *
  * @param <T>	The type of the value returned by the expression
  */
-public abstract class AbstractExpression<T> implements Expression<T>{
+public abstract class AbstractExpression<T> implements K2Expression<T>{
 	
 	private String alias;
 	private String name;
@@ -81,19 +88,19 @@ public abstract class AbstractExpression<T> implements Expression<T>{
 		return true;
 	}
 
-	@Override
-	public String getName() {
-		return name;
-	}
+//	@Override
+//	public String getName() {
+//		return name;
+//	}
 
 	@Override
-	public <X> Expression<X> as(Class<X> cls) {
+	public <X> K2Expression<X> as(Class<X> cls) {
 		if (cls.isAssignableFrom(javaType)) return new ExprAs<X>(cls, this);
 		throw new ExpressionError("The required type {} cannot be cast from the type of the supplied expression {}", cls.getName(), javaType.getName());
 	}
 
 	@Override
-	public Expression<T> alias(String alias) {
+	public K2Expression<T> alias(String alias) {
 		this.alias = alias;
 		return this;
 	}
@@ -125,7 +132,7 @@ public abstract class AbstractExpression<T> implements Expression<T>{
 
 	@Override
 	public Predicate in(Expression<Collection<?>> expr) {
-		return new PredicateIn(this, expr);
+		return new PredicateIn(this, (K2Expression<Collection<?>>)expr);
 	}
 
 	@Override
@@ -136,6 +143,18 @@ public abstract class AbstractExpression<T> implements Expression<T>{
 	@Override
 	public Predicate isNull() {
 		return new PredicateNull(this);
+	}
+
+	@Override
+	public boolean isCompoundSelection() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public List<Selection<?>> getCompoundSelectionItems() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 

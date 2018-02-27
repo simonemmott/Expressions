@@ -13,17 +13,17 @@ import com.k2.Expressions.Evaluator;
  * @author simon
  *
  */
-public class ExprLength extends AbstractExpression<Integer> implements Expression<Integer> {
+public class ExprLength extends AbstractExpression<Integer> implements K2Expression<Integer> {
 	
 	private static final Logger logger = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
-	Expression<String> string;
+	K2Expression<String> string;
 
 	/**
 	 * Create the length expression for the given string expression
 	 * @param string		The expression providing the string for which the length is required
 	 */
-	public ExprLength(Expression<String> string) {
+	public ExprLength(K2Expression<String> string) {
 		super(Integer.class);
 		this.string = string;
 	}

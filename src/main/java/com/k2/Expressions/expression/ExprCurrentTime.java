@@ -16,7 +16,7 @@ import com.k2.Expressions.Evaluator;
  * @author simon
  *
  */
-public class ExprCurrentTime extends AbstractExpression<Time> implements Expression<Time> {
+public class ExprCurrentTime extends AbstractExpression<Time> implements K2Expression<Time> {
 	
 	/**
 	 * Create the current time expression

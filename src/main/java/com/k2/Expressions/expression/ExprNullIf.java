@@ -10,10 +10,10 @@ import com.k2.Expressions.Evaluator;
  * @param <Y>	The type of the value returned by the expression.
  * 
  */
-public class ExprNullIf<Y> extends AbstractExpression<Y> implements Expression<Y> {
+public class ExprNullIf<Y> extends AbstractExpression<Y> implements K2Expression<Y> {
 	
-	Expression<Y> expr1 = null;
-	Expression<?> expr2 = null;
+	K2Expression<Y> expr1 = null;
+	K2Expression<?> expr2 = null;
 	Y value2 = null;
 
 	/**
@@ -21,7 +21,7 @@ public class ExprNullIf<Y> extends AbstractExpression<Y> implements Expression<Y
 	 * @param expr1	The first expression
 	 * @param expr2	The second expression
 	 */
-	public ExprNullIf(Expression<Y> expr1, Expression<?> expr2) {
+	public ExprNullIf(K2Expression<Y> expr1, K2Expression<?> expr2) {
 		super(expr1.getJavaType());
 		this.expr1 = expr1;
 		this.expr2 = expr2;
@@ -32,7 +32,7 @@ public class ExprNullIf<Y> extends AbstractExpression<Y> implements Expression<Y
 	 * @param expr1	The first expression
 	 * @param value2		The second expression
 	 */
-	public ExprNullIf(Expression<Y> expr1, Y value2) {
+	public ExprNullIf(K2Expression<Y> expr1, Y value2) {
 		super(expr1.getJavaType());
 		this.expr1 = expr1;
 		this.value2 = value2;

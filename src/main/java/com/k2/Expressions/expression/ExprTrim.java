@@ -16,13 +16,13 @@ import com.k2.Util.StringUtil;
  * @author simon
  *
  */
-public class ExprTrim extends AbstractExpression<String> implements Expression<String> {
+public class ExprTrim extends AbstractExpression<String> implements K2Expression<String> {
 	
 	@SuppressWarnings("unused")
 	private static final Logger logger = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
-	Expression<String> string;
-	Expression<Character> trimCharExp;
+	K2Expression<String> string;
+	K2Expression<Character> trimCharExp;
 	char trimChar = ' ';
 	Trimspec trimSpec = Trimspec.BOTH;
 
@@ -30,7 +30,7 @@ public class ExprTrim extends AbstractExpression<String> implements Expression<S
 	 * Create a trim expression to to trim the leading and trailing spaces from a string
 	 * @param string		The string to trim
 	 */
-	public ExprTrim(Expression<String> string) {
+	public ExprTrim(K2Expression<String> string) {
 		super(String.class);
 		this.string = string;
 	}
@@ -40,7 +40,7 @@ public class ExprTrim extends AbstractExpression<String> implements Expression<S
 	 * @param trimChar	The character to trim from the string
 	 * @param string		The string to trim
 	 */
-	public ExprTrim(Expression<Character> trimChar, Expression<String> string) {
+	public ExprTrim(K2Expression<Character> trimChar, K2Expression<String> string) {
 		super(String.class);
 		this.string = string;
 		this.trimCharExp = trimChar;
@@ -51,7 +51,7 @@ public class ExprTrim extends AbstractExpression<String> implements Expression<S
 	 * @param trimChar	The character to trim from the string
 	 * @param string		The string to trim
 	 */
-	public ExprTrim(char trimChar, Expression<String> string) {
+	public ExprTrim(char trimChar, K2Expression<String> string) {
 		super(String.class);
 		this.string = string;
 		this.trimChar = trimChar;
@@ -63,7 +63,7 @@ public class ExprTrim extends AbstractExpression<String> implements Expression<S
 	 * @param trimChar	The character to trim from the string
 	 * @param string		The string to trim
 	 */
-	public ExprTrim(Trimspec trimSpec, Expression<Character> trimChar, Expression<String> string) {
+	public ExprTrim(Trimspec trimSpec, K2Expression<Character> trimChar, K2Expression<String> string) {
 		super(String.class);
 		this.string = string;
 		this.trimCharExp = trimChar;
@@ -76,7 +76,7 @@ public class ExprTrim extends AbstractExpression<String> implements Expression<S
 	 * @param trimChar	The character to trim from the string
 	 * @param string		The string to trim
 	 */
-	public ExprTrim(Trimspec trimSpec, char trimChar, Expression<String> string) {
+	public ExprTrim(Trimspec trimSpec, char trimChar, K2Expression<String> string) {
 		super(String.class);
 		this.string = string;
 		this.trimChar = trimChar;
@@ -88,7 +88,7 @@ public class ExprTrim extends AbstractExpression<String> implements Expression<S
 	 * @param trimSpec	The enumeration to identify whether to trim lead character, trailing characters or both
 	 * @param string		The string to trim
 	 */
-	public ExprTrim(Trimspec trimSpec, Expression<String> string) {
+	public ExprTrim(Trimspec trimSpec, K2Expression<String> string) {
 		super(String.class);
 		this.string = string;
 		this.trimSpec = trimSpec;

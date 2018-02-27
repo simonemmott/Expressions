@@ -8,7 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.k2.Expressions.Evaluator;
-import com.k2.Expressions.expression.Expression;
+import com.k2.Expressions.expression.K2Expression;
 import com.k2.Expressions.expression.ParameterExpression;
 
 /**
@@ -16,13 +16,13 @@ import com.k2.Expressions.expression.ParameterExpression;
  * @author simon
  *
  */
-public class PredicateLike extends AbstractPredicate implements Predicate {
+public class PredicateLike extends AbstractPredicate implements K2Predicate {
 	
 	private static final Logger logger = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
-	private Expression<String> stringExp;
-	private Expression<String> patternExp;
-	private Expression<Character> escapeCharExp;
+	private K2Expression<String> stringExp;
+	private K2Expression<String> patternExp;
+	private K2Expression<Character> escapeCharExp;
 	private String pattern;
 	private char escapeChar = '\\';
 
@@ -31,7 +31,7 @@ public class PredicateLike extends AbstractPredicate implements Predicate {
 	 * @param stringExp		The string expression
 	 * @param patternExp		The pattern expression
 	 */
-	public PredicateLike(Expression<String> stringExp, Expression<String> patternExp) {
+	public PredicateLike(K2Expression<String> stringExp, K2Expression<String> patternExp) {
 		this.stringExp = stringExp;
 		this.patternExp = patternExp;
 	}
@@ -41,7 +41,7 @@ public class PredicateLike extends AbstractPredicate implements Predicate {
 	 * @param stringExp		The string expression
 	 * @param pattern		The pattern expression
 	 */
-	public PredicateLike(Expression<String> stringExp, String pattern) {
+	public PredicateLike(K2Expression<String> stringExp, String pattern) {
 		this.stringExp = stringExp;
 		this.pattern = pattern;
 	}
@@ -53,7 +53,7 @@ public class PredicateLike extends AbstractPredicate implements Predicate {
 	 * @param patternExp		The pattern expression
 	 * @param escapeCharExp	The escape character expression
 	 */
-	public PredicateLike(Expression<String> stringExp, Expression<String> patternExp, Expression<Character> escapeCharExp) {
+	public PredicateLike(K2Expression<String> stringExp, K2Expression<String> patternExp, K2Expression<Character> escapeCharExp) {
 		this.stringExp = stringExp;
 		this.patternExp = patternExp;
 		this.escapeCharExp = escapeCharExp;
@@ -65,7 +65,7 @@ public class PredicateLike extends AbstractPredicate implements Predicate {
 	 * @param patternExp		The pattern expression
 	 * @param escapeChar		The escape character
 	 */
-	public PredicateLike(Expression<String> stringExp, Expression<String> patternExp, char escapeChar) {
+	public PredicateLike(K2Expression<String> stringExp, K2Expression<String> patternExp, char escapeChar) {
 		this.stringExp = stringExp;
 		this.patternExp = patternExp;
 		this.escapeChar = escapeChar;
@@ -78,7 +78,7 @@ public class PredicateLike extends AbstractPredicate implements Predicate {
 	 * @param pattern		The literal pattern
 	 * @param escapeCharExp	The escape character expression
 	 */
-	public PredicateLike(Expression<String> stringExp, String pattern, Expression<Character> escapeCharExp) {
+	public PredicateLike(K2Expression<String> stringExp, String pattern, K2Expression<Character> escapeCharExp) {
 		this.stringExp = stringExp;
 		this.pattern = pattern;
 		this.escapeCharExp = escapeCharExp;
@@ -90,7 +90,7 @@ public class PredicateLike extends AbstractPredicate implements Predicate {
 	 * @param pattern		The literal pattern
 	 * @param escapeChar		The literal escape character
 	 */
-	public PredicateLike(Expression<String> stringExp, String pattern, char escapeChar) {
+	public PredicateLike(K2Expression<String> stringExp, String pattern, char escapeChar) {
 		this.stringExp = stringExp;
 		this.pattern = pattern;
 		this.escapeChar = escapeChar;

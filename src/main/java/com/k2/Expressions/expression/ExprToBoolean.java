@@ -14,18 +14,18 @@ import com.k2.Util.BooleanUtil;
  * @author simon
  *
  */
-public class ExprToBoolean extends AbstractExpression<Boolean> implements Expression<Boolean> {
+public class ExprToBoolean extends AbstractExpression<Boolean> implements K2Expression<Boolean> {
 	
 	@SuppressWarnings("unused")
 	private static final Logger logger = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
-	Expression<?> expr;
+	K2Expression<?> expr;
 
 	/**
 	 * Create a to Boolean expression to convert the given expression into a Boolean expression
 	 * @param expr	The expression to convert to a Boolean expression
 	 */
-	public ExprToBoolean(Expression<?> expr) {
+	public ExprToBoolean(K2Expression<?> expr) {
 		super(Boolean.class);
 		this.expr = expr;
 	}

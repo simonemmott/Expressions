@@ -1,7 +1,7 @@
 package com.k2.Expressions.predicate;
 
 import com.k2.Expressions.Evaluator;
-import com.k2.Expressions.expression.Expression;
+import com.k2.Expressions.expression.K2Expression;
 import com.k2.Expressions.expression.ParameterExpression;
 
 /**
@@ -9,11 +9,11 @@ import com.k2.Expressions.expression.ParameterExpression;
  * @author simon
  *
  */
-public class PredicateBetween extends AbstractPredicate implements Predicate {
+public class PredicateBetween extends AbstractPredicate implements K2Predicate {
 
-	Expression<? extends Comparable<?>> check;
-	Expression<? extends Comparable<?>> beginExpr = null;
-	Expression<? extends Comparable<?>> endExpr = null;
+	K2Expression<? extends Comparable<?>> check;
+	K2Expression<? extends Comparable<?>> beginExpr = null;
+	K2Expression<? extends Comparable<?>> endExpr = null;
 	@SuppressWarnings("rawtypes")
 	Comparable begin = null;
 	@SuppressWarnings("rawtypes")
@@ -26,8 +26,8 @@ public class PredicateBetween extends AbstractPredicate implements Predicate {
 	 * @param endExpr	The end expression
 	 * @param <Y> 	The comparable type of this expression
 	 */
-	public <Y extends Comparable<? super Y>> PredicateBetween(Expression<? extends Y> check,
-			Expression<? extends Y> beginExpr, Expression<? extends Y> endExpr) {
+	public <Y extends Comparable<? super Y>> PredicateBetween(K2Expression<? extends Y> check,
+			K2Expression<? extends Y> beginExpr, K2Expression<? extends Y> endExpr) {
 		this.check = check;
 		this.beginExpr = beginExpr;
 		this.endExpr = endExpr;
@@ -40,7 +40,7 @@ public class PredicateBetween extends AbstractPredicate implements Predicate {
 	 * @param end	The end literal value
 	 * @param <Y> 	The comparable type of this expression
 	 */
-	public <Y extends Comparable<? super Y>> PredicateBetween(Expression<? extends Y> check, Y begin, Y end) {
+	public <Y extends Comparable<? super Y>> PredicateBetween(K2Expression<? extends Y> check, Y begin, Y end) {
 		this.check = check;
 		this.begin = begin;
 		this.end = end;

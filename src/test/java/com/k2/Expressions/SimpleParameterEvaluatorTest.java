@@ -16,7 +16,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.k2.Expressions.evaluators.SimpleParameterEvaluator;
-import com.k2.Expressions.expression.Expression;
+import com.k2.Expressions.expression.K2Expression;
 import com.k2.Expressions.expression.ExpressionBuilder;
 import com.k2.Util.DoubleUtil;
 import com.k2.Util.StringUtil;
@@ -30,12 +30,12 @@ public class SimpleParameterEvaluatorTest {
 	@Test
 	public void absoluteTest()
     {
-		Expression<Integer> expr1 = xb.abs(xb.literal(1));
-		Expression<Integer> expr2 = xb.abs(xb.literal(-1));
-		Expression<Double> expr3 = xb.abs(xb.literal(1.123));
-		Expression<Double> expr4 = xb.abs(xb.literal(-1.123));
-		Expression<Integer> expr5 = xb.abs(xb.param(Integer.class, "p1"));
-		Expression<Double> expr6 = xb.abs(xb.param(Double.class, "p2"));
+		K2Expression<Integer> expr1 = xb.abs(xb.literal(1));
+		K2Expression<Integer> expr2 = xb.abs(xb.literal(-1));
+		K2Expression<Double> expr3 = xb.abs(xb.literal(1.123));
+		K2Expression<Double> expr4 = xb.abs(xb.literal(-1.123));
+		K2Expression<Integer> expr5 = xb.abs(xb.param(Integer.class, "p1"));
+		K2Expression<Double> expr6 = xb.abs(xb.param(Double.class, "p2"));
 		
 		SimpleParameterEvaluator spe = new SimpleParameterEvaluator();
 		
@@ -54,9 +54,9 @@ public class SimpleParameterEvaluatorTest {
 	@Test
 	public void concatenateTest()
     {
-		Expression<String> expr1 = xb.concatenate("Hello ", xb.param(String.class, "p1"));
-		Expression<String> expr2 = xb.concatenate(xb.param(String.class, "p1"), " Hello");
-		Expression<String> expr3 = xb.concatenate(xb.param(String.class, "p1"), xb.param(String.class, "p2"));
+		K2Expression<String> expr1 = xb.concatenate("Hello ", xb.param(String.class, "p1"));
+		K2Expression<String> expr2 = xb.concatenate(xb.param(String.class, "p1"), " Hello");
+		K2Expression<String> expr3 = xb.concatenate(xb.param(String.class, "p1"), xb.param(String.class, "p2"));
 		
 		SimpleParameterEvaluator spe = new SimpleParameterEvaluator();
 		
@@ -72,7 +72,7 @@ public class SimpleParameterEvaluatorTest {
 	@Test
 	public void currentDateTest()
     {
-		Expression<Date> expr1 = xb.currentDate();
+		K2Expression<Date> expr1 = xb.currentDate();
 		
 		SimpleParameterEvaluator spe = new SimpleParameterEvaluator();
 		
@@ -88,7 +88,7 @@ public class SimpleParameterEvaluatorTest {
 	public void currentTimeTest()
     {
 		
-		Expression<Time> expr1 = xb.currentTime();
+		K2Expression<Time> expr1 = xb.currentTime();
 		
 		SimpleParameterEvaluator spe = new SimpleParameterEvaluator();
 		
@@ -104,7 +104,7 @@ public class SimpleParameterEvaluatorTest {
 	public void currentTimestampTest()
     {
 		
-		Expression<Timestamp> expr1 = xb.currentTimestamp();
+		K2Expression<Timestamp> expr1 = xb.currentTimestamp();
 		
 		SimpleParameterEvaluator spe = new SimpleParameterEvaluator();
 		
@@ -119,9 +119,9 @@ public class SimpleParameterEvaluatorTest {
 	@Test
 	public void differnceTest()
     {
-		Expression<? extends Number> expr1 = xb.diff(xb.param(Double.class, "p1"), xb.param(Integer.class, "p2"));
-		Expression<? extends Number> expr2 = xb.diff(xb.param(Integer.class, "p2"), 4);
-		Expression<? extends Number> expr3 = xb.diff(2.345, xb.param(Double.class, "p1"));
+		K2Expression<? extends Number> expr1 = xb.diff(xb.param(Double.class, "p1"), xb.param(Integer.class, "p2"));
+		K2Expression<? extends Number> expr2 = xb.diff(xb.param(Integer.class, "p2"), 4);
+		K2Expression<? extends Number> expr3 = xb.diff(2.345, xb.param(Double.class, "p1"));
 		
 		SimpleParameterEvaluator spe = new SimpleParameterEvaluator();
 		
@@ -137,7 +137,7 @@ public class SimpleParameterEvaluatorTest {
 	@Test
 	public void lengthTest()
     {
-		Expression<Integer> expr1 = xb.length(xb.param(String.class, "p1"));
+		K2Expression<Integer> expr1 = xb.length(xb.param(String.class, "p1"));
 		
 		SimpleParameterEvaluator spe = new SimpleParameterEvaluator();
 		
@@ -150,7 +150,7 @@ public class SimpleParameterEvaluatorTest {
 	@Test
 	public void literalTest()
     {
-		Expression<String> expr1 = xb.literal("Hello World!");
+		K2Expression<String> expr1 = xb.literal("Hello World!");
 		
 		SimpleParameterEvaluator spe = new SimpleParameterEvaluator();
 		
@@ -163,10 +163,10 @@ public class SimpleParameterEvaluatorTest {
 	@Test
 	public void locateTest()
     {
-		Expression<Integer> expr1 = xb.locate(xb.param(String.class, "string"), xb.param(String.class, "pattern"));
-		Expression<Integer> expr2 = xb.locate(xb.param(String.class, "string"), "efg");
-		Expression<Integer> expr3 = xb.locate(xb.param(String.class, "string"), xb.param(String.class, "pattern"), xb.param(Integer.class, "from"));
-		Expression<Integer> expr4 = xb.locate(xb.param(String.class, "string"), "efg", 10);
+		K2Expression<Integer> expr1 = xb.locate(xb.param(String.class, "string"), xb.param(String.class, "pattern"));
+		K2Expression<Integer> expr2 = xb.locate(xb.param(String.class, "string"), "efg");
+		K2Expression<Integer> expr3 = xb.locate(xb.param(String.class, "string"), xb.param(String.class, "pattern"), xb.param(Integer.class, "from"));
+		K2Expression<Integer> expr4 = xb.locate(xb.param(String.class, "string"), "efg", 10);
 		
 		SimpleParameterEvaluator spe = new SimpleParameterEvaluator();
 		
@@ -184,7 +184,7 @@ public class SimpleParameterEvaluatorTest {
 	@Test
 	public void lowerTest()
     {
-		Expression<String> expr1 = xb.lower(xb.param(String.class, "p1"));
+		K2Expression<String> expr1 = xb.lower(xb.param(String.class, "p1"));
 		
 		SimpleParameterEvaluator spe = new SimpleParameterEvaluator();
 		
@@ -197,9 +197,9 @@ public class SimpleParameterEvaluatorTest {
 	@Test
 	public void modTest()
     {
-		Expression<Integer> expr1 = xb.mod(xb.param(Integer.class, "p1"), xb.param(Integer.class, "p2"));
-		Expression<Integer> expr2 = xb.mod(xb.param(Integer.class, "p1"), 5);
-		Expression<Integer> expr3 = xb.mod(13, xb.param(Integer.class, "p2"));
+		K2Expression<Integer> expr1 = xb.mod(xb.param(Integer.class, "p1"), xb.param(Integer.class, "p2"));
+		K2Expression<Integer> expr2 = xb.mod(xb.param(Integer.class, "p1"), 5);
+		K2Expression<Integer> expr3 = xb.mod(13, xb.param(Integer.class, "p2"));
 		
 		SimpleParameterEvaluator spe = new SimpleParameterEvaluator();
 		
@@ -215,10 +215,10 @@ public class SimpleParameterEvaluatorTest {
 	@Test
 	public void negTest()
     {
-		Expression<Integer> expr1 = xb.neg(xb.param(Integer.class, "p1"));
-		Expression<Long> expr2 = xb.neg(xb.param(Long.class, "p2"));
-		Expression<Float> expr3 = xb.neg(xb.param(Float.class, "p3"));
-		Expression<Double> expr4 = xb.neg(xb.param(Double.class, "p4"));
+		K2Expression<Integer> expr1 = xb.neg(xb.param(Integer.class, "p1"));
+		K2Expression<Long> expr2 = xb.neg(xb.param(Long.class, "p2"));
+		K2Expression<Float> expr3 = xb.neg(xb.param(Float.class, "p3"));
+		K2Expression<Double> expr4 = xb.neg(xb.param(Double.class, "p4"));
 		
 		SimpleParameterEvaluator spe = new SimpleParameterEvaluator();
 		
@@ -237,9 +237,9 @@ public class SimpleParameterEvaluatorTest {
 	@Test
 	public void nullIfTest()
     {
-		Expression<Integer> expr1 = xb.nullIf(xb.param(Integer.class, "p1"), xb.param(Integer.class, "p2"));
-		Expression<Integer> expr2 = xb.nullIf(xb.param(Integer.class, "p1"), 10);
-		Expression<Integer> expr3 = xb.nullIf(xb.nullLiteral(Integer.class), xb.param(Integer.class, "p2"));
+		K2Expression<Integer> expr1 = xb.nullIf(xb.param(Integer.class, "p1"), xb.param(Integer.class, "p2"));
+		K2Expression<Integer> expr2 = xb.nullIf(xb.param(Integer.class, "p1"), 10);
+		K2Expression<Integer> expr3 = xb.nullIf(xb.nullLiteral(Integer.class), xb.param(Integer.class, "p2"));
 		
 		SimpleParameterEvaluator spe = new SimpleParameterEvaluator();
 		
@@ -255,9 +255,9 @@ public class SimpleParameterEvaluatorTest {
 	@Test
 	public void prodTest()
     {
-		Expression<Integer> expr1 = xb.prod(xb.param(Integer.class, "p1"), xb.param(Integer.class, "p2"));
-		Expression<Integer> expr2 = xb.prod(xb.param(Integer.class, "p1"), 10);
-		Expression<Double> expr3 = xb.prod(1.234, xb.param(Double.class, "p3"));
+		K2Expression<Integer> expr1 = xb.prod(xb.param(Integer.class, "p1"), xb.param(Integer.class, "p2"));
+		K2Expression<Integer> expr2 = xb.prod(xb.param(Integer.class, "p1"), 10);
+		K2Expression<Double> expr3 = xb.prod(1.234, xb.param(Double.class, "p3"));
 		
 		SimpleParameterEvaluator spe = new SimpleParameterEvaluator();
 		
@@ -274,9 +274,9 @@ public class SimpleParameterEvaluatorTest {
 	@Test
 	public void quotTest()
     {
-		Expression<Double> expr1 = xb.quot(xb.param(Integer.class, "p1"), xb.param(Integer.class, "p2"));
-		Expression<Double> expr2 = xb.quot(xb.param(Integer.class, "p1"), 10);
-		Expression<Double> expr3 = xb.quot(1.234, xb.param(Double.class, "p3"));
+		K2Expression<Double> expr1 = xb.quot(xb.param(Integer.class, "p1"), xb.param(Integer.class, "p2"));
+		K2Expression<Double> expr2 = xb.quot(xb.param(Integer.class, "p1"), 10);
+		K2Expression<Double> expr3 = xb.quot(1.234, xb.param(Double.class, "p3"));
 		
 		SimpleParameterEvaluator spe = new SimpleParameterEvaluator();
 		
@@ -293,10 +293,10 @@ public class SimpleParameterEvaluatorTest {
 	@Test
 	public void sqrtTest()
     {
-		Expression<Double> expr1 = xb.sqrt(xb.param(Integer.class, "p1"));
-		Expression<Double> expr2 = xb.sqrt(xb.param(Long.class, "p2"));
-		Expression<Double> expr3 = xb.sqrt(xb.param(Float.class, "p3"));
-		Expression<Double> expr4 = xb.sqrt(xb.literal(1234.5678));
+		K2Expression<Double> expr1 = xb.sqrt(xb.param(Integer.class, "p1"));
+		K2Expression<Double> expr2 = xb.sqrt(xb.param(Long.class, "p2"));
+		K2Expression<Double> expr3 = xb.sqrt(xb.param(Float.class, "p3"));
+		K2Expression<Double> expr4 = xb.sqrt(xb.literal(1234.5678));
 		
 		SimpleParameterEvaluator spe = new SimpleParameterEvaluator();
 		
@@ -314,10 +314,10 @@ public class SimpleParameterEvaluatorTest {
 	@Test
 	public void substringTest()
     {
-		Expression<String> expr1 = xb.substring(xb.param(String.class, "string"), xb.param(Integer.class, "pos"));
-		Expression<String> expr2 = xb.substring(xb.param(String.class, "string"), 5);
-		Expression<String> expr3 = xb.substring(xb.param(String.class, "string"), xb.param(Integer.class, "pos"), xb.param(Integer.class, "length"));
-		Expression<String> expr4 = xb.substring(xb.param(String.class, "string"), 5, 5);
+		K2Expression<String> expr1 = xb.substring(xb.param(String.class, "string"), xb.param(Integer.class, "pos"));
+		K2Expression<String> expr2 = xb.substring(xb.param(String.class, "string"), 5);
+		K2Expression<String> expr3 = xb.substring(xb.param(String.class, "string"), xb.param(Integer.class, "pos"), xb.param(Integer.class, "length"));
+		K2Expression<String> expr4 = xb.substring(xb.param(String.class, "string"), 5, 5);
 		
 		SimpleParameterEvaluator spe = new SimpleParameterEvaluator();
 		
@@ -335,7 +335,7 @@ public class SimpleParameterEvaluatorTest {
 	@Test
 	public void toBigDecimalTest()
     {
-		Expression<BigDecimal> expr1 = xb.toBigDecimal(xb.param(Double.class, "p1"));
+		K2Expression<BigDecimal> expr1 = xb.toBigDecimal(xb.param(Double.class, "p1"));
 		
 		SimpleParameterEvaluator spe = new SimpleParameterEvaluator();
 		
@@ -348,7 +348,7 @@ public class SimpleParameterEvaluatorTest {
 	@Test
 	public void toBigIntegerTest()
     {
-		Expression<BigInteger> expr1 = xb.toBigInteger(xb.param(Double.class, "p1"));
+		K2Expression<BigInteger> expr1 = xb.toBigInteger(xb.param(Double.class, "p1"));
 		
 		SimpleParameterEvaluator spe = new SimpleParameterEvaluator();
 		
@@ -361,8 +361,8 @@ public class SimpleParameterEvaluatorTest {
 	@Test
 	public void toBooleanTest()
     {
-		Expression<Boolean> expr1 = xb.toBoolean(xb.param(Double.class, "p1"));
-		Expression<Boolean> expr2 = xb.toBoolean(xb.param(String.class, "p2"));
+		K2Expression<Boolean> expr1 = xb.toBoolean(xb.param(Double.class, "p1"));
+		K2Expression<Boolean> expr2 = xb.toBoolean(xb.param(String.class, "p2"));
 		
 		SimpleParameterEvaluator spe = new SimpleParameterEvaluator();
 		
@@ -377,9 +377,9 @@ public class SimpleParameterEvaluatorTest {
 	@Test
 	public void toDateTest()
     {
-		Expression<Date> expr1 = xb.toDate(xb.param(String.class, "p1"));
-		Expression<Date> expr2 = xb.toDate(xb.param(String.class, "p2"), xb.param(String.class, "p3"));
-		Expression<Date> expr3 = xb.toDate(xb.param(String.class, "p2"), "yyyy/MM/dd");
+		K2Expression<Date> expr1 = xb.toDate(xb.param(String.class, "p1"));
+		K2Expression<Date> expr2 = xb.toDate(xb.param(String.class, "p2"), xb.param(String.class, "p3"));
+		K2Expression<Date> expr3 = xb.toDate(xb.param(String.class, "p2"), "yyyy/MM/dd");
 		
 		SimpleParameterEvaluator spe = new SimpleParameterEvaluator();
 		
@@ -396,7 +396,7 @@ public class SimpleParameterEvaluatorTest {
 	@Test
 	public void toDoubleTest()
     {
-		Expression<Double> expr1 = xb.toDouble(xb.param(String.class, "p1"));
+		K2Expression<Double> expr1 = xb.toDouble(xb.param(String.class, "p1"));
 		
 		SimpleParameterEvaluator spe = new SimpleParameterEvaluator();
 		
@@ -409,7 +409,7 @@ public class SimpleParameterEvaluatorTest {
 	@Test
 	public void toFloatTest()
     {
-		Expression<Float> expr1 = xb.toFloat(xb.param(String.class, "p1"));
+		K2Expression<Float> expr1 = xb.toFloat(xb.param(String.class, "p1"));
 		
 		SimpleParameterEvaluator spe = new SimpleParameterEvaluator();
 		
@@ -422,7 +422,7 @@ public class SimpleParameterEvaluatorTest {
 	@Test
 	public void toIntegerTest()
     {
-		Expression<Integer> expr1 = xb.toInteger(xb.param(String.class, "p1"));
+		K2Expression<Integer> expr1 = xb.toInteger(xb.param(String.class, "p1"));
 		
 		SimpleParameterEvaluator spe = new SimpleParameterEvaluator();
 		
@@ -435,7 +435,7 @@ public class SimpleParameterEvaluatorTest {
 	@Test
 	public void toLongTest()
     {
-		Expression<Long> expr1 = xb.toLong(xb.param(String.class, "p1"));
+		K2Expression<Long> expr1 = xb.toLong(xb.param(String.class, "p1"));
 		
 		SimpleParameterEvaluator spe = new SimpleParameterEvaluator();
 		
@@ -448,7 +448,7 @@ public class SimpleParameterEvaluatorTest {
 	@Test
 	public void toStringTest()
     {
-		Expression<String> expr1 = xb.toString(xb.param(Date.class, "p1"));
+		K2Expression<String> expr1 = xb.toString(xb.param(Date.class, "p1"));
 		
 		SimpleParameterEvaluator spe = new SimpleParameterEvaluator();
 		
@@ -461,12 +461,12 @@ public class SimpleParameterEvaluatorTest {
 	@Test
 	public void trimTest()
     {
-		Expression<String> expr1 = xb.trim(xb.param(String.class, "p1"));
-		Expression<String> expr2 = xb.trim(xb.param(Character.class, "p2"), xb.param(String.class, "p3"));
-		Expression<String> expr3 = xb.trim('_', xb.param(String.class, "p3"));
-		Expression<String> expr4 = xb.trim(Trimspec.LEADING, xb.param(Character.class, "p2"), xb.param(String.class, "p3"));
-		Expression<String> expr5 = xb.trim(Trimspec.TRAILING, '_', xb.param(String.class, "p3"));
-		Expression<String> expr6 = xb.trim(Trimspec.BOTH, xb.param(String.class, "p1"));
+		K2Expression<String> expr1 = xb.trim(xb.param(String.class, "p1"));
+		K2Expression<String> expr2 = xb.trim(xb.param(Character.class, "p2"), xb.param(String.class, "p3"));
+		K2Expression<String> expr3 = xb.trim('_', xb.param(String.class, "p3"));
+		K2Expression<String> expr4 = xb.trim(Trimspec.LEADING, xb.param(Character.class, "p2"), xb.param(String.class, "p3"));
+		K2Expression<String> expr5 = xb.trim(Trimspec.TRAILING, '_', xb.param(String.class, "p3"));
+		K2Expression<String> expr6 = xb.trim(Trimspec.BOTH, xb.param(String.class, "p1"));
 		
 		SimpleParameterEvaluator spe = new SimpleParameterEvaluator();
 		
@@ -486,7 +486,7 @@ public class SimpleParameterEvaluatorTest {
 	@Test
 	public void upperTest()
     {
-		Expression<String> expr1 = xb.upper(xb.param(String.class, "p1"));
+		K2Expression<String> expr1 = xb.upper(xb.param(String.class, "p1"));
 		
 		SimpleParameterEvaluator spe = new SimpleParameterEvaluator();
 		

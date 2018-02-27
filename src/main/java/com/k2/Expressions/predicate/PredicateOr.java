@@ -2,13 +2,11 @@ package com.k2.Expressions.predicate;
 
 import java.lang.invoke.MethodHandles;
 
-import javax.persistence.criteria.Predicate.BooleanOperator;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.k2.Expressions.Evaluator;
-import com.k2.Expressions.expression.Expression;
+import com.k2.Expressions.expression.K2Expression;
 import com.k2.Expressions.expression.ParameterExpression;
 
 /**
@@ -16,22 +14,22 @@ import com.k2.Expressions.expression.ParameterExpression;
  * @author simon
  *
  */
-public class PredicateOr extends AbstractPredicate implements Predicate {
+public class PredicateOr extends AbstractPredicate implements K2Predicate {
 
 	private static final Logger logger = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
-	Predicate[] predicates = null;
-	Expression<Boolean> boolExpr1 = null;
-	Expression<Boolean> boolExpr2 = null;
+	K2Predicate[] predicates = null;
+	K2Expression<Boolean> boolExpr1 = null;
+	K2Expression<Boolean> boolExpr2 = null;
 	
 	/**
 	 * Create an or predicate for the list of predicates
 	 * @param predicates		The array of predicates that are child predicates for this or predicate
 	 */
-	public PredicateOr(Predicate... predicates) {
+	public PredicateOr(K2Predicate... predicates) {
 		super(BooleanOperator.OR);
 		logger.trace("or: predicated list");
-		for (Predicate p : predicates) addExpression(p);
+		for (K2Predicate p : predicates) addExpression(p);
 		this.predicates = predicates;
 	}
 
@@ -40,7 +38,7 @@ public class PredicateOr extends AbstractPredicate implements Predicate {
 	 * @param boolExpr1	The first boolean expression
 	 * @param boolExpr2	The second boolean expression
 	 */
-	public PredicateOr(Expression<Boolean> boolExpr1, Expression<Boolean> boolExpr2) {
+	public PredicateOr(K2Expression<Boolean> boolExpr1, K2Expression<Boolean> boolExpr2) {
 		super(BooleanOperator.OR);
 		logger.trace("or: pair of expressions");
 		this.boolExpr1 = boolExpr1;
@@ -56,7 +54,7 @@ public class PredicateOr extends AbstractPredicate implements Predicate {
 			if(boolExpr2 instanceof ParameterExpression<?>) eval.add((ParameterExpression<?>)boolExpr2);
 
 		} else {
-			for (Predicate p : predicates) {
+			for (K2Predicate p : predicates) {
 				p.populateParameters(eval);
 			}
 		}
@@ -74,7 +72,7 @@ public class PredicateOr extends AbstractPredicate implements Predicate {
 			return isNegatedRVal(b1 || b2);
 			
 		} else {
-			for (Predicate p : predicates) {
+			for (K2Predicate p : predicates) {
 				logger.trace("Or: {}", p.evaluate(eval));
 				if (p.evaluate(eval)) {
 					return isNegatedRVal(true);

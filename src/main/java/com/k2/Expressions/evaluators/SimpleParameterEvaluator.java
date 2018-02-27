@@ -9,7 +9,7 @@ import com.k2.Expressions.Evaluator;
 import com.k2.Expressions.ParameterEvaluator;
 import com.k2.Expressions.expression.CurrentTime;
 import com.k2.Expressions.expression.ParameterExpression;
-import com.k2.Expressions.predicate.Predicate;
+import com.k2.Expressions.predicate.K2Predicate;
 
 /**
  * This class provides an implementation of the Evaluator interface and the ParameterEvaluator interface
@@ -41,8 +41,8 @@ public class SimpleParameterEvaluator implements Evaluator, ParameterEvaluator {
 	}
 	
 	@Override
-	public boolean checkParametersSet(Predicate... predicates) {
-		for (Predicate p : predicates) {
+	public boolean checkParametersSet(K2Predicate... predicates) {
+		for (K2Predicate p : predicates) {
 			p.populateParameters(this);
 		}
 		for (ParameterExpression<?> param : requiredParameters) {

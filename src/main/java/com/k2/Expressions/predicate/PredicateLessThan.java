@@ -1,7 +1,7 @@
 package com.k2.Expressions.predicate;
 
 import com.k2.Expressions.Evaluator;
-import com.k2.Expressions.expression.Expression;
+import com.k2.Expressions.expression.K2Expression;
 import com.k2.Expressions.expression.ParameterExpression;
 
 /**
@@ -10,10 +10,10 @@ import com.k2.Expressions.expression.ParameterExpression;
  * @author simon
  *
  */
-public class PredicateLessThan extends AbstractPredicate implements Predicate {
+public class PredicateLessThan extends AbstractPredicate implements K2Predicate {
 	
-	private Expression<? extends Comparable<?>> expr1 = null;
-	private Expression<? extends Comparable<?>> expr2 = null;
+	private K2Expression<? extends Comparable<?>> expr1 = null;
+	private K2Expression<? extends Comparable<?>> expr2 = null;
 	private Comparable<?> comp = null;
 
 	/**
@@ -22,7 +22,7 @@ public class PredicateLessThan extends AbstractPredicate implements Predicate {
 	 * @param expr2		The second expression
 	 * @param <Y> The comparable type of this predicate
 	 */
-	public <Y extends Comparable<? super Y>> PredicateLessThan(Expression<? extends Y> expr1, Expression<? extends Y> expr2) {
+	public <Y extends Comparable<? super Y>> PredicateLessThan(K2Expression<? extends Y> expr1, K2Expression<? extends Y> expr2) {
 		this.expr1 = expr1;
 		this.expr2 = expr2;
 	}
@@ -33,7 +33,7 @@ public class PredicateLessThan extends AbstractPredicate implements Predicate {
 	 * @param comp		The literal value
 	 * @param <Y> The comparable type of this predicate
 	 */
-	public <Y extends Comparable<? super Y>> PredicateLessThan(Expression<? extends Y> expr, Y comp) {
+	public <Y extends Comparable<? super Y>> PredicateLessThan(K2Expression<? extends Y> expr, Y comp) {
 		this.expr1 = expr;
 		this.comp = comp;
 	}

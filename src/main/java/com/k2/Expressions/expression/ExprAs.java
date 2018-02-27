@@ -9,16 +9,16 @@ import com.k2.Expressions.Evaluator;
  *
  * @param <T> The desired type of the expressed value
  */
-public class ExprAs<T> extends AbstractExpression<T> implements Expression<T> {
+public class ExprAs<T> extends AbstractExpression<T> implements K2Expression<T> {
 	
-	Expression<?> source;
+	K2Expression<?> source;
 
 	/**
 	 * Createan expression to cast the value of the given expression to the given class
 	 * @param cls		The class to which to cast the value of the given expression
 	 * @param source		The source expression
 	 */
-	public ExprAs(Class<T> cls, Expression<?> source) {
+	public ExprAs(Class<T> cls, K2Expression<?> source) {
 		super(cls);
 		this.source = source;
 	}

@@ -13,13 +13,13 @@ import com.k2.Expressions.Evaluator;
  * @author simon
  *
  */
-public class ExprMod extends AbstractExpression<Integer> implements Expression<Integer> {
+public class ExprMod extends AbstractExpression<Integer> implements K2Expression<Integer> {
 	
 	@SuppressWarnings("unused")
 	private static final Logger logger = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
-	Expression<Integer> num1Expr;
-	Expression<Integer> num2Expr;
+	K2Expression<Integer> num1Expr;
+	K2Expression<Integer> num2Expr;
 	Integer num1;
 	Integer num2;
 
@@ -28,7 +28,7 @@ public class ExprMod extends AbstractExpression<Integer> implements Expression<I
 	 * @param num1	The numerator
 	 * @param num2	The denominator
 	 */
-	public ExprMod(Expression<Integer> num1, Expression<Integer> num2) {
+	public ExprMod(K2Expression<Integer> num1, K2Expression<Integer> num2) {
 		super(Integer.class);
 		this.num1Expr = num1;
 		this.num2Expr = num2;
@@ -39,7 +39,7 @@ public class ExprMod extends AbstractExpression<Integer> implements Expression<I
 	 * @param num1	The numerator
 	 * @param num2	The denominator
 	 */
-	public ExprMod(Expression<Integer> num1, Integer num2) {
+	public ExprMod(K2Expression<Integer> num1, Integer num2) {
 		super(Integer.class);
 		this.num1Expr = num1;
 		this.num2 = num2;
@@ -50,7 +50,7 @@ public class ExprMod extends AbstractExpression<Integer> implements Expression<I
 	 * @param num1	The numerator
 	 * @param num2	The denominator
 	 */
-	public ExprMod(Integer num1, Expression<Integer> num2) {
+	public ExprMod(Integer num1, K2Expression<Integer> num2) {
 		super(Integer.class);
 		this.num1 = num1;
 		this.num2Expr = num2;

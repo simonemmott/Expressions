@@ -16,7 +16,7 @@ import com.k2.Expressions.Evaluator;
  * @author simon
  *
  */
-public class ExprCurrentDate extends AbstractExpression<Date> implements Expression<Date> {
+public class ExprCurrentDate extends AbstractExpression<Date> implements K2Expression<Date> {
 	
 	/**
 	 * Create an instance of the current date expression

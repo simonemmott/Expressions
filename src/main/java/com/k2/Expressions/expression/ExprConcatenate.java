@@ -17,12 +17,12 @@ import com.k2.Util.StringUtil;
  * @author simon
  *
  */
-public class ExprConcatenate extends AbstractExpression<String> implements Expression<String> {
+public class ExprConcatenate extends AbstractExpression<String> implements K2Expression<String> {
 	
 	private static final Logger logger = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
-	Expression<String> stringExp1 = null;
-	Expression<String> stringExp2 = null;
+	K2Expression<String> stringExp1 = null;
+	K2Expression<String> stringExp2 = null;
 	String string1 = null;
 	String string2 = null;
 	Object[] stringSources = null;
@@ -33,7 +33,7 @@ public class ExprConcatenate extends AbstractExpression<String> implements Expre
 	 * @param stringExp1		The first string expression whose value is to be concatenated
 	 * @param stringExp2		The second string expression whose value is to be concatenated
 	 */
-	public ExprConcatenate(Expression<String> stringExp1, Expression<String> stringExp2) {
+	public ExprConcatenate(K2Expression<String> stringExp1, K2Expression<String> stringExp2) {
 		super(String.class);
 		this.stringExp1 = stringExp1;
 		this.stringExp2 = stringExp2;
@@ -45,7 +45,7 @@ public class ExprConcatenate extends AbstractExpression<String> implements Expre
 	 * @param stringExp1		The string expression whose value is to be concatenated
 	 * @param string2		The literal string value to be concatenated
 	 */
-	public ExprConcatenate(Expression<String> stringExp1, String string2) {
+	public ExprConcatenate(K2Expression<String> stringExp1, String string2) {
 		super(String.class);
 		this.stringExp1 = stringExp1;
 		this.string2 = string2;
@@ -57,7 +57,7 @@ public class ExprConcatenate extends AbstractExpression<String> implements Expre
 	 * @param string1		The literal string value to be concatenated
 	 * @param stringExp2		The string expression whose value is to be concatenated
 	 */
-	public ExprConcatenate(String string1, Expression<String> stringExp2) {
+	public ExprConcatenate(String string1, K2Expression<String> stringExp2) {
 		super(String.class);
 		this.string1 = string1;
 		this.stringExp2 = stringExp2;
@@ -102,8 +102,8 @@ public class ExprConcatenate extends AbstractExpression<String> implements Expre
 				if (source == null) continue;
 				if (source instanceof String) {
 					sb.append((String)source);
-				} else if (source instanceof Expression) {
-					Object exprValue = ((Expression<?>)source).evaluate(eval);
+				} else if (source instanceof K2Expression) {
+					Object exprValue = ((K2Expression<?>)source).evaluate(eval);
 					if (exprValue == null) continue;
 					if (exprValue instanceof String) {
 						sb.append((String)exprValue);

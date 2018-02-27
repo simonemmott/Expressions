@@ -14,18 +14,18 @@ import com.k2.Expressions.Evaluator;
  * @author simon
  *
  */
-public class ExprToBigInteger extends AbstractExpression<BigInteger> implements Expression<BigInteger> {
+public class ExprToBigInteger extends AbstractExpression<BigInteger> implements K2Expression<BigInteger> {
 	
 	@SuppressWarnings("unused")
 	private static final Logger logger = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
-	Expression<? extends Number> num;
+	K2Expression<? extends Number> num;
 
 	/**
 	 * Create a toBigInteger expression for the given numerical expression
 	 * @param num	The numerical expression to convert into a BigIntger
 	 */
-	public ExprToBigInteger(Expression<? extends Number> num) {
+	public ExprToBigInteger(K2Expression<? extends Number> num) {
 		super(BigInteger.class);
 		this.num = num;
 	}

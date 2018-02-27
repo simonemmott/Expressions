@@ -13,15 +13,15 @@ import com.k2.Expressions.Evaluator;
  * @author simon
  *
  */
-public class ExprSubstring extends AbstractExpression<String> implements Expression<String> {
+public class ExprSubstring extends AbstractExpression<String> implements K2Expression<String> {
 	
 	@SuppressWarnings("unused")
 	private static final Logger logger = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
-	Expression<String> stringExp = null;
-	Expression<Integer> fromExp = null;
+	K2Expression<String> stringExp = null;
+	K2Expression<Integer> fromExp = null;
 	Integer from = null;
-	Expression<Integer> lengthExp = null;
+	K2Expression<Integer> lengthExp = null;
 	Integer length = null;
 
 	/**
@@ -29,7 +29,7 @@ public class ExprSubstring extends AbstractExpression<String> implements Express
 	 * @param string		The string from which to extract the substring
 	 * @param from		The location of the beginning of the substring
 	 */
-	public ExprSubstring(Expression<String> string, Expression<Integer> from) {
+	public ExprSubstring(K2Expression<String> string, K2Expression<Integer> from) {
 		super(String.class);
 		this.stringExp = string;
 		this.fromExp = from;
@@ -40,7 +40,7 @@ public class ExprSubstring extends AbstractExpression<String> implements Express
 	 * @param string		The string from which to extract the substring
 	 * @param from		The location of the beginning of the substring
 	 */
-	public ExprSubstring(Expression<String> string, int from) {
+	public ExprSubstring(K2Expression<String> string, int from) {
 		super(String.class);
 		this.stringExp = string;
 		this.from = from;
@@ -52,7 +52,7 @@ public class ExprSubstring extends AbstractExpression<String> implements Express
 	 * @param from		The location of the beginning of the substring
 	 * @param length		The length of the substring to extract
 	 */
-	public ExprSubstring(Expression<String> string, Expression<Integer> from, Expression<Integer> length) {
+	public ExprSubstring(K2Expression<String> string, K2Expression<Integer> from, K2Expression<Integer> length) {
 		super(String.class);
 		this.stringExp = string;
 		this.fromExp = from;
@@ -65,7 +65,7 @@ public class ExprSubstring extends AbstractExpression<String> implements Express
 	 * @param from		The location of the beginning of the substring
 	 * @param length		The length of the substring to extract
 	 */
-	public ExprSubstring(Expression<String> string, int from, int length) {
+	public ExprSubstring(K2Expression<String> string, int from, int length) {
 		super(String.class);
 		this.stringExp = string;
 		this.from = from;

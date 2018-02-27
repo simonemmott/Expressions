@@ -37,9 +37,9 @@ public class ParamterOrObjectEvaluator<E> extends GenericEvaluator<E> implements
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@Override
 	public <T> T valueOf(GetterExpression<E, T> getterExpression) {
-		ParameterExpression<?> searchExpr = new ParameterExpression(getterExpression.getJavaType(), getterExpression.getName());
+		ParameterExpression<?> searchExpr = new ParameterExpression(getterExpression.getJavaType(), getterExpression.getAlias());
 		
-		logger.trace("Recieved getter for class {} with alias {}", getterExpression.getJavaType().getName(), getterExpression.getName());
+		logger.trace("Recieved getter for class {} with alias {}", getterExpression.getJavaType().getName(), getterExpression.getAlias());
 		
 		if (parameterValues.containsKey(searchExpr)) return (T) parameterValues.get(searchExpr);
 		if (valueSource.getClass().isAssignableFrom(getterExpression.getter().getDeclaringClass())) return getterExpression.getter().get(valueSource);

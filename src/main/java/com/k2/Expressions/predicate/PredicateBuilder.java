@@ -2,7 +2,7 @@ package com.k2.Expressions.predicate;
 
 import java.util.Collection;
 
-import com.k2.Expressions.expression.Expression;
+import com.k2.Expressions.expression.K2Expression;
 
 /**
  * The predicate builder provides factory methods to create the different types of predicates
@@ -22,7 +22,7 @@ public class PredicateBuilder {
 	 * @param predicates		The child predicates for the and predicate
 	 * @return	An and predicate
 	 */
-	public Predicate and(Predicate... predicates) {
+	public K2Predicate and(K2Predicate... predicates) {
 		return new PredicateAnd(predicates);
 	}
 
@@ -32,7 +32,7 @@ public class PredicateBuilder {
 	 * @param boolExpr2	The second boolean expression
 	 * @return		A predicate to check whether a value is between two values
 	 */
-	public Predicate and(Expression<Boolean> boolExpr1, Expression<Boolean> boolExpr2) {
+	public K2Predicate and(K2Expression<Boolean> boolExpr1, K2Expression<Boolean> boolExpr2) {
 		return new PredicateAnd(boolExpr1, boolExpr2);
 	}
 
@@ -44,9 +44,9 @@ public class PredicateBuilder {
 	 * @return		A predicate to check whether a value is between two values
 	 * @param <Y> The comparable type of the values being compared by this predicate
 	 */
-	public <Y extends Comparable<? super Y>> Predicate between(	Expression<? extends Y> check,
-																Expression<? extends Y> beginExpr, 
-																Expression<? extends Y> endExpr) {
+	public <Y extends Comparable<? super Y>> K2Predicate between(	K2Expression<? extends Y> check,
+																K2Expression<? extends Y> beginExpr, 
+																K2Expression<? extends Y> endExpr) {
 		return new PredicateBetween(check, beginExpr, endExpr);
 	}
 	
@@ -58,7 +58,7 @@ public class PredicateBuilder {
 	 * @return		A predicate to check whether a value is between two values
 	 * @param <Y> The comparable type of the values being compared by this predicate
 	 */
-	public <Y extends Comparable<? super Y>> Predicate between(Expression<? extends Y> check, Y begin, Y end) {
+	public <Y extends Comparable<? super Y>> K2Predicate between(K2Expression<? extends Y> check, Y begin, Y end) {
 		return new PredicateBetween(check, begin, end);
 	}
 
@@ -68,7 +68,7 @@ public class PredicateBuilder {
 	 * @param expr2	The second value
 	 * @return	A predicate that check for equality of the two value
 	 */
-	public  Predicate equals(Expression<?> expr1, Expression<?> expr2) {
+	public  K2Predicate equals(K2Expression<?> expr1, K2Expression<?> expr2) {
 		return new PredicateEquals(expr1, expr2);
 	}
 
@@ -78,7 +78,7 @@ public class PredicateBuilder {
 	 * @param obj	The second value
 	 * @return	A predicate that check for equality of the two value
 	 */
-	public  Predicate equals(Expression<?> expr, Object obj) {
+	public  K2Predicate equals(K2Expression<?> expr, Object obj) {
 		return new PredicateEquals(expr, obj);
 	}
 	
@@ -88,7 +88,7 @@ public class PredicateBuilder {
 	 * @param expr2	The second numeric value
 	 * @return	A predicate that tests whether the first value is greater than or equal to the second value
 	 */
-	public Predicate ge(Expression<? extends Number> expr1, Expression<? extends Number> expr2) {
+	public K2Predicate ge(K2Expression<? extends Number> expr1, K2Expression<? extends Number> expr2) {
 		return new PredicateGE(expr1, expr2);
 	}
 
@@ -98,7 +98,7 @@ public class PredicateBuilder {
 	 * @param num	The second numeric value
 	 * @return	A predicate that tests whether the first value is greater than or equal to the second value
 	 */
-	public Predicate ge(Expression<? extends Number> expr, Number num) {
+	public K2Predicate ge(K2Expression<? extends Number> expr, Number num) {
 		return new PredicateGE(expr, num);
 	}
 
@@ -109,7 +109,7 @@ public class PredicateBuilder {
 	 * @return	A predicate that checks whether the first value is greater than the second value
 	 * @param <Y> The comparable type of the values being compared by this predicate
 	 */
-	public <Y extends Comparable<? super Y>> Predicate greaterThan(Expression<? extends Y> expr1, Expression<? extends Y> expr2) {
+	public <Y extends Comparable<? super Y>> K2Predicate greaterThan(K2Expression<? extends Y> expr1, K2Expression<? extends Y> expr2) {
 		return new PredicateGreaterThan(expr1, expr2);
 	}
 
@@ -120,7 +120,7 @@ public class PredicateBuilder {
 	 * @return	A predicate that checks whether the first value is greater than the second value
 	 * @param <Y> The comparable type of the values being compared by this predicate
 	 */
-	public <Y extends Comparable<? super Y>> Predicate greaterThan(Expression<? extends Y> expr, Y comp) {
+	public <Y extends Comparable<? super Y>> K2Predicate greaterThan(K2Expression<? extends Y> expr, Y comp) {
 		return new PredicateGreaterThan(expr, comp);
 	}
 
@@ -131,7 +131,7 @@ public class PredicateBuilder {
 	 * @return	A predicate that checks whether the first value is greater than or equal to the second value
 	 * @param <Y> The comparable type of the values being compared by this predicate
 	 */
-	public <Y extends Comparable<? super Y>> Predicate greaterThanOrEqualTo(Expression<? extends Y> expr1, Expression<? extends Y> expr2) {
+	public <Y extends Comparable<? super Y>> K2Predicate greaterThanOrEqualTo(K2Expression<? extends Y> expr1, K2Expression<? extends Y> expr2) {
 		return new PredicateGreaterThanOrEqualTo(expr1, expr2);
 	}
 
@@ -142,7 +142,7 @@ public class PredicateBuilder {
 	 * @return	A predicate that checks whether the first value is greater than or equal to the second value
 	 * @param <Y> The comparable type of the values being compared by this predicate
 	 */
-	public <Y extends Comparable<? super Y>> Predicate greaterThanOrEqualTo(Expression<? extends Y> expr, Y comp) {
+	public <Y extends Comparable<? super Y>> K2Predicate greaterThanOrEqualTo(K2Expression<? extends Y> expr, Y comp) {
 		return new PredicateGreaterThanOrEqualTo(expr, comp);
 	}
 
@@ -152,7 +152,7 @@ public class PredicateBuilder {
 	 * @param expr2	The second numeric value
 	 * @return	A predicate that tests whether the first value is greater than the second value
 	 */
-	public Predicate gt(Expression<? extends Number> expr1, Expression<? extends Number> expr2) {
+	public K2Predicate gt(K2Expression<? extends Number> expr1, K2Expression<? extends Number> expr2) {
 		return new PredicateGT(expr1, expr2);
 	}
 
@@ -162,7 +162,7 @@ public class PredicateBuilder {
 	 * @param num	The second numeric value
 	 * @return	A predicate that tests whether the first value is greater than the second value
 	 */
-	public Predicate gt(Expression<? extends Number> expr, Number num) {
+	public K2Predicate gt(K2Expression<? extends Number> expr, Number num) {
 		return new PredicateGT(expr, num);
 	}
 
@@ -172,7 +172,7 @@ public class PredicateBuilder {
 	 * @param objects	The list of values to check in
 	 * @return	An predicate to test whether the check value is in the list of values
 	 */
-	public Predicate in(Expression<?> expr, Object ... objects) {
+	public K2Predicate in(K2Expression<?> expr, Object ... objects) {
 		return new PredicateIn(expr, objects);
 	}
 	
@@ -182,7 +182,7 @@ public class PredicateBuilder {
 	 * @param expressions	The list of values to check in
 	 * @return	An predicate to test whether the check value is in the list of values
 	 */
-	public Predicate in(Expression<?> expr, Expression<?>... expressions) {
+	public K2Predicate in(K2Expression<?> expr, K2Expression<?>... expressions) {
 		return new PredicateIn(expr, expressions);
 	}
 	
@@ -192,7 +192,7 @@ public class PredicateBuilder {
 	 * @param collection	The list of values to check in
 	 * @return	An predicate to test whether the check value is in the list of values
 	 */
-	public Predicate in(Expression<?> expr, Collection<?> collection) {
+	public K2Predicate in(K2Expression<?> expr, Collection<?> collection) {
 		return new PredicateIn(expr, collection);
 	}
 	
@@ -202,7 +202,7 @@ public class PredicateBuilder {
 	 * @param collectionExpr	The list of values to check in
 	 * @return	An predicate to test whether the check value is in the list of values
 	 */
-	public Predicate in(Expression<?> expr, Expression<Collection<?>> collectionExpr) {
+	public K2Predicate in(K2Expression<?> expr, K2Expression<Collection<?>> collectionExpr) {
 		return new PredicateIn(expr, collectionExpr);
 	}
 	
@@ -210,7 +210,7 @@ public class PredicateBuilder {
 	 * Create a predicate that returns a false value
 	 * @return	A false predicate
 	 */
-	public Predicate isFalse() {
+	public K2Predicate isFalse() {
 		return new PredicateFalse();
 	}
 	
@@ -219,7 +219,7 @@ public class PredicateBuilder {
 	 * @param bool	The boolean value to check
 	 * @return		A predicate to test for a false value
 	 */
-	public Predicate isFalse(Expression<Boolean> bool) {
+	public K2Predicate isFalse(K2Expression<Boolean> bool) {
 		return new PredicateIsFalse(bool);
 	}
 	
@@ -227,7 +227,7 @@ public class PredicateBuilder {
 	 * Create a predicate to return a true value
 	 * @return	A true predicate
 	 */
-	public Predicate isTrue() {
+	public K2Predicate isTrue() {
 		return new PredicateTrue();
 	}
 
@@ -236,7 +236,7 @@ public class PredicateBuilder {
 	 * @param bool	The boolean value to check
 	 * @return	A predicate checks whether a boolean value is true
 	 */
-	public Predicate isTrue(Expression<Boolean> bool) {
+	public K2Predicate isTrue(K2Expression<Boolean> bool) {
 		return new PredicateIsTrue(bool);
 	}
 
@@ -246,7 +246,7 @@ public class PredicateBuilder {
 	 * @param expr2	The second numeric value
 	 * @return	A predicate that tests whether the first value is less that or equal to the second value
 	 */
-	public Predicate le(Expression<? extends Number> expr1, Expression<? extends Number> expr2) {
+	public K2Predicate le(K2Expression<? extends Number> expr1, K2Expression<? extends Number> expr2) {
 		return new PredicateLE(expr1, expr2);
 	}
 
@@ -256,7 +256,7 @@ public class PredicateBuilder {
 	 * @param num	The second numeric value
 	 * @return	A predicate that tests whether the first value is less that or equal to the second value
 	 */
-	public Predicate le(Expression<? extends Number> expr, Number num) {
+	public K2Predicate le(K2Expression<? extends Number> expr, Number num) {
 		return new PredicateLE(expr, num);
 	}
 
@@ -267,7 +267,7 @@ public class PredicateBuilder {
 	 * @return	A predicate that checks whether the first value is less than the second value
 	 * @param <Y> The comparable type of the values being compared by this predicate
 	 */
-	public <Y extends Comparable<? super Y>> Predicate lessThan(Expression<? extends Y> expr1, Expression<? extends Y> expr2) {
+	public <Y extends Comparable<? super Y>> K2Predicate lessThan(K2Expression<? extends Y> expr1, K2Expression<? extends Y> expr2) {
 		return new PredicateLessThan(expr1, expr2);
 	}
 
@@ -278,7 +278,7 @@ public class PredicateBuilder {
 	 * @return	A predicate that checks whether the first value is less than the second value
 	 * @param <Y> The comparable type of the values being compared by this predicate
 	 */
-	public <Y extends Comparable<? super Y>> Predicate lessThan(Expression<? extends Y> expr, Y comp) {
+	public <Y extends Comparable<? super Y>> K2Predicate lessThan(K2Expression<? extends Y> expr, Y comp) {
 		return new PredicateLessThan(expr, comp);
 	}
 
@@ -289,7 +289,7 @@ public class PredicateBuilder {
 	 * @return	A predicate that checks whether the first value is less than or equal to the second value
 	 * @param <Y> The comparable type of the values being compared by this predicate
 	 */
-	public <Y extends Comparable<? super Y>> Predicate lessThanOrEqualTo(Expression<? extends Y> expr1, Expression<? extends Y> expr2) {
+	public <Y extends Comparable<? super Y>> K2Predicate lessThanOrEqualTo(K2Expression<? extends Y> expr1, K2Expression<? extends Y> expr2) {
 		return new PredicateLessThanOrEqualTo(expr1, expr2);
 	}
 
@@ -300,7 +300,7 @@ public class PredicateBuilder {
 	 * @return	A predicate that checks whether the first value is less than or equal to the second value
 	 * @param <Y> The comparable type of the values being compared by this predicate
 	 */
-	public <Y extends Comparable<? super Y>> Predicate lessThanOrEqualTo(Expression<? extends Y> expr, Y comp) {
+	public <Y extends Comparable<? super Y>> K2Predicate lessThanOrEqualTo(K2Expression<? extends Y> expr, Y comp) {
 		return new PredicateLessThanOrEqualTo(expr, comp);
 	}
 
@@ -310,7 +310,7 @@ public class PredicateBuilder {
 	 * @param patternExp		The regular expression
 	 * @return	A predicate that check for a match between a string and a regular expression
 	 */
-	public Predicate like(Expression<String> stringExp, Expression<String> patternExp) {
+	public K2Predicate like(K2Expression<String> stringExp, K2Expression<String> patternExp) {
 		return new PredicateLike(stringExp, patternExp);
 	}
 
@@ -320,7 +320,7 @@ public class PredicateBuilder {
 	 * @param pattern	The regular expression
 	 * @return	A predicate that check for a match between a string and a regular expression
 	 */
-	public Predicate like(Expression<String> stringExp, String pattern) {
+	public K2Predicate like(K2Expression<String> stringExp, String pattern) {
 		return new PredicateLike(stringExp, pattern);
 	}
 
@@ -331,7 +331,7 @@ public class PredicateBuilder {
 	 * @param escapeCharExp	The escape character of the regular expression
 	 * @return	A predicate that check for a match between a string and a regular expression
 	 */
-	public Predicate like(Expression<String> stringExp, Expression<String> patternExp, Expression<Character> escapeCharExp) {
+	public K2Predicate like(K2Expression<String> stringExp, K2Expression<String> patternExp, K2Expression<Character> escapeCharExp) {
 		return new PredicateLike(stringExp, patternExp, escapeCharExp);
 	}
 
@@ -342,7 +342,7 @@ public class PredicateBuilder {
 	 * @param escapeChar	The escape character of the regular expression
 	 * @return	A predicate that check for a match between a string and a regular expression
 	 */
-	public Predicate like(Expression<String> stringExp, Expression<String> patternExp, char escapeChar) {
+	public K2Predicate like(K2Expression<String> stringExp, K2Expression<String> patternExp, char escapeChar) {
 		return new PredicateLike(stringExp, patternExp, escapeChar);
 	}
 
@@ -353,7 +353,7 @@ public class PredicateBuilder {
 	 * @param escapeCharExp	The escape character of the regular expression
 	 * @return	A predicate that check for a match between a string and a regular expression
 	 */
-	public Predicate like(Expression<String> stringExp, String pattern, Expression<Character> escapeCharExp) {
+	public K2Predicate like(K2Expression<String> stringExp, String pattern, K2Expression<Character> escapeCharExp) {
 		return new PredicateLike(stringExp, pattern, escapeCharExp);
 	}
 
@@ -364,7 +364,7 @@ public class PredicateBuilder {
 	 * @param escapeChar	The escape character of the regular expression
 	 * @return	A predicate that check for a match between a string and a regular expression
 	 */
-	public Predicate like(Expression<String> stringExp, String pattern, char escapeChar) {
+	public K2Predicate like(K2Expression<String> stringExp, String pattern, char escapeChar) {
 		return new PredicateLike(stringExp, pattern, escapeChar);
 	}
 
@@ -374,7 +374,7 @@ public class PredicateBuilder {
 	 * @param expr2	The second numeric value
 	 * @return	A predicate that tests whether the first value is less that the second value
 	 */
-	public Predicate lt(Expression<? extends Number> expr1, Expression<? extends Number> expr2) {
+	public K2Predicate lt(K2Expression<? extends Number> expr1, K2Expression<? extends Number> expr2) {
 		return new PredicateLT(expr1, expr2);
 	}
 
@@ -384,7 +384,7 @@ public class PredicateBuilder {
 	 * @param num	The second numeric value
 	 * @return	A predicate that tests whether the first value is less that the second value
 	 */
-	public Predicate lt(Expression<? extends Number> expr, Number num) {
+	public K2Predicate lt(K2Expression<? extends Number> expr, Number num) {
 		return new PredicateLT(expr, num);
 	}
 	
@@ -393,7 +393,7 @@ public class PredicateBuilder {
 	 * @param expr	The boolean expression to negate
 	 * @return	A predicate to negate a boolean expression
 	 */
-	public Predicate not(Expression<Boolean> expr) {
+	public K2Predicate not(K2Expression<Boolean> expr) {
 		return new PredicateNot(expr);
 	}
 
@@ -402,7 +402,7 @@ public class PredicateBuilder {
 	 * @param expr	The value to check for null
 	 * @return	A predicate to test whther a value is not null
 	 */
-	public Predicate isNotNull(Expression<?> expr) {
+	public K2Predicate isNotNull(K2Expression<?> expr) {
 		return new PredicateNotNull(expr);
 	}
 
@@ -411,7 +411,7 @@ public class PredicateBuilder {
 	 * @param expr	The value to check for null
 	 * @return	A predicate that tests whether a value is null
 	 */
-	public Predicate isNull(Expression<?> expr) {
+	public K2Predicate isNull(K2Expression<?> expr) {
 		return new PredicateNull(expr);
 	}
 
@@ -420,7 +420,7 @@ public class PredicateBuilder {
 	 * @param predicates		The list of predicates to be disjointed together
 	 * @return	A compound disjoint predicate
 	 */
-	public Predicate or(Predicate... predicates) {
+	public K2Predicate or(K2Predicate... predicates) {
 		return new PredicateOr(predicates);
 	}
 
@@ -430,7 +430,7 @@ public class PredicateBuilder {
 	 * @param boolExpr2	The second boolean expression
 	 * @return	A compound disjoint predicate
 	 */
-	public Predicate or(Expression<Boolean> boolExpr1, Expression<Boolean> boolExpr2) {
+	public K2Predicate or(K2Expression<Boolean> boolExpr1, K2Expression<Boolean> boolExpr2) {
 		return new PredicateOr(boolExpr1, boolExpr2);
 	}
 

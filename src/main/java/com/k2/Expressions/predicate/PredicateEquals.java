@@ -6,7 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.k2.Expressions.Evaluator;
-import com.k2.Expressions.expression.Expression;
+import com.k2.Expressions.expression.K2Expression;
 import com.k2.Expressions.expression.ParameterExpression;
 
 /**
@@ -15,11 +15,11 @@ import com.k2.Expressions.expression.ParameterExpression;
  * @author simon
  *
  */
-public class PredicateEquals extends AbstractPredicate implements Predicate {
+public class PredicateEquals extends AbstractPredicate implements K2Predicate {
 	
 	private static final Logger logger = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
-	private Expression<?> value1;
+	private K2Expression<?> value1;
 	private Object value2;
 
 	/**
@@ -27,7 +27,7 @@ public class PredicateEquals extends AbstractPredicate implements Predicate {
 	 * @param expr1	The first expression
 	 * @param expr2	The second expression
 	 */
-	public PredicateEquals(Expression<?> expr1, Expression<?> expr2) {
+	public PredicateEquals(K2Expression<?> expr1, K2Expression<?> expr2) {
 		value1 = expr1;
 		value2 = expr2;
 	}
@@ -37,7 +37,7 @@ public class PredicateEquals extends AbstractPredicate implements Predicate {
 	 * @param expr	The expression
 	 * @param obj	The literal value
 	 */
-	public PredicateEquals(Expression<?> expr, Object obj) {
+	public PredicateEquals(K2Expression<?> expr, Object obj) {
 		value1 = expr;
 		value2 = obj;
 	}
@@ -55,8 +55,8 @@ public class PredicateEquals extends AbstractPredicate implements Predicate {
 		if (v1 == null) return isNegatedRVal(false);
 		Object v2;
 		
-		if (value2 instanceof Expression) {
-			v2 = ((Expression<?>)value2).evaluate(eval);
+		if (value2 instanceof K2Expression) {
+			v2 = ((K2Expression<?>)value2).evaluate(eval);
 		} else {
 			v2 = value2;
 		}

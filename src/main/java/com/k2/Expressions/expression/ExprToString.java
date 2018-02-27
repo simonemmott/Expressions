@@ -14,18 +14,18 @@ import com.k2.Util.StringUtil;
  * @author simon
  *
  */
-public class ExprToString extends AbstractExpression<String> implements Expression<String> {
+public class ExprToString extends AbstractExpression<String> implements K2Expression<String> {
 	
 	@SuppressWarnings("unused")
 	private static final Logger logger = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
-	Expression<?> expr;
+	K2Expression<?> expr;
 
 	/**
 	 * Create a to String expression to convert the given expression into a String expression
 	 * @param expr	The expression to convert to a String expression
 	 */
-	public ExprToString(Expression<?> expr) {
+	public ExprToString(K2Expression<?> expr) {
 		super(String.class);
 		this.expr = expr;
 	}

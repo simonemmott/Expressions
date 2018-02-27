@@ -12,7 +12,7 @@ import com.k2.Expressions.ParameterEvaluator;
  *
  * @param <T>	The type of the value returned by this parameter expression
  */
-public class ParameterExpression<T> extends AbstractExpression<T> implements Expression<T>{
+public class ParameterExpression<T> extends AbstractExpression<T> implements K2Expression<T>{
 	
 	Integer pos;
 	TemporalType temporalType = TemporalType.DATE;

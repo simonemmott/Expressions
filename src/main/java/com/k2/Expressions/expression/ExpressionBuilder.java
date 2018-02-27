@@ -44,7 +44,7 @@ public class ExpressionBuilder {
 	 * @param <E>	The class of the object through which the getter will be evaluated
 	 * @param <T>	The class of the field that is to be got by the getter expression
 	 */
-	public <E,T> Expression<T> get(Class<E> entityCls, Class<T> fieldCls, String alias) {
+	public <E,T> K2Expression<T> get(Class<E> entityCls, Class<T> fieldCls, String alias) {
 		return new GetterExpression<E,T>(ClassUtil.getGetter(entityCls, fieldCls, alias));
 	}
 
@@ -54,7 +54,7 @@ public class ExpressionBuilder {
 	 * @return		An expression to execute a mathematical absolute function
 	 * @param <N>	The numeric type of the expression
 	 */
-	public <N extends Number> Expression<N> abs(Expression<N> num) {
+	public <N extends Number> K2Expression<N> abs(K2Expression<N> num) {
 		return new ExprAbsolute<N>(num);
 	}
 	
@@ -64,7 +64,7 @@ public class ExpressionBuilder {
 	 * @param stringExp2		The second string expression
 	 * @return				An expression the concatenates the expressed values together
 	 */
-	public Expression<String> concatenate(Expression<String> stringExp1, Expression<String> stringExp2) {
+	public K2Expression<String> concatenate(K2Expression<String> stringExp1, K2Expression<String> stringExp2) {
 		return new ExprConcatenate(stringExp1, stringExp2);
 	}
 
@@ -74,7 +74,7 @@ public class ExpressionBuilder {
 	 * @param string2		The string literal
 	 * @return				An expression the concatenates the expressed values together
 	 */
-	public Expression<String> concatenate(Expression<String> stringExp1, String string2) {
+	public K2Expression<String> concatenate(K2Expression<String> stringExp1, String string2) {
 		return new ExprConcatenate(stringExp1, string2);
 	}
 
@@ -84,7 +84,7 @@ public class ExpressionBuilder {
 	 * @param stringExp2		The string expression
 	 * @return	An expression the concatenates the expressed values together
 	 */
-	public Expression<String> concatenate(String string1, Expression<String> stringExp2) {
+	public K2Expression<String> concatenate(String string1, K2Expression<String> stringExp2) {
 		return new ExprConcatenate(string1, stringExp2);
 	}
 	
@@ -93,7 +93,7 @@ public class ExpressionBuilder {
 	 * @param stringSources	An array of objects whose values will be concatenated together
 	 * @return	An expression the concatenates the expressed values together
 	 */
-	public Expression<String> concatenate(Object ... stringSources) {
+	public K2Expression<String> concatenate(Object ... stringSources) {
 		return new ExprConcatenate(stringSources);
 	}
 	
@@ -101,7 +101,7 @@ public class ExpressionBuilder {
 	 * Create an expression to return the current date
 	 * @return	An expression that returns the current date
 	 */
-	public Expression<Date> currentDate() {
+	public K2Expression<Date> currentDate() {
 		return new ExprCurrentDate();
 	}
 	
@@ -109,7 +109,7 @@ public class ExpressionBuilder {
 	 * Create an expression to return the current time
 	 * @return	An expression that returns the current time
 	 */
-	public Expression<Time> currentTime() {
+	public K2Expression<Time> currentTime() {
 		return new ExprCurrentTime();
 	}
 	
@@ -117,7 +117,7 @@ public class ExpressionBuilder {
 	 * Create an expression to return the current timestamp
 	 * @return	An expression that returns the current timestamp
 	 */
-	public Expression<Timestamp> currentTimestamp() {
+	public K2Expression<Timestamp> currentTimestamp() {
 		return new ExprCurrentTimestamp();
 	}
 	
@@ -128,7 +128,7 @@ public class ExpressionBuilder {
 	 * @return	An expression that returns the difference between the two values
 	 * @param <N> The type of the numerical value
 	 */
-	public <N extends Number> Expression<? extends Number> diff(Expression<? extends N> numExp1, Expression<? extends N> numExp2) {
+	public <N extends Number> K2Expression<? extends Number> diff(K2Expression<? extends N> numExp1, K2Expression<? extends N> numExp2) {
 		return new ExprDifference<N>(numExp1, numExp2);
 	}
 	
@@ -139,7 +139,7 @@ public class ExpressionBuilder {
 	 * @return	An expression that returns the difference between the two values
 	 * @param <N> The type of the numerical value
 	 */
-	public <N extends Number> Expression<N> diff(Expression<? extends N> numExp1, N num2) {
+	public <N extends Number> K2Expression<N> diff(K2Expression<? extends N> numExp1, N num2) {
 		return new ExprDifference<N>(numExp1, num2);
 	}
 	
@@ -150,7 +150,7 @@ public class ExpressionBuilder {
 	 * @return	An expression that returns the difference between the two values
 	 * @param <N> The type of the numerical value
 	 */
-	public <N extends Number> Expression<N> diff(N num1, Expression<? extends N> numExp2) {
+	public <N extends Number> K2Expression<N> diff(N num1, K2Expression<? extends N> numExp2) {
 		return new ExprDifference<N>(num1, numExp2);
 	}
 	
@@ -159,7 +159,7 @@ public class ExpressionBuilder {
 	 * @param string		The Sting expression
 	 * @return			An expression to return the length of a string
 	 */
-	public Expression<Integer> length(Expression<String> string) {
+	public K2Expression<Integer> length(K2Expression<String> string) {
 		return new ExprLength(string);
 	}
 	
@@ -169,7 +169,7 @@ public class ExpressionBuilder {
 	 * @return	An expression that provides a literal value
 	 * @param <T> The type of the literal value
 	 */
-	public <T> Expression<T> literal(T literal) {
+	public <T> K2Expression<T> literal(T literal) {
 		return new ExprLiteral<T>(literal);
 	}
 
@@ -180,7 +180,7 @@ public class ExpressionBuilder {
 	 * @return		An expression to search for a pattern in a string. The integer returned by this expression identifies the 
 	 * beginning of the string as 1 and a 0 value indicates that the pattern does not exist in the string
 	 */
-	public Expression<Integer> locate(Expression<String> string, Expression<String> pattern) {
+	public K2Expression<Integer> locate(K2Expression<String> string, K2Expression<String> pattern) {
 		return new ExprLocate(string, pattern);
 	}
 
@@ -191,7 +191,7 @@ public class ExpressionBuilder {
 	 * @return		An expression to search for a pattern in a string. The integer returned by this expression identifies the 
 	 * beginning of the string as 1 and a 0 value indicates that the pattern does not exist in the string
 	 */
-	public Expression<Integer> locate(Expression<String> string, String pattern) {
+	public K2Expression<Integer> locate(K2Expression<String> string, String pattern) {
 		return new ExprLocate(string, pattern);
 	}
 
@@ -203,7 +203,7 @@ public class ExpressionBuilder {
 	 * @return		An expression to search for a pattern in a string. The integer returned by this expression identifies the 
 	 * beginning of the string as 1 and a 0 value indicates that the pattern does not exist in the string
 	 */
-	public Expression<Integer> locate(Expression<String> string, Expression<String> pattern, Expression<Integer> from) {
+	public K2Expression<Integer> locate(K2Expression<String> string, K2Expression<String> pattern, K2Expression<Integer> from) {
 		return new ExprLocate(string, pattern, from);
 	}
 
@@ -215,7 +215,7 @@ public class ExpressionBuilder {
 	 * @return		An expression to search for a pattern in a string. The integer returned by this expression identifies the 
 	 * beginning of the string as 1 and a 0 value indicates that the pattern does not exist in the string
 	 */
-	public Expression<Integer> locate(Expression<String> string, String pattern, int from) {
+	public K2Expression<Integer> locate(K2Expression<String> string, String pattern, int from) {
 		return new ExprLocate(string, pattern, from);
 	}
 
@@ -224,7 +224,7 @@ public class ExpressionBuilder {
 	 * @param string		An expression providing the string to convert to lower case
 	 * @return			An expression to convert a string to lower case
 	 */
-	public Expression<String> lower(Expression<String> string) {
+	public K2Expression<String> lower(K2Expression<String> string) {
 		return new ExprLower(string);
 	}
 
@@ -234,7 +234,7 @@ public class ExpressionBuilder {
 	 * @param num2	The denominator
 	 * @return	An expression providing the mathematical modulus function
 	 */
-	public Expression<Integer> mod(Expression<Integer> num1, Expression<Integer> num2) {
+	public K2Expression<Integer> mod(K2Expression<Integer> num1, K2Expression<Integer> num2) {
 		return new ExprMod(num1, num2);
 	}
 
@@ -244,7 +244,7 @@ public class ExpressionBuilder {
 	 * @param num2	The denominator
 	 * @return	An expression providing the mathematical modulus function
 	 */
-	public Expression<Integer> mod(Expression<Integer> num1, Integer num2) {
+	public K2Expression<Integer> mod(K2Expression<Integer> num1, Integer num2) {
 		return new ExprMod(num1, num2);
 	}
 
@@ -254,7 +254,7 @@ public class ExpressionBuilder {
 	 * @param num2	The denominator
 	 * @return	An expression providing the mathematical modulus function
 	 */
-	public Expression<Integer> mod(Integer num1, Expression<Integer> num2) {
+	public K2Expression<Integer> mod(Integer num1, K2Expression<Integer> num2) {
 		return new ExprMod(num1, num2);
 	}
 
@@ -264,7 +264,7 @@ public class ExpressionBuilder {
 	 * @return		An expression that calculates the negative of a number
 	 * @param <N> The numerical type of the expression
 	 */
-	public <N extends Number> Expression<N> neg(Expression<N> num) {
+	public <N extends Number> K2Expression<N> neg(K2Expression<N> num) {
 		return new ExprNeg<N>(num);
 	}
 
@@ -278,7 +278,7 @@ public class ExpressionBuilder {
 	 * @return	An expression providing the nullIf function
 	 * @param <Y> The type of the value returned by the nullIf expression
 	 */
-	public <Y> Expression<Y> nullIf(Expression<Y> expr1, Expression<?> expr2) {
+	public <Y> K2Expression<Y> nullIf(K2Expression<Y> expr1, K2Expression<?> expr2) {
 		return new  ExprNullIf<Y>(expr1, expr2);
 	}
 
@@ -292,7 +292,7 @@ public class ExpressionBuilder {
 	 * @return	An expression providing the nullIf function
 	 * @param <Y> The type of the value returned by the nullIf expression
 	 */
-	public <Y> Expression<Y> nullIf(Expression<Y> expr1, Y value2) {
+	public <Y> K2Expression<Y> nullIf(K2Expression<Y> expr1, Y value2) {
 		return new  ExprNullIf<Y>(expr1, value2);
 	}
 
@@ -302,7 +302,7 @@ public class ExpressionBuilder {
 	 * @return	A expression returning a typed null value
 	 * @param <T> The type of the null value returned by the expression
 	 */
-	public <T> Expression<T> nullLiteral(Class<T> cls) {
+	public <T> K2Expression<T> nullLiteral(Class<T> cls) {
 		return new  ExprNullLiteral<T>(cls);
 	}
 
@@ -313,7 +313,7 @@ public class ExpressionBuilder {
 	 * @return	An expression that returns the product of two values
 	 * @param <N> The numerical type of value returned by the expression
 	 */
-	public <N extends Number> Expression<N> prod(Expression<? extends N> num1, Expression<? extends N> num2) {
+	public <N extends Number> K2Expression<N> prod(K2Expression<? extends N> num1, K2Expression<? extends N> num2) {
 		return new  ExprProd<N>(num1, num2);
 	}
 
@@ -324,7 +324,7 @@ public class ExpressionBuilder {
 	 * @return	An expression that returns the product of two values
 	 * @param <N> The numerical type of value returned by the expression
 	 */
-	public <N extends Number> Expression<N> prod(Expression<? extends N> num1, N num2) {
+	public <N extends Number> K2Expression<N> prod(K2Expression<? extends N> num1, N num2) {
 		return new  ExprProd<N>(num1, num2);
 	}
 
@@ -335,7 +335,7 @@ public class ExpressionBuilder {
 	 * @return	An expression that returns the product of two values
 	 * @param <N> The numerical type of value returned by the expression
 	 */
-	public <N extends Number> Expression<N> prod(N num1, Expression<? extends N> num2) {
+	public <N extends Number> K2Expression<N> prod(N num1, K2Expression<? extends N> num2) {
 		return new  ExprProd<N>(num1, num2);
 	}
 
@@ -345,7 +345,7 @@ public class ExpressionBuilder {
 	 * @param num2	The second value
 	 * @return	An expression that returns the quotient of two values
 	 */
-	public Expression<Double> quot(Expression<? extends Number> num1, Expression<? extends Number> num2) {
+	public K2Expression<Double> quot(K2Expression<? extends Number> num1, K2Expression<? extends Number> num2) {
 		return new  ExprQuot(num1, num2);
 	}
 
@@ -355,7 +355,7 @@ public class ExpressionBuilder {
 	 * @param num2	The second value
 	 * @return	An expression that returns the quotient of two values
 	 */
-	public Expression<Double> quot(Expression<? extends Number> num1, Number num2) {
+	public K2Expression<Double> quot(K2Expression<? extends Number> num1, Number num2) {
 		return new  ExprQuot(num1, num2);
 	}
 
@@ -365,7 +365,7 @@ public class ExpressionBuilder {
 	 * @param num2	The second value
 	 * @return	An expression that returns the quotient of two values
 	 */
-	public Expression<Double> quot(Number num1, Expression<? extends Number> num2) {
+	public K2Expression<Double> quot(Number num1, K2Expression<? extends Number> num2) {
 		return new  ExprQuot(num1, num2);
 	}
 
@@ -374,7 +374,7 @@ public class ExpressionBuilder {
 	 * @param num	An expression providing the numerical value of which to calculate the square root
 	 * @return	An expression that calculates the square root of a number
 	 */
-	public Expression<Double> sqrt(Expression<? extends Number> num) {
+	public K2Expression<Double> sqrt(K2Expression<? extends Number> num) {
 		return new  ExprSqrt(num);
 	}
 
@@ -384,7 +384,7 @@ public class ExpressionBuilder {
 	 * @param from		The location within the string from which the extracted substring starts
 	 * @return	An expression that extracts a substring from a string
 	 */
-	public Expression<String> substring(Expression<String> string, Expression<Integer> from) {
+	public K2Expression<String> substring(K2Expression<String> string, K2Expression<Integer> from) {
 		return new  ExprSubstring(string, from);
 	}
 
@@ -394,7 +394,7 @@ public class ExpressionBuilder {
 	 * @param from		The location within the string from which the extracted substring starts
 	 * @return	An expression that extracts a substring from a string
 	 */
-	public Expression<String> substring(Expression<String> string, int from) {
+	public K2Expression<String> substring(K2Expression<String> string, int from) {
 		return new  ExprSubstring(string, from);
 	}
 
@@ -405,7 +405,7 @@ public class ExpressionBuilder {
 	 * @param length		The length of the substring to extract
 	 * @return	An expression that extracts a substring from a string
 	 */
-	public Expression<String> substring(Expression<String> string, Expression<Integer> from, Expression<Integer> length) {
+	public K2Expression<String> substring(K2Expression<String> string, K2Expression<Integer> from, K2Expression<Integer> length) {
 		return new  ExprSubstring(string, from, length);
 	}
 
@@ -416,7 +416,7 @@ public class ExpressionBuilder {
 	 * @param length		The length of the substring to extract
 	 * @return	An expression that extracts a substring from a string
 	 */
-	public Expression<String> substring(Expression<String> string, int from, int length) {
+	public K2Expression<String> substring(K2Expression<String> string, int from, int length) {
 		return new  ExprSubstring(string, from, length);
 	}
 
@@ -425,7 +425,7 @@ public class ExpressionBuilder {
 	 * @param num	The number to convert into a BigDecimal
 	 * @return	An expression to generate a BigDecimal from a numeric value
 	 */
-	public Expression<BigDecimal> toBigDecimal(Expression<? extends Number> num) {
+	public K2Expression<BigDecimal> toBigDecimal(K2Expression<? extends Number> num) {
 		return new  ExprToBigDecimal(num);
 	}
 
@@ -434,7 +434,7 @@ public class ExpressionBuilder {
 	 * @param num	The number to convert into a BigInteger
 	 * @return	An expression to generate a BigInteger from a numeric value
 	 */
-	public Expression<BigInteger> toBigInteger(Expression<? extends Number> num) {
+	public K2Expression<BigInteger> toBigInteger(K2Expression<? extends Number> num) {
 		return new  ExprToBigInteger(num);
 	}
 
@@ -443,7 +443,7 @@ public class ExpressionBuilder {
 	 * @param expr	The expression to convert into a Boolean
 	 * @return	An expression to generate a Boolean from an expressed value
 	 */
-	public Expression<Boolean> toBoolean(Expression<?> expr) {
+	public K2Expression<Boolean> toBoolean(K2Expression<?> expr) {
 		return new  ExprToBoolean(expr);
 	}
 
@@ -452,7 +452,7 @@ public class ExpressionBuilder {
 	 * @param expr	The expression to convert into a Date
 	 * @return	An expression to generate a Date from an expressed value
 	 */
-	public Expression<Date> toDate(Expression<?> expr) {
+	public K2Expression<Date> toDate(K2Expression<?> expr) {
 		return new  ExprToDate(expr);
 	}
 
@@ -462,7 +462,7 @@ public class ExpressionBuilder {
 	 * @param format		The format through which the expressed value will be converted to a date
 	 * @return	An expression to generate a Date from an expressed value
 	 */
-	public Expression<Date> toDate(Expression<?> expr, Expression<String> format) {
+	public K2Expression<Date> toDate(K2Expression<?> expr, K2Expression<String> format) {
 		return new  ExprToDate(expr, format);
 	}
 
@@ -472,7 +472,7 @@ public class ExpressionBuilder {
 	 * @param format		The format through which the expressed value will be converted to a date
 	 * @return	An expression to generate a Date from an expressed value
 	 */
-	public Expression<Date> toDate(Expression<?> expr, String format) {
+	public K2Expression<Date> toDate(K2Expression<?> expr, String format) {
 		return new  ExprToDate(expr, format);
 	}
 
@@ -481,7 +481,7 @@ public class ExpressionBuilder {
 	 * @param expr	The expression to convert into a Double
 	 * @return	An expression to generate a Double from an expressed value
 	 */
-	public Expression<Double> toDouble(Expression<?> expr) {
+	public K2Expression<Double> toDouble(K2Expression<?> expr) {
 		return new  ExprToDouble(expr);
 	}
 
@@ -490,7 +490,7 @@ public class ExpressionBuilder {
 	 * @param expr	The expression to convert into a Float
 	 * @return	An expression to generate a Float from an expressed value
 	 */
-	public Expression<Float> toFloat(Expression<?> expr) {
+	public K2Expression<Float> toFloat(K2Expression<?> expr) {
 		return new  ExprToFloat(expr);
 	}
 
@@ -499,7 +499,7 @@ public class ExpressionBuilder {
 	 * @param expr	The expression to convert into an Integer
 	 * @return	An expression to generate an Integer from an expressed value
 	 */
-	public Expression<Integer> toInteger(Expression<?> expr) {
+	public K2Expression<Integer> toInteger(K2Expression<?> expr) {
 		return new  ExprToInteger(expr);
 	}
 
@@ -508,7 +508,7 @@ public class ExpressionBuilder {
 	 * @param expr	The expression to convert into a Long
 	 * @return	An expression to generate a Long from an expressed value
 	 */
-	public Expression<Long> toLong(Expression<?> expr) {
+	public K2Expression<Long> toLong(K2Expression<?> expr) {
 		return new  ExprToLong(expr);
 	}
 
@@ -517,7 +517,7 @@ public class ExpressionBuilder {
 	 * @param expr	The expression to convert into a String
 	 * @return	An expression to generate a String from an expressed value
 	 */
-	public Expression<String> toString(Expression<?> expr) {
+	public K2Expression<String> toString(K2Expression<?> expr) {
 		return new  ExprToString(expr);
 	}
 
@@ -526,7 +526,7 @@ public class ExpressionBuilder {
 	 * @param expr	The string to trim
 	 * @return		An expression that trims leading and trailing space characters from a string
 	 */
-	public Expression<String> trim(Expression<String> expr) {
+	public K2Expression<String> trim(K2Expression<String> expr) {
 		return new  ExprTrim(expr);
 	}
 
@@ -536,7 +536,7 @@ public class ExpressionBuilder {
 	 * @param string		The string to trim
 	 * @return		An expression that trims leading and trailing characters from a string
 	 */
-	public Expression<String> trim(Expression<Character> trimChar, Expression<String> string) {
+	public K2Expression<String> trim(K2Expression<Character> trimChar, K2Expression<String> string) {
 		return new  ExprTrim(trimChar, string);
 	}
 
@@ -546,7 +546,7 @@ public class ExpressionBuilder {
 	 * @param string		The string to trim
 	 * @return		An expression that trims leading and trailing characters from a string
 	 */
-	public Expression<String> trim(char trimChar, Expression<String> string) {
+	public K2Expression<String> trim(char trimChar, K2Expression<String> string) {
 		return new  ExprTrim(trimChar, string);
 	}
 
@@ -557,7 +557,7 @@ public class ExpressionBuilder {
 	 * @param string		The string to trim
 	 * @return		An expression that trims leading and/or trailing characters from a string
 	 */
-	public Expression<String> trim(Trimspec trimSpec, Expression<Character> trimChar, Expression<String> string) {
+	public K2Expression<String> trim(Trimspec trimSpec, K2Expression<Character> trimChar, K2Expression<String> string) {
 		return new  ExprTrim(trimSpec, trimChar, string);
 	}
 
@@ -568,7 +568,7 @@ public class ExpressionBuilder {
 	 * @param string		The string to trim
 	 * @return		An expression that trims leading and/or trailing characters from a string
 	 */
-	public Expression<String> trim(Trimspec trimSpec, char trimChar, Expression<String> string) {
+	public K2Expression<String> trim(Trimspec trimSpec, char trimChar, K2Expression<String> string) {
 		return new  ExprTrim(trimSpec, trimChar, string);
 	}
 
@@ -578,7 +578,7 @@ public class ExpressionBuilder {
 	 * @param string		The string to trim
 	 * @return		An expression that trims leading and/or trailing space characters from a string
 	 */
-	public Expression<String> trim(Trimspec trimSpec, Expression<String> string) {
+	public K2Expression<String> trim(Trimspec trimSpec, K2Expression<String> string) {
 		return new  ExprTrim(trimSpec, string);
 	}
 
@@ -587,7 +587,7 @@ public class ExpressionBuilder {
 	 * @param string		The string to convert to upper case
 	 * @return	An expression to convert a string into upper case
 	 */
-	public Expression<String> upper(Expression<String> string) {
+	public K2Expression<String> upper(K2Expression<String> string) {
 		return new ExprUpper(string);
 	}
 

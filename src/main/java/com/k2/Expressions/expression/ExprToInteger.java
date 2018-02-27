@@ -14,18 +14,18 @@ import com.k2.Util.IntegerUtil;
  * @author simon
  *
  */
-public class ExprToInteger extends AbstractExpression<Integer> implements Expression<Integer> {
+public class ExprToInteger extends AbstractExpression<Integer> implements K2Expression<Integer> {
 	
 	@SuppressWarnings("unused")
 	private static final Logger logger = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
-	Expression<?> expr;
+	K2Expression<?> expr;
 
 	/**
 	 * Create a to Integer expression to convert the given expression into a Integer expression
 	 * @param expr	The expression to convert to a Integer expression
 	 */
-	public ExprToInteger(Expression<?> expr) {
+	public ExprToInteger(K2Expression<?> expr) {
 		super(Integer.class);
 		this.expr = expr;
 	}

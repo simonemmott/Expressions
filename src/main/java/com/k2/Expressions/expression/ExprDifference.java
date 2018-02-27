@@ -16,12 +16,12 @@ import com.k2.Util.DoubleUtil;
  *
  * @param <N> The numerical type of the expression
  */
-public class ExprDifference<N extends Number> extends AbstractExpression<N> implements Expression<N> {
+public class ExprDifference<N extends Number> extends AbstractExpression<N> implements K2Expression<N> {
 	
 	private static final Logger logger = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
-	Expression<? extends N> numExp1 = null;
-	Expression<? extends N> numExp2 = null;
+	K2Expression<? extends N> numExp1 = null;
+	K2Expression<? extends N> numExp2 = null;
 	Number num1 = null;
 	Number num2 = null;
 
@@ -31,7 +31,7 @@ public class ExprDifference<N extends Number> extends AbstractExpression<N> impl
 	 * @param numExp1	The first numerical expression
 	 * @param numExp2	The second numerical exprssion
 	 */
-	public ExprDifference(Expression<? extends N> numExp1, Expression<? extends N> numExp2) {
+	public ExprDifference(K2Expression<? extends N> numExp1, K2Expression<? extends N> numExp2) {
 		super(numExp1.getJavaType());
 		this.numExp1 = numExp1;
 		this.numExp2 = numExp2;
@@ -42,7 +42,7 @@ public class ExprDifference<N extends Number> extends AbstractExpression<N> impl
 	 * @param numExp1	The numerical expression
 	 * @param num2		The numerical literal
 	 */
-	public ExprDifference(Expression<? extends N> numExp1, N num2) {
+	public ExprDifference(K2Expression<? extends N> numExp1, N num2) {
 		super(numExp1.getJavaType());
 		this.numExp1 = numExp1;
 		this.num2 = num2;
@@ -53,7 +53,7 @@ public class ExprDifference<N extends Number> extends AbstractExpression<N> impl
 	 * @param num1		The numerical literal
 	 * @param numExp2	The numerical expression
 	 */
-	public ExprDifference(N num1, Expression<? extends N> numExp2) {
+	public ExprDifference(N num1, K2Expression<? extends N> numExp2) {
 		super(numExp2.getJavaType());
 		this.num1 = num1;
 		this.numExp2 = numExp2;

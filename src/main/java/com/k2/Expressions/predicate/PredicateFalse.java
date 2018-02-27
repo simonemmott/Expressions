@@ -9,7 +9,7 @@ import com.k2.Expressions.Evaluator;
  * @author simon
  *
  */
-public class PredicateFalse extends AbstractPredicate implements Predicate {
+public class PredicateFalse extends AbstractPredicate implements K2Predicate {
 
 	@Override
 	public void populateParameters(Evaluator eval) { }

@@ -16,20 +16,20 @@ import com.k2.Util.StringUtil;
  * @author simon
  *
  */
-public class ExprToDate extends AbstractExpression<Date> implements Expression<Date> {
+public class ExprToDate extends AbstractExpression<Date> implements K2Expression<Date> {
 	
 	@SuppressWarnings("unused")
 	private static final Logger logger = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
-	Expression<?> expr;
-	Expression<String> formatExpr;
+	K2Expression<?> expr;
+	K2Expression<String> formatExpr;
 	String format;
 
 	/**
 	 * Create a to Date expression to convert the given expression into a Date expression
 	 * @param expr	The expression to convert to a Date expression
 	 */
-	public ExprToDate(Expression<?> expr) {
+	public ExprToDate(K2Expression<?> expr) {
 		super(Date.class);
 		this.expr = expr;
 	}
@@ -39,7 +39,7 @@ public class ExprToDate extends AbstractExpression<Date> implements Expression<D
 	 * @param expr		The expression to convert to a Date expression
 	 * @param format		The format through which to convert the object into a Date
 	 */
-	public ExprToDate(Expression<?> expr, Expression<String> format) {
+	public ExprToDate(K2Expression<?> expr, K2Expression<String> format) {
 		super(Date.class);
 		this.expr = expr;
 		this.formatExpr = format;
@@ -50,7 +50,7 @@ public class ExprToDate extends AbstractExpression<Date> implements Expression<D
 	 * @param expr		The expression to convert to a Date expression
 	 * @param format		The format through which to convert the object into a Date
 	 */
-	public ExprToDate(Expression<?> expr, String format) {
+	public ExprToDate(K2Expression<?> expr, String format) {
 		super(Date.class);
 		this.expr = expr;
 		this.format = format;

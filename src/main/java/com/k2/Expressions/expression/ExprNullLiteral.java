@@ -9,7 +9,7 @@ import com.k2.Expressions.Evaluator;
  *
  * @param <T>	The type of this null value
  */
-public class ExprNullLiteral<T> extends AbstractExpression<T> implements Expression<T> {
+public class ExprNullLiteral<T> extends AbstractExpression<T> implements K2Expression<T> {
 	
 	/**
 	 * Create a null literal expression to return a null of the given type

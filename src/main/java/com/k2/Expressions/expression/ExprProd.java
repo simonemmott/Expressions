@@ -14,13 +14,13 @@ import com.k2.Expressions.Evaluator;
  *
  * @param <N>	The numerical type of this product expression
  */
-public class ExprProd<N extends Number> extends AbstractExpression<N> implements Expression<N> {
+public class ExprProd<N extends Number> extends AbstractExpression<N> implements K2Expression<N> {
 	
 	@SuppressWarnings("unused")
 	private static final Logger logger = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
-	Expression<? extends N> num1Exp = null;
-	Expression<? extends N> num2Exp = null;
+	K2Expression<? extends N> num1Exp = null;
+	K2Expression<? extends N> num2Exp = null;
 	N num1 = null;
 	N num2 = null;
 
@@ -29,7 +29,7 @@ public class ExprProd<N extends Number> extends AbstractExpression<N> implements
 	 * @param num1	The first numerical expression
 	 * @param num2	The second numerical expression
 	 */
-	public ExprProd(Expression<? extends N> num1, Expression<? extends N> num2) {
+	public ExprProd(K2Expression<? extends N> num1, K2Expression<? extends N> num2) {
 		super(num1.getJavaType());
 		this.num1Exp = num1;
 		this.num2Exp = num2;
@@ -40,7 +40,7 @@ public class ExprProd<N extends Number> extends AbstractExpression<N> implements
 	 * @param num1	The numerical expression
 	 * @param num2	The literal value
 	 */
-	public ExprProd(Expression<? extends N> num1, N num2) {
+	public ExprProd(K2Expression<? extends N> num1, N num2) {
 		super(num1.getJavaType());
 		this.num1Exp = num1;
 		this.num2 = num2;
@@ -51,7 +51,7 @@ public class ExprProd<N extends Number> extends AbstractExpression<N> implements
 	 * @param num1	The literal value
 	 * @param num2	The numerical expression
 	 */
-	public ExprProd(N num1, Expression<? extends N> num2) {
+	public ExprProd(N num1, K2Expression<? extends N> num2) {
 		super(num2.getJavaType());
 		this.num1 = num1;
 		this.num2Exp = num2;

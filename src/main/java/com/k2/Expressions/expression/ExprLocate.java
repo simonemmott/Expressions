@@ -14,13 +14,13 @@ import com.k2.Expressions.Evaluator;
  * @author simon
  *
  */
-public class ExprLocate extends AbstractExpression<Integer> implements Expression<Integer> {
+public class ExprLocate extends AbstractExpression<Integer> implements K2Expression<Integer> {
 	
 	private static final Logger logger = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
-	Expression<String> stringExp;
-	Expression<String> patternExp;
-	Expression<Integer> fromExp;
+	K2Expression<String> stringExp;
+	K2Expression<String> patternExp;
+	K2Expression<Integer> fromExp;
 	String pattern;
 	int from = 0;
 
@@ -30,7 +30,7 @@ public class ExprLocate extends AbstractExpression<Integer> implements Expressio
 	 * @param string		The string expression
 	 * @param pattern	The pattern expression
 	 */
-	public ExprLocate(Expression<String> string, Expression<String> pattern) {
+	public ExprLocate(K2Expression<String> string, K2Expression<String> pattern) {
 		super(Integer.class);
 		this.stringExp = string;
 		this.patternExp = pattern;
@@ -42,7 +42,7 @@ public class ExprLocate extends AbstractExpression<Integer> implements Expressio
 	 * @param string		The string expression
 	 * @param pattern	The pattern expression
 	 */
-	public ExprLocate(Expression<String> string, String pattern) {
+	public ExprLocate(K2Expression<String> string, String pattern) {
 		super(Integer.class);
 		this.stringExp = string;
 		this.pattern = pattern;
@@ -55,7 +55,7 @@ public class ExprLocate extends AbstractExpression<Integer> implements Expressio
 	 * @param pattern	The pattern expression
 	 * @param from		The location within the string to start searching for the pattern
 	 */
-	public ExprLocate(Expression<String> string, Expression<String> pattern, Expression<Integer> from) {
+	public ExprLocate(K2Expression<String> string, K2Expression<String> pattern, K2Expression<Integer> from) {
 		super(Integer.class);
 		this.stringExp = string;
 		this.patternExp = pattern;
@@ -69,7 +69,7 @@ public class ExprLocate extends AbstractExpression<Integer> implements Expressio
 	 * @param pattern	The pattern expression
 	 * @param from		The location within the string to start searching for the pattern
 	 */
-	public ExprLocate(Expression<String> string, String pattern, int from) {
+	public ExprLocate(K2Expression<String> string, String pattern, int from) {
 		super(Integer.class);
 		this.stringExp = string;
 		this.pattern = pattern;

@@ -9,7 +9,7 @@ import com.k2.Expressions.Evaluator;
  *
  * @param <T>	The type of the literal value
  */
-public class ExprLiteral<T> extends AbstractExpression<T> implements Expression<T> {
+public class ExprLiteral<T> extends AbstractExpression<T> implements K2Expression<T> {
 	
 	T literal;
 

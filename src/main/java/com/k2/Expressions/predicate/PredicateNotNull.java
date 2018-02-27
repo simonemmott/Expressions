@@ -1,7 +1,7 @@
 package com.k2.Expressions.predicate;
 
 import com.k2.Expressions.Evaluator;
-import com.k2.Expressions.expression.Expression;
+import com.k2.Expressions.expression.K2Expression;
 import com.k2.Expressions.expression.ParameterExpression;
 
 /**
@@ -10,15 +10,15 @@ import com.k2.Expressions.expression.ParameterExpression;
  * @author simon
  *
  */
-public class PredicateNotNull extends AbstractPredicate implements Predicate {
+public class PredicateNotNull extends AbstractPredicate implements K2Predicate {
 
-	Expression<?> expr;
+	K2Expression<?> expr;
 	
 	/**
 	 * Create a not null predicate for the given expression
 	 * @param expr	The expression whose value should be checked for not null
 	 */
-	public PredicateNotNull(Expression<?> expr) {
+	public PredicateNotNull(K2Expression<?> expr) {
 		this.expr = expr;
 	}
 

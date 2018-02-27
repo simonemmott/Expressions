@@ -14,7 +14,7 @@ import com.k2.Util.classes.Getter;
  * @param <E>	The type of the object through which the getter will get its value
  * @param <T>	The type of the value supplied by the getter and returned by this expression
  */
-public class GetterExpression<E,T> extends AbstractExpression<T> implements Expression<T>{
+public class GetterExpression<E,T> extends AbstractExpression<T> implements K2Expression<T>{
 	
 	Getter<E,T> getter;
 	TemporalType temporalType = TemporalType.DATE;

@@ -8,7 +8,7 @@ import com.k2.Expressions.Evaluator;
  * @author simon
  *
  */
-public class PredicateTrue extends AbstractPredicate implements Predicate {
+public class PredicateTrue extends AbstractPredicate implements K2Predicate {
 
 	@Override
 	public Boolean evaluate(Evaluator eval) {

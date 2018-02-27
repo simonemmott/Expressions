@@ -14,18 +14,18 @@ import com.k2.Util.DoubleUtil;
  * @author simon
  *
  */
-public class ExprToDouble extends AbstractExpression<Double> implements Expression<Double> {
+public class ExprToDouble extends AbstractExpression<Double> implements K2Expression<Double> {
 	
 	@SuppressWarnings("unused")
 	private static final Logger logger = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
-	Expression<?> expr;
+	K2Expression<?> expr;
 
 	/**
 	 * Create a to Double expression to convert the given expression into a Double expression
 	 * @param expr	The expression to convert to a Double expression
 	 */
-	public ExprToDouble(Expression<?> expr) {
+	public ExprToDouble(K2Expression<?> expr) {
 		super(Double.class);
 		this.expr = expr;
 	}

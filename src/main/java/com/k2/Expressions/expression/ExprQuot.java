@@ -14,13 +14,13 @@ import com.k2.Util.DoubleUtil;
  * @author simon
  *
  */
-public class ExprQuot extends AbstractExpression<Double> implements Expression<Double> {
+public class ExprQuot extends AbstractExpression<Double> implements K2Expression<Double> {
 	
 	@SuppressWarnings("unused")
 	private static final Logger logger = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
-	Expression<? extends Number> num1Exp = null;
-	Expression<? extends Number> num2Exp = null;
+	K2Expression<? extends Number> num1Exp = null;
+	K2Expression<? extends Number> num2Exp = null;
 	Number num1 = null;
 	Number num2 = null;
 
@@ -29,7 +29,7 @@ public class ExprQuot extends AbstractExpression<Double> implements Expression<D
 	 * @param num1	The numerator expression
 	 * @param num2	The denominator expression
 	 */
-	public ExprQuot(Expression<? extends Number> num1, Expression<? extends Number> num2) {
+	public ExprQuot(K2Expression<? extends Number> num1, K2Expression<? extends Number> num2) {
 		super(Double.class);
 		this.num1Exp = num1;
 		this.num2Exp = num2;
@@ -40,7 +40,7 @@ public class ExprQuot extends AbstractExpression<Double> implements Expression<D
 	 * @param num1	The numerator expression
 	 * @param num2	The denominator
 	 */
-	public ExprQuot(Expression<? extends Number> num1, Number num2) {
+	public ExprQuot(K2Expression<? extends Number> num1, Number num2) {
 		super(Double.class);
 		this.num1Exp = num1;
 		this.num2 = num2;
@@ -51,7 +51,7 @@ public class ExprQuot extends AbstractExpression<Double> implements Expression<D
 	 * @param num1	The numerator
 	 * @param num2	The denominator expression
 	 */
-	public ExprQuot(Number num1, Expression<? extends Number> num2) {
+	public ExprQuot(Number num1, K2Expression<? extends Number> num2) {
 		super(Double.class);
 		this.num1 = num1;
 		this.num2Exp = num2;

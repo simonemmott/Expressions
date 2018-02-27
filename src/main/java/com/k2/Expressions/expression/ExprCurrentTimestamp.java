@@ -16,7 +16,7 @@ import com.k2.Expressions.Evaluator;
  * @author simon
  *
  */
-public class ExprCurrentTimestamp extends AbstractExpression<Timestamp> implements Expression<Timestamp> {
+public class ExprCurrentTimestamp extends AbstractExpression<Timestamp> implements K2Expression<Timestamp> {
 	
 	/**
 	 * Create the current timestamp expression

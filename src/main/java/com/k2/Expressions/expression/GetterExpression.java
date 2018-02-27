@@ -4,7 +4,7 @@ import javax.persistence.TemporalType;
 
 import com.k2.Expressions.Evaluator;
 import com.k2.Expressions.GetterEvaluator;
-import com.k2.Util.Getter;
+import com.k2.Util.classes.Getter;
 
 /**
  * The getter expression derives its value through the evaluator to supply a value for the given getter

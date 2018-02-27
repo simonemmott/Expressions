@@ -8,7 +8,7 @@ import java.util.Date;
 
 import javax.persistence.criteria.CriteriaBuilder.Trimspec;
 
-import com.k2.Util.ClassUtil;
+import com.k2.Util.classes.ClassUtil;
 
 /**
  * The expression builder provides factory methods to create implementations of the Expression interface that provide

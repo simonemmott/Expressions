@@ -1,7 +1,7 @@
 package com.k2.Expressions;
 
 import com.k2.Expressions.expression.CurrentTime;
-import com.k2.Expressions.expression.ParameterExpression;
+import com.k2.Expressions.expression.K2ParameterExpression;
 import com.k2.Expressions.predicate.K2Predicate;
 
 /**
@@ -18,7 +18,7 @@ public interface Evaluator {
 	 * Add the parameter expression to the list of required paramters maintained by the evaluator
 	 * @param expr	The paramter expression
 	 */
-	public void add(ParameterExpression<?> expr);
+	public void add(K2ParameterExpression<?> expr);
 	
 	/**
 	 * Check that this evaluator has values set for all the parameters defined in the array of predicates

@@ -9,7 +9,7 @@ import org.slf4j.LoggerFactory;
 
 import com.k2.Expressions.Evaluator;
 import com.k2.Expressions.expression.K2Expression;
-import com.k2.Expressions.expression.ParameterExpression;
+import com.k2.Expressions.expression.K2ParameterExpression;
 
 /**
  * The like predicate checks whether the given string matches the given pattern
@@ -117,9 +117,9 @@ public class PredicateLike extends AbstractPredicate implements K2Predicate {
 
 	@Override
 	public void populateParameters(Evaluator eval) {
-		if(stringExp != null && stringExp instanceof ParameterExpression<?>) eval.add((ParameterExpression<?>)stringExp);
-		if(patternExp != null && patternExp instanceof ParameterExpression<?>) eval.add((ParameterExpression<?>)patternExp);
-		if(escapeCharExp != null && escapeCharExp instanceof ParameterExpression<?>) eval.add((ParameterExpression<?>)escapeCharExp);
+		if(stringExp != null && stringExp instanceof K2ParameterExpression<?>) eval.add((K2ParameterExpression<?>)stringExp);
+		if(patternExp != null && patternExp instanceof K2ParameterExpression<?>) eval.add((K2ParameterExpression<?>)patternExp);
+		if(escapeCharExp != null && escapeCharExp instanceof K2ParameterExpression<?>) eval.add((K2ParameterExpression<?>)escapeCharExp);
 	}
 
 }

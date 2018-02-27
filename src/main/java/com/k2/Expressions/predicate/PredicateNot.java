@@ -2,7 +2,7 @@ package com.k2.Expressions.predicate;
 
 import com.k2.Expressions.Evaluator;
 import com.k2.Expressions.expression.K2Expression;
-import com.k2.Expressions.expression.ParameterExpression;
+import com.k2.Expressions.expression.K2ParameterExpression;
 
 /**
  * The not predicate negates its given boolean expression
@@ -25,7 +25,7 @@ public class PredicateNot extends AbstractPredicate implements K2Predicate {
 
 	@Override
 	public void populateParameters(Evaluator eval) {
-		if(expr != null && expr instanceof ParameterExpression<?>) eval.add((ParameterExpression<?>)expr);
+		if(expr != null && expr instanceof K2ParameterExpression<?>) eval.add((K2ParameterExpression<?>)expr);
 		if(expr != null && expr instanceof K2Predicate) ((K2Predicate)expr).populateParameters(eval);
 	}
 

@@ -1,6 +1,6 @@
 package com.k2.Expressions;
 
-import com.k2.Expressions.expression.ParameterExpression;
+import com.k2.Expressions.expression.K2ParameterExpression;
 
 /**
  * The parameter evaluator provides values for parameter expressions
@@ -16,6 +16,6 @@ public interface ParameterEvaluator extends Evaluator{
 	 * @return	The value of the parameter expression as evaluated by this evaluator
 	 * @param <T> The type of the returned value
 	 */
-	public <T> T valueOf(ParameterExpression<T> parameterExpression);
+	public <T> T valueOf(K2ParameterExpression<T> parameterExpression);
 
 }

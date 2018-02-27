@@ -2,7 +2,7 @@ package com.k2.Expressions.predicate;
 
 import com.k2.Expressions.Evaluator;
 import com.k2.Expressions.expression.K2Expression;
-import com.k2.Expressions.expression.ParameterExpression;
+import com.k2.Expressions.expression.K2ParameterExpression;
 
 /**
  * The between predicate tests whether a comparable value is between a beginning and end value
@@ -48,9 +48,9 @@ public class PredicateBetween extends AbstractPredicate implements K2Predicate {
 
 	@Override
 	public void populateParameters(Evaluator eval) {
-		if(check != null && check instanceof ParameterExpression<?>) eval.add((ParameterExpression<?>)check);
-		if(beginExpr != null && beginExpr instanceof ParameterExpression<?>) eval.add((ParameterExpression<?>)beginExpr);
-		if(endExpr != null && endExpr instanceof ParameterExpression<?>) eval.add((ParameterExpression<?>)endExpr);
+		if(check != null && check instanceof K2ParameterExpression<?>) eval.add((K2ParameterExpression<?>)check);
+		if(beginExpr != null && beginExpr instanceof K2ParameterExpression<?>) eval.add((K2ParameterExpression<?>)beginExpr);
+		if(endExpr != null && endExpr instanceof K2ParameterExpression<?>) eval.add((K2ParameterExpression<?>)endExpr);
 	}
 
 	@SuppressWarnings("unchecked")

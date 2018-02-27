@@ -8,7 +8,7 @@ import java.util.Set;
 import com.k2.Expressions.Evaluator;
 import com.k2.Expressions.ParameterEvaluator;
 import com.k2.Expressions.expression.CurrentTime;
-import com.k2.Expressions.expression.ParameterExpression;
+import com.k2.Expressions.expression.K2ParameterExpression;
 import com.k2.Expressions.predicate.K2Predicate;
 
 /**
@@ -20,8 +20,8 @@ import com.k2.Expressions.predicate.K2Predicate;
  */
 public class SimpleParameterEvaluator implements Evaluator, ParameterEvaluator {
 
-	Set<ParameterExpression<?>> requiredParameters = new HashSet<ParameterExpression<?>>();
-	protected Map<ParameterExpression<?>, Object> parameterValues = new HashMap<ParameterExpression<?>, Object>();
+	Set<K2ParameterExpression<?>> requiredParameters = new HashSet<K2ParameterExpression<?>>();
+	protected Map<K2ParameterExpression<?>, Object> parameterValues = new HashMap<K2ParameterExpression<?>, Object>();
 	
 	/**
 	 * Create am instance of the SimpleParameterEvaluator
@@ -31,12 +31,12 @@ public class SimpleParameterEvaluator implements Evaluator, ParameterEvaluator {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public <T> T valueOf(ParameterExpression<T> param) {
+	public <T> T valueOf(K2ParameterExpression<T> param) {
 		return (T) parameterValues.get(param);
 	}
 
 	@Override
-	public void add(ParameterExpression<?> param) {
+	public void add(K2ParameterExpression<?> param) {
 		requiredParameters.add(param);
 	}
 	
@@ -45,7 +45,7 @@ public class SimpleParameterEvaluator implements Evaluator, ParameterEvaluator {
 		for (K2Predicate p : predicates) {
 			p.populateParameters(this);
 		}
-		for (ParameterExpression<?> param : requiredParameters) {
+		for (K2ParameterExpression<?> param : requiredParameters) {
 			if (!parameterValues.containsKey(param)) return false;
 		}
 		return true;
@@ -61,7 +61,12 @@ public class SimpleParameterEvaluator implements Evaluator, ParameterEvaluator {
 	 * @param <T>	The type of the value required by the parameter expressions
 	 * @return		This evaluator for method chaining
 	 */
-	public <T> SimpleParameterEvaluator set(ParameterExpression<T> param, T value) {
+	public <T> SimpleParameterEvaluator set(K2ParameterExpression<T> param, T value) {
+		parameterValues.put(param, value);
+		return this;
+	}
+
+	public SimpleParameterEvaluator setRawParameter(K2ParameterExpression<?> param, Object value) {
 		parameterValues.put(param, value);
 		return this;
 	}
@@ -76,10 +81,14 @@ public class SimpleParameterEvaluator implements Evaluator, ParameterEvaluator {
 	 * @return		This evaluator for method chaining
 	 */
 	public <T> SimpleParameterEvaluator set(Class<T> cls, String alias, T value) {
-		parameterValues.put(new ParameterExpression<T>(cls, alias), value);
+		parameterValues.put(new K2ParameterExpression<T>(cls, alias), value);
 		return this;
 	}
 	
+	@SuppressWarnings("unchecked")
+	public <T> SimpleParameterEvaluator setRawParameter(String alias, Object value) {
+		return set((Class<T>)value.getClass(), alias, (T) value);
+	}
 	/**
 	 * This field holds a reference to an instance of current time.
 	 * This field is populated and returned on the first call to getCurrentTime() for this instance and then returned on 

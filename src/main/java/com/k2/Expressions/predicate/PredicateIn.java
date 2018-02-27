@@ -3,6 +3,8 @@ package com.k2.Expressions.predicate;
 import java.lang.invoke.MethodHandles;
 import java.util.Collection;
 
+import javax.persistence.criteria.Expression;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -70,15 +72,15 @@ public class PredicateIn extends AbstractPredicate implements K2Predicate {
 
 	@Override
 	public void populateParameters(Evaluator eval) {
-		if (expr instanceof ParameterExpression<?>) eval.add((ParameterExpression<?>)expr);
+		if (expr instanceof K2ParameterExpression<?>) eval.add((K2ParameterExpression<?>)expr);
 		if (objects != null) {
 			return;
 		} else if (expressions != null) {
-			for (K2Expression<?> e : expressions) if (e instanceof ParameterExpression<?>) eval.add((ParameterExpression<?>)e);
+			for (K2Expression<?> e : expressions) if (e instanceof K2ParameterExpression<?>) eval.add((K2ParameterExpression<?>)e);
 		} else if (collection != null) {
-			for (Object o : collection) if (o instanceof ParameterExpression<?>) eval.add((ParameterExpression<?>)o);
+			for (Object o : collection) if (o instanceof K2ParameterExpression<?>) eval.add((K2ParameterExpression<?>)o);
 		} else if (collectionExpr != null) {
-			for (Object o : collectionExpr.evaluate(eval)) if (o instanceof ParameterExpression<?>) eval.add((ParameterExpression<?>)o);
+			for (Object o : collectionExpr.evaluate(eval)) if (o instanceof K2ParameterExpression<?>) eval.add((K2ParameterExpression<?>)o);
 		}
 	}
 

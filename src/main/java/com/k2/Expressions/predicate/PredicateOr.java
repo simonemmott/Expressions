@@ -7,7 +7,7 @@ import org.slf4j.LoggerFactory;
 
 import com.k2.Expressions.Evaluator;
 import com.k2.Expressions.expression.K2Expression;
-import com.k2.Expressions.expression.ParameterExpression;
+import com.k2.Expressions.expression.K2ParameterExpression;
 
 /**
  * The or predicate is a compound predicate and returns true if any of the boolean expressions in it are true
@@ -50,8 +50,8 @@ public class PredicateOr extends AbstractPredicate implements K2Predicate {
 	@Override
 	public void populateParameters(Evaluator eval) {
 		if (predicates == null) {
-			if(boolExpr1 instanceof ParameterExpression<?>) eval.add((ParameterExpression<?>)boolExpr1);
-			if(boolExpr2 instanceof ParameterExpression<?>) eval.add((ParameterExpression<?>)boolExpr2);
+			if(boolExpr1 instanceof K2ParameterExpression<?>) eval.add((K2ParameterExpression<?>)boolExpr1);
+			if(boolExpr2 instanceof K2ParameterExpression<?>) eval.add((K2ParameterExpression<?>)boolExpr2);
 
 		} else {
 			for (K2Predicate p : predicates) {

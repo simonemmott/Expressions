@@ -7,7 +7,7 @@ import org.slf4j.LoggerFactory;
 
 import com.k2.Expressions.Evaluator;
 import com.k2.Expressions.expression.K2Expression;
-import com.k2.Expressions.expression.ParameterExpression;
+import com.k2.Expressions.expression.K2ParameterExpression;
 
 /**
  * The equals predicate checks for equality between its arguments
@@ -44,8 +44,8 @@ public class PredicateEquals extends AbstractPredicate implements K2Predicate {
 
 	@Override
 	public void populateParameters(Evaluator eval) {
-		if(value1 != null && value1 instanceof ParameterExpression<?>) eval.add((ParameterExpression<?>)value1);
-		if(value2 != null && value2 instanceof ParameterExpression<?>) eval.add((ParameterExpression<?>)value2);
+		if(value1 != null && value1 instanceof K2ParameterExpression<?>) eval.add((K2ParameterExpression<?>)value1);
+		if(value2 != null && value2 instanceof K2ParameterExpression<?>) eval.add((K2ParameterExpression<?>)value2);
 	}
 
 	@Override

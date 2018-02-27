@@ -284,8 +284,8 @@ public class SimpleParameterEvaluatorTest {
 		spe.set(Integer.class, "p2", 5);
 		spe.set(Double.class, "p3", 1.234);
 		
-		assertEquals(new Double(2), expr1.evaluate(spe));
-		assertEquals(new Double(1), expr2.evaluate(spe));
+		assertEquals(new Integer(2), expr1.evaluate(spe));
+		assertEquals(new Integer(1), expr2.evaluate(spe));
 		assertEquals(new Double(1), expr3.evaluate(spe));
 
     }

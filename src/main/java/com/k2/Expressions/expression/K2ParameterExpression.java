@@ -1,6 +1,7 @@
 package com.k2.Expressions.expression;
 
 import javax.persistence.TemporalType;
+import javax.persistence.criteria.ParameterExpression;
 
 import com.k2.Expressions.Evaluator;
 import com.k2.Expressions.ParameterEvaluator;
@@ -12,7 +13,7 @@ import com.k2.Expressions.ParameterEvaluator;
  *
  * @param <T>	The type of the value returned by this parameter expression
  */
-public class ParameterExpression<T> extends AbstractExpression<T> implements K2Expression<T>{
+public class K2ParameterExpression<T> extends AbstractExpression<T> implements K2Expression<T>, ParameterExpression<T> {
 	
 	Integer pos;
 	TemporalType temporalType = TemporalType.DATE;
@@ -22,7 +23,7 @@ public class ParameterExpression<T> extends AbstractExpression<T> implements K2E
 	 * @param cls	The class of the parameter expression
 	 * @param name	The name of the parameter expression
 	 */
-	public ParameterExpression(Class<T> cls, String name) {
+	public K2ParameterExpression(Class<T> cls, String name) {
 		super(name, cls);
 	}
 
@@ -56,7 +57,7 @@ public class ParameterExpression<T> extends AbstractExpression<T> implements K2E
 	 * @param temporalType	The parameter type to set for this parameter expression
 	 * @return	This parameter expression for method chaining
 	 */
-	public ParameterExpression<T> setTemporalType(TemporalType temporalType) {
+	public K2ParameterExpression<T> setTemporalType(TemporalType temporalType) {
 		this.temporalType = temporalType;
 		return this;
 	}
@@ -67,6 +68,11 @@ public class ParameterExpression<T> extends AbstractExpression<T> implements K2E
 			return ((ParameterEvaluator)eval).valueOf(this);
 		}
 		return (T) null;
+	}
+
+	@Override
+	public String getName() {
+		return getAlias();
 	}
 
 

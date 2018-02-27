@@ -7,7 +7,7 @@ import org.slf4j.LoggerFactory;
 
 import com.k2.Expressions.Evaluator;
 import com.k2.Expressions.expression.K2Expression;
-import com.k2.Expressions.expression.ParameterExpression;
+import com.k2.Expressions.expression.K2ParameterExpression;
 
 /**
  * The is true predicate checks whether its given value is true
@@ -39,7 +39,7 @@ public class PredicateIsTrue extends AbstractPredicate implements K2Predicate {
 
 	@Override
 	public void populateParameters(Evaluator eval) {
-		if(bool != null && bool instanceof ParameterExpression<?>) eval.add((ParameterExpression<?>)bool);
+		if(bool != null && bool instanceof K2ParameterExpression<?>) eval.add((K2ParameterExpression<?>)bool);
 	}
 
 

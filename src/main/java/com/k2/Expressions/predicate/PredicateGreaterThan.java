@@ -2,7 +2,7 @@ package com.k2.Expressions.predicate;
 
 import com.k2.Expressions.Evaluator;
 import com.k2.Expressions.expression.K2Expression;
-import com.k2.Expressions.expression.ParameterExpression;
+import com.k2.Expressions.expression.K2ParameterExpression;
 
 /**
  * The greater than predicate checks whether a comparable value is greater than another comparable value
@@ -40,8 +40,8 @@ public class PredicateGreaterThan extends AbstractPredicate implements K2Predica
 
 	@Override
 	public void populateParameters(Evaluator eval) {
-		if(expr1 != null && expr1 instanceof ParameterExpression<?>) eval.add((ParameterExpression<?>)expr1);
-		if(expr2 != null && expr2 instanceof ParameterExpression<?>) eval.add((ParameterExpression<?>)expr2);
+		if(expr1 != null && expr1 instanceof K2ParameterExpression<?>) eval.add((K2ParameterExpression<?>)expr1);
+		if(expr2 != null && expr2 instanceof K2ParameterExpression<?>) eval.add((K2ParameterExpression<?>)expr2);
 	}
 
 	@SuppressWarnings({ "rawtypes", "unchecked" })

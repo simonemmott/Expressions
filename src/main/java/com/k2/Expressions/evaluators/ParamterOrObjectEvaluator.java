@@ -9,7 +9,7 @@ import com.k2.Expressions.Evaluator;
 import com.k2.Expressions.GetterEvaluator;
 import com.k2.Expressions.ParameterEvaluator;
 import com.k2.Expressions.expression.GetterExpression;
-import com.k2.Expressions.expression.ParameterExpression;
+import com.k2.Expressions.expression.K2ParameterExpression;
 import com.k2.Util.ObjectUtil;
 
 /**
@@ -37,7 +37,7 @@ public class ParamterOrObjectEvaluator<E> extends GenericEvaluator<E> implements
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@Override
 	public <T> T valueOf(GetterExpression<E, T> getterExpression) {
-		ParameterExpression<?> searchExpr = new ParameterExpression(getterExpression.getJavaType(), getterExpression.getAlias());
+		K2ParameterExpression<?> searchExpr = new K2ParameterExpression(getterExpression.getJavaType(), getterExpression.getAlias());
 		
 		logger.trace("Recieved getter for class {} with alias {}", getterExpression.getJavaType().getName(), getterExpression.getAlias());
 		
@@ -48,7 +48,7 @@ public class ParamterOrObjectEvaluator<E> extends GenericEvaluator<E> implements
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public <T> T valueOf(ParameterExpression<T> param) {
+	public <T> T valueOf(K2ParameterExpression<T> param) {
 		if (parameterValues.containsKey(param)) return (T) parameterValues.get(param);
 		return ObjectUtil.get(valueSource, param.getJavaType(), param.getAlias());
 	}

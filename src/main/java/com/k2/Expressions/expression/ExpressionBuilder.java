@@ -31,8 +31,8 @@ public class ExpressionBuilder {
 	 * @return		A parameter expression for the given values
 	 * @param <T>	The class of the value represented by this parameter expression
 	 */
-	public <T> ParameterExpression<T> param(Class<T> cls, String name) {
-		return new ParameterExpression<T>(cls, name);
+	public <T> K2ParameterExpression<T> param(Class<T> cls, String name) {
+		return new K2ParameterExpression<T>(cls, name);
 	}
 	
 	/**

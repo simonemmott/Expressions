@@ -1,5 +1,10 @@
 package com.k2.Expressions.predicate;
 
+import java.lang.invoke.MethodHandles;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.k2.Expressions.Evaluator;
 import com.k2.Expressions.expression.K2Expression;
 import com.k2.Expressions.expression.K2ParameterExpression;
@@ -11,6 +16,8 @@ import com.k2.Expressions.expression.K2ParameterExpression;
  *
  */
 public class PredicateNull extends AbstractPredicate implements K2Predicate {
+
+	private static final Logger logger = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
 	K2Expression<?> expr;
 	
@@ -30,7 +37,9 @@ public class PredicateNull extends AbstractPredicate implements K2Predicate {
 
 	@Override
 	public Boolean evaluate(Evaluator eval) {
+		logger.trace("Evaluate null {}", getAlias());
 		Object value = expr.evaluate(eval);
+		logger.trace("Evaluate null {} evaluates {}", getAlias(), value);
 		return isNegatedRVal(value == null);
 	}
 

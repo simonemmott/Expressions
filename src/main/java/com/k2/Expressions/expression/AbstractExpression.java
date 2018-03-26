@@ -1,5 +1,6 @@
 package com.k2.Expressions.expression;
 
+import java.lang.invoke.MethodHandles;
 import java.util.Collection;
 import java.util.List;
 
@@ -7,7 +8,11 @@ import javax.persistence.criteria.Expression;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Selection;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.k2.Expressions.exceptions.ExpressionError;
+import com.k2.Expressions.predicate.K2Predicate;
 import com.k2.Expressions.predicate.PredicateIn;
 import com.k2.Expressions.predicate.PredicateNotNull;
 import com.k2.Expressions.predicate.PredicateNull;
@@ -25,6 +30,8 @@ import com.k2.Expressions.predicate.PredicateNull;
  */
 public abstract class AbstractExpression<T> implements K2Expression<T>{
 	
+	private static final Logger logger = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
+
 	private String alias;
 	private String name;
 	
@@ -116,32 +123,33 @@ public abstract class AbstractExpression<T> implements K2Expression<T>{
 	}
 
 	@Override
-	public Predicate in(Object... objects) {
+	public K2Predicate in(Object... objects) {
 		return new PredicateIn(this, objects);
 	}
 
 	@Override
-	public Predicate in(Expression<?>... expressions) {
+	public K2Predicate in(Expression<?>... expressions) {
 		return new PredicateIn(this, expressions);
 	}
 
 	@Override
-	public Predicate in(Collection<?> collection) {
+	public K2Predicate in(Collection<?> collection) {
 		return new PredicateIn(this, collection);
 	}
 
 	@Override
-	public Predicate in(Expression<Collection<?>> expr) {
+	public K2Predicate in(Expression<Collection<?>> expr) {
 		return new PredicateIn(this, (K2Expression<Collection<?>>)expr);
 	}
 
 	@Override
-	public Predicate isNotNull() {
+	public K2Predicate isNotNull() {
 		return new PredicateNotNull(this);
 	}
 
 	@Override
-	public Predicate isNull() {
+	public K2Predicate isNull() {
+		logger.trace("Checking is null {}", getAlias());
 		return new PredicateNull(this);
 	}
 

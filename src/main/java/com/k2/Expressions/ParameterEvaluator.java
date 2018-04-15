@@ -1,5 +1,6 @@
 package com.k2.Expressions;
 
+import com.k2.Expressions.criteria.PathImpl;
 import com.k2.Expressions.expression.K2ParameterExpression;
 
 /**

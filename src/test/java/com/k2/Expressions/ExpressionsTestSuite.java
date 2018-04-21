@@ -7,6 +7,7 @@ import org.junit.runners.Suite;
 @Suite.SuiteClasses({
 	EvaluatorsTest.class,
 	PredicateTest.class,
+	QueryTest.class,
 	SimpleParameterEvaluatorTest.class
 })
 public class ExpressionsTestSuite {

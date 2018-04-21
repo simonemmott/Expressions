@@ -11,16 +11,18 @@ import javax.persistence.metamodel.Attribute;
 import javax.persistence.metamodel.CollectionAttribute;
 import javax.persistence.metamodel.SetAttribute;
 
+import com.k2.Expressions.metamodel.MetamodelImpl;
+
 public class CollectionJoinImpl<R,T> extends JoinImpl<R,T> implements CollectionJoin<R, T> {
 
 	@SuppressWarnings("unchecked")
-	public CollectionJoinImpl(PathImpl<R> parentPath, CollectionAttribute<? super R, T> attribute) {
-		super(parentPath, (Attribute<? super R, T>)attribute);
+	public CollectionJoinImpl(MetamodelImpl metamodel, PathImpl<R> parentPath, CollectionAttribute<? super R, T> attribute) {
+		super(metamodel, parentPath, (Attribute<? super R, T>)attribute);
 	}
 
 	@SuppressWarnings("unchecked")
-	public CollectionJoinImpl(PathImpl<R> parentPath, CollectionAttribute<? super R, T> attribute, JoinType joinType) {
-		super(parentPath, (Attribute<? super R, T>)attribute, joinType);
+	public CollectionJoinImpl(MetamodelImpl metamodel, PathImpl<R> parentPath, CollectionAttribute<? super R, T> attribute, JoinType joinType) {
+		super(metamodel, parentPath, (Attribute<? super R, T>)attribute, joinType);
 	}
 	
 	@SuppressWarnings("unchecked")

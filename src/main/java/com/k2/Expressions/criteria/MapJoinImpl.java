@@ -13,16 +13,18 @@ import javax.persistence.metamodel.Attribute;
 import javax.persistence.metamodel.MapAttribute;
 import javax.persistence.metamodel.SetAttribute;
 
+import com.k2.Expressions.metamodel.MetamodelImpl;
+
 public class MapJoinImpl<R,K,T> extends JoinImpl<R,T> implements MapJoin<R,K,T> {
 
 	@SuppressWarnings("unchecked")
-	public MapJoinImpl(PathImpl<R> parentPath, MapAttribute<? super R,K,T> attribute) {
-		super(parentPath, (Attribute<? super R, T>)attribute);
+	public MapJoinImpl(MetamodelImpl metamodel, PathImpl<R> parentPath, MapAttribute<? super R,K,T> attribute) {
+		super(metamodel, parentPath, (Attribute<? super R, T>)attribute);
 	}
 
 	@SuppressWarnings("unchecked")
-	public MapJoinImpl(PathImpl<R> parentPath, MapAttribute<? super R,K,T> attribute, JoinType joinType) {
-		super(parentPath, (Attribute<? super R, T>)attribute, joinType);
+	public MapJoinImpl(MetamodelImpl metamodel, PathImpl<R> parentPath, MapAttribute<? super R,K,T> attribute, JoinType joinType) {
+		super(metamodel, parentPath, (Attribute<? super R, T>)attribute, joinType);
 	}
 	
 	@SuppressWarnings("unchecked")

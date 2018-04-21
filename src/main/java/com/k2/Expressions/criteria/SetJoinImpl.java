@@ -8,16 +8,18 @@ import javax.persistence.criteria.SetJoin;
 import javax.persistence.metamodel.Attribute;
 import javax.persistence.metamodel.SetAttribute;
 
+import com.k2.Expressions.metamodel.MetamodelImpl;
+
 public class SetJoinImpl<R,T> extends JoinImpl<R,T> implements SetJoin<R, T> {
 
 	@SuppressWarnings("unchecked")
-	public SetJoinImpl(PathImpl<R> parentPath, SetAttribute<? super R, T> attribute) {
-		super(parentPath, (Attribute<? super R, T>)attribute);
+	public SetJoinImpl(MetamodelImpl metamodel, PathImpl<R> parentPath, SetAttribute<? super R, T> attribute) {
+		super(metamodel, parentPath, (Attribute<? super R, T>)attribute);
 	}
 
 	@SuppressWarnings("unchecked")
-	public SetJoinImpl(PathImpl<R> parentPath, SetAttribute<? super R, T> attribute, JoinType joinType) {
-		super(parentPath, (Attribute<? super R, T>)attribute, joinType);
+	public SetJoinImpl(MetamodelImpl metamodel, PathImpl<R> parentPath, SetAttribute<? super R, T> attribute, JoinType joinType) {
+		super(metamodel, parentPath, (Attribute<? super R, T>)attribute, joinType);
 	}
 	
 	@SuppressWarnings("unchecked")

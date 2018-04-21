@@ -29,18 +29,23 @@ import javax.persistence.criteria.Root;
 import javax.persistence.criteria.Selection;
 import javax.persistence.criteria.SetJoin;
 import javax.persistence.criteria.Subquery;
+import javax.persistence.metamodel.Metamodel;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.k2.Expressions.expression.*;
+import com.k2.Expressions.metamodel.MetamodelImpl;
 import com.k2.Expressions.predicate.*;
 
 public class CriteriaBuilderImpl implements CriteriaBuilder {
 	
 	private static final Logger logger = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
+	
+	private MetamodelImpl metamodel;
 
-	public CriteriaBuilderImpl() {
+	public CriteriaBuilderImpl(MetamodelImpl metamodel) {
+		this.metamodel = metamodel;
 	}
 
 	@Override
@@ -187,12 +192,12 @@ public class CriteriaBuilderImpl implements CriteriaBuilder {
 
 	@Override
 	public CriteriaQuery<Object> createQuery() {
-		return new CriteriaQueryImpl<Object>();
+		return new CriteriaQueryImpl<Object>(metamodel);
 	}
 
 	@Override
 	public <T> CriteriaQuery<T> createQuery(Class<T> cls) {
-		return new CriteriaQueryImpl<T>(cls);
+		return new CriteriaQueryImpl<T>(metamodel, cls);
 	}
 
 	@Override

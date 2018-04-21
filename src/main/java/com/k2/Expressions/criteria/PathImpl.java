@@ -61,9 +61,23 @@ public class PathImpl<T> extends AbstractExpression<T> implements Path<T>, K2Exp
 		return null;
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
-	public <Y> Path<Y> get(String arg0) {
-		return null;
+	public <Y> Path<Y> get(String name) {
+		
+		FromImpl<?,T> from;
+		if (this instanceof FromImpl) 
+			from = (FromImpl<?,T>)this;
+		else
+			throw new ExpressionError("It is only possible to 'get' attributes from an entity");
+		
+		Class<? extends T> cls = this.getJavaType();
+		
+		Attribute<T,Y> getAttr = (Attribute<T, Y>) from.metamodel.managedType(cls).getAttribute(name);
+		
+		PathImpl<Y> path = new PathImpl<Y>(this, getAttr);
+		
+		return path;
 	}
 
 	@Override

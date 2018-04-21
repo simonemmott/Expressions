@@ -9,6 +9,8 @@ import javax.persistence.criteria.Predicate;
 import javax.persistence.metamodel.Attribute;
 
 import com.k2.Expressions.expression.K2Expression;
+import com.k2.Expressions.metamodel.ManagedTypeImpl;
+import com.k2.Expressions.metamodel.MetamodelImpl;
 import com.k2.Expressions.predicate.*;
 
 public class JoinImpl<R,T> extends FromImpl<R,T> implements Join<R,T> {
@@ -16,13 +18,13 @@ public class JoinImpl<R,T> extends FromImpl<R,T> implements Join<R,T> {
 	private JoinType joinType;
 	private Predicate predicate;
 	
-	JoinImpl(PathImpl<R> parentPath, Attribute<? super R, T> attribute) {
-		super(parentPath, attribute);
+	JoinImpl(MetamodelImpl metamodel, PathImpl<R> parentPath, Attribute<? super R, T> attribute) {
+		super(metamodel, parentPath, attribute);
 		this.joinType = JoinType.LEFT;
 	}
 
-	JoinImpl(PathImpl<R> parentPath, Attribute<? super R, T> attribute, JoinType joinType) {
-		super(parentPath, attribute);
+	JoinImpl(MetamodelImpl metamodel, PathImpl<R> parentPath, Attribute<? super R, T> attribute, JoinType joinType) {
+		super(metamodel, parentPath, attribute);
 		this.joinType = joinType;
 	}
 

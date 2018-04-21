@@ -30,13 +30,15 @@ import javax.persistence.metamodel.SingularAttribute;
 import com.k2.Expressions.exceptions.ExpressionError;
 import com.k2.Expressions.expression.ExprAs;
 import com.k2.Expressions.expression.K2Expression;
+import com.k2.Expressions.metamodel.ManagedTypeImpl;
+import com.k2.Expressions.metamodel.MetamodelImpl;
 
 public class RootImpl<T> extends FromImpl<T,T> implements Root<T> {
 
-	private Class<T> cls;
-	public RootImpl(Class<T> cls) {
-		super(cls);
-		this.cls = cls;
+//	private Class<T> cls;
+	public RootImpl(MetamodelImpl metamodel, Class<T> cls) {
+		super(metamodel, cls);
+//		this.cls = cls;
 	}
 
 	
@@ -50,15 +52,15 @@ public class RootImpl<T> extends FromImpl<T,T> implements Root<T> {
 		return false;
 	}
 
-	@Override
-	public Class<? extends T> getJavaType() {
-		return cls;
-	}
+//	@Override
+//	public Class<? extends T> getJavaType() {
+//		return cls;
+//	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public EntityType<T> getModel() {
-		// TODO Auto-generated method stub
-		return null;
+		return (EntityType<T>) metamodel.entity(getJavaType());
 	}
 
 }

@@ -17,6 +17,7 @@ import javax.persistence.metamodel.EntityType;
 
 import com.k2.Expressions.exceptions.ExpressionError;
 import com.k2.Expressions.expression.K2ParameterExpression;
+import com.k2.Expressions.metamodel.MetamodelImpl;
 import com.k2.Expressions.predicate.K2Predicate;
 import com.k2.Expressions.predicate.PredicateAnd;
 
@@ -26,10 +27,14 @@ public class CriteriaQueryImpl<T> implements CriteriaQuery<T> {
 	private Set<Root<T>> roots = new HashSet<Root<T>>();
 	private boolean distinct = false;
 	
-	public CriteriaQueryImpl() {
+	private final MetamodelImpl metamodel;
+
+	public CriteriaQueryImpl(MetamodelImpl metamodel) {
+		this.metamodel = metamodel;
 	}
 	
-	public CriteriaQueryImpl(Class<T> cls) {
+	public CriteriaQueryImpl(MetamodelImpl metamodel, Class<T> cls) {
+		this.metamodel = metamodel;
 		this.cls = cls;
 	}
 	
@@ -37,8 +42,10 @@ public class CriteriaQueryImpl<T> implements CriteriaQuery<T> {
 	@Override
 	public Root<T> from(Class cls) {
 		if (this.cls == null) this.cls = cls;
+		if ( ! metamodel.isModelled(cls))
+			throw new ExpressionError("The class {} is not modelled in the supplied metamodel");
 		if (!cls.isAssignableFrom(this.cls)) throw new ExpressionError("Criteria query type missmatch. Expecting '{}' got '{}'", this.cls.getCanonicalName(), cls.getCanonicalName());
-		Root<T> root = new RootImpl<T>(cls);
+		Root<T> root = new RootImpl<T>(metamodel, cls);
 		roots.add(root);
 		return root;
 	}

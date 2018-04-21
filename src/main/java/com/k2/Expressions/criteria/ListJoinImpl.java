@@ -9,16 +9,18 @@ import javax.persistence.criteria.ListJoin;
 import javax.persistence.metamodel.Attribute;
 import javax.persistence.metamodel.ListAttribute;
 
+import com.k2.Expressions.metamodel.MetamodelImpl;
+
 public class ListJoinImpl<R,T> extends JoinImpl<R,T> implements ListJoin<R, T> {
 
 	@SuppressWarnings("unchecked")
-	public ListJoinImpl(PathImpl<R> parentPath, ListAttribute<? super R, T> attribute) {
-		super(parentPath, (Attribute<? super R, T>)attribute);
+	public ListJoinImpl(MetamodelImpl metamodel, PathImpl<R> parentPath, ListAttribute<? super R, T> attribute) {
+		super(metamodel, parentPath, (Attribute<? super R, T>)attribute);
 	}
 
 	@SuppressWarnings("unchecked")
-	public ListJoinImpl(PathImpl<R> parentPath, ListAttribute<? super R, T> attribute, JoinType joinType) {
-		super(parentPath, (Attribute<? super R, T>)attribute, joinType);
+	public ListJoinImpl(MetamodelImpl metamodel, PathImpl<R> parentPath, ListAttribute<? super R, T> attribute, JoinType joinType) {
+		super(metamodel, parentPath, (Attribute<? super R, T>)attribute, joinType);
 	}
 	
 	@SuppressWarnings("unchecked")

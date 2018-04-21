@@ -22,14 +22,20 @@ import javax.persistence.metamodel.PluralAttribute;
 import javax.persistence.metamodel.SetAttribute;
 import javax.persistence.metamodel.SingularAttribute;
 
+import com.k2.Expressions.metamodel.ManagedTypeImpl;
+import com.k2.Expressions.metamodel.MetamodelImpl;
+
 public class FromImpl<R,T> extends PathImpl<T> implements From<R,T> {
+	protected MetamodelImpl metamodel;
 	
-	FromImpl(PathImpl<?> parentPath, Attribute<? super R, T> attr) {
+	FromImpl(MetamodelImpl metamodel, PathImpl<?> parentPath, Attribute<? super R, T> attr) {
 		super(parentPath, attr);
+		this.metamodel = metamodel;
 	}
 
-	public FromImpl(Class<T> cls) {
+	public FromImpl(MetamodelImpl metamodel, Class<T> cls) {
 		super(cls);
+		this.metamodel = metamodel;
 	}
 
 	@Override
@@ -105,7 +111,7 @@ public class FromImpl<R,T> extends PathImpl<T> implements From<R,T> {
 	public <Y> JoinImpl<T, Y> join(SingularAttribute<? super T, Y> attribute) {
 		JoinImpl<T,Y> j = (JoinImpl<T, Y>) getCurrentJoin(attribute);
 		if (j == null) {
-			j = new JoinImpl<T,Y>(this, attribute);
+			j = new JoinImpl<T,Y>(metamodel, this, attribute);
 			joins.add(j);
 		}
 		return j;
@@ -116,7 +122,7 @@ public class FromImpl<R,T> extends PathImpl<T> implements From<R,T> {
 	public <Y> JoinImpl<T, Y> join(SingularAttribute<? super T, Y> attribute, JoinType jt) {
 		JoinImpl<T,Y> j = (JoinImpl<T, Y>) getCurrentJoin(attribute);
 		if (j == null) {
-			j = new JoinImpl<T,Y>(this, attribute, jt);
+			j = new JoinImpl<T,Y>(metamodel, this, attribute, jt);
 			joins.add(j);
 		}
 		return j;
@@ -127,7 +133,7 @@ public class FromImpl<R,T> extends PathImpl<T> implements From<R,T> {
 	public <Y> CollectionJoinImpl<T, Y> join(CollectionAttribute<? super T, Y> collection) {
 		CollectionJoinImpl<T,Y> j = (CollectionJoinImpl<T, Y>) getCurrentJoin(collection);
 		if (j == null) {
-			j = new CollectionJoinImpl<T,Y>(this, collection);
+			j = new CollectionJoinImpl<T,Y>(metamodel, this, collection);
 			joins.add(j);
 		}
 		return j;
@@ -138,7 +144,7 @@ public class FromImpl<R,T> extends PathImpl<T> implements From<R,T> {
 	public <Y> SetJoinImpl<T, Y> join(SetAttribute<? super T, Y> set) {
 		SetJoinImpl<T,Y> j = (SetJoinImpl<T, Y>) getCurrentJoin(set);
 		if (j == null) {
-			j = new SetJoinImpl<T,Y>(this, set);
+			j = new SetJoinImpl<T,Y>(metamodel, this, set);
 			joins.add(j);
 		}
 		return j;
@@ -149,7 +155,7 @@ public class FromImpl<R,T> extends PathImpl<T> implements From<R,T> {
 	public <Y> ListJoinImpl<T, Y> join(ListAttribute<? super T, Y> list) {
 		ListJoinImpl<T,Y> j = (ListJoinImpl<T, Y>) getCurrentJoin(list);
 		if (j == null) {
-			j = new ListJoinImpl<T,Y>(this, list);
+			j = new ListJoinImpl<T,Y>(metamodel, this, list);
 			joins.add(j);
 		}
 		return j;
@@ -160,7 +166,7 @@ public class FromImpl<R,T> extends PathImpl<T> implements From<R,T> {
 	public <K, V> MapJoinImpl<T, K, V> join(MapAttribute<? super T, K, V> map) {
 		MapJoinImpl<T,K,V> j = (MapJoinImpl<T,K,V>) getCurrentJoin(map);
 		if (j == null) {
-			j = new MapJoinImpl<T,K,V>(this, map);
+			j = new MapJoinImpl<T,K,V>(metamodel, this, map);
 			joins.add(j);
 		}
 		return j;
@@ -171,7 +177,7 @@ public class FromImpl<R,T> extends PathImpl<T> implements From<R,T> {
 	public <Y> CollectionJoinImpl<T, Y> join(CollectionAttribute<? super T, Y> collection, JoinType jt) {
 		CollectionJoinImpl<T,Y> j = (CollectionJoinImpl<T, Y>) getCurrentJoin(collection);
 		if (j == null) {
-			j = new CollectionJoinImpl<T,Y>(this, collection, jt);
+			j = new CollectionJoinImpl<T,Y>(metamodel, this, collection, jt);
 			joins.add(j);
 		}
 		return j;
@@ -182,7 +188,7 @@ public class FromImpl<R,T> extends PathImpl<T> implements From<R,T> {
 	public <Y> SetJoinImpl<T, Y> join(SetAttribute<? super T, Y> set, JoinType jt) {
 		SetJoinImpl<T,Y> j = (SetJoinImpl<T, Y>) getCurrentJoin(set);
 		if (j == null) {
-			j = new SetJoinImpl<T,Y>(this, set, jt);
+			j = new SetJoinImpl<T,Y>(metamodel, this, set, jt);
 			joins.add(j);
 		}
 		return j;
@@ -193,7 +199,7 @@ public class FromImpl<R,T> extends PathImpl<T> implements From<R,T> {
 	public <Y> ListJoinImpl<T, Y> join(ListAttribute<? super T, Y> list, JoinType jt) {
 		ListJoinImpl<T,Y> j = (ListJoinImpl<T, Y>) getCurrentJoin(list);
 		if (j == null) {
-			j = new ListJoinImpl<T,Y>(this, list, jt);
+			j = new ListJoinImpl<T,Y>(metamodel, this, list, jt);
 			joins.add(j);
 		}
 		return j;
@@ -204,7 +210,7 @@ public class FromImpl<R,T> extends PathImpl<T> implements From<R,T> {
 	public <K, V> MapJoin<T, K, V> join(MapAttribute<? super T, K, V> map, JoinType jt) {
 		MapJoinImpl<T,K,V> j = (MapJoinImpl<T,K,V>) getCurrentJoin(map);
 		if (j == null) {
-			j = new MapJoinImpl<T,K,V>(this, map, jt);
+			j = new MapJoinImpl<T,K,V>(metamodel, this, map, jt);
 			joins.add(j);
 		}
 		return j;

@@ -196,7 +196,7 @@ public class GeneratorFrame extends JFrame {
         JPanel bottom = new JPanel();
         bottom.setAlignmentX(1f);
         bottom.setLayout(new BoxLayout(bottom, BoxLayout.X_AXIS));
-        
+ /*       
 		JButton btnGenerate = new JButton("Generate");
 		btnGenerate.setToolTipText("Generate the @StaticMetamodel for the identified classes");
 		btnGenerate.addActionListener((ActionEvent event) -> {
@@ -230,8 +230,10 @@ public class GeneratorFrame extends JFrame {
 				}
 			}
 		});
+
 		
 		bottom.add(btnGenerate);
+*/
 		bottom.add(Box.createRigidArea(new Dimension(5, 0)));
 		
 		JButton btnQuit = new JButton("Quit");

@@ -11,12 +11,12 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.k2.Expressions.predicate.PredicateBuilder;
-import com.k2.Proforma.Proforma;
+//import com.k2.Proforma.Proforma;
 
 public class StaticMetamodelGenarator {
 	
 	private static final Logger logger = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
-
+/*
 	private static Proforma P = new Proforma();
 	private static PredicateBuilder pb = new PredicateBuilder();
 
@@ -65,5 +65,5 @@ public class StaticMetamodelGenarator {
 		
 		return out;
 	}
-
+*/
 }

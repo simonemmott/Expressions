@@ -43,7 +43,7 @@ public class CriteriaQueryImpl<T> implements CriteriaQuery<T> {
 	public Root<T> from(Class cls) {
 		if (this.cls == null) this.cls = cls;
 		if ( ! metamodel.isModelled(cls))
-			throw new ExpressionError("The class {} is not modelled in the supplied metamodel");
+			throw new ExpressionError("The class {} is not modelled in the supplied metamodel", cls.getName());
 		if (!cls.isAssignableFrom(this.cls)) throw new ExpressionError("Criteria query type missmatch. Expecting '{}' got '{}'", this.cls.getCanonicalName(), cls.getCanonicalName());
 		Root<T> root = new RootImpl<T>(metamodel, cls);
 		roots.add(root);

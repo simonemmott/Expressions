@@ -152,7 +152,7 @@ public class PathImpl<T> extends AbstractExpression<T> implements Path<T>, K2Exp
 			logger.trace("{} evaluates to {}", this, StringUtil.toString(value));
 			return value;
 		}
-		return null;
+		throw new ExpressionError("Unable to evaluate in this instance (Class: {}), evaluator (Class: {}) is not a PathEvaluator.", this.getClass().getName(), eval.getClass().getName());
 	}
 
 

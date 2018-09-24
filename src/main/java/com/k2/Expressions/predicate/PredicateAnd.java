@@ -1,5 +1,10 @@
 package com.k2.Expressions.predicate;
 
+import java.lang.invoke.MethodHandles;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.k2.Expressions.Evaluator;
 import com.k2.Expressions.expression.K2Expression;
 import com.k2.Expressions.expression.K2ParameterExpression;
@@ -11,6 +16,8 @@ import com.k2.Expressions.expression.K2ParameterExpression;
  *
  */
 public class PredicateAnd extends AbstractPredicate implements K2Predicate {
+
+	private static final Logger logger = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
 	K2Predicate[] predicates = null;
 	K2Expression<Boolean> boolExpr1 = null;
@@ -44,22 +51,26 @@ public class PredicateAnd extends AbstractPredicate implements K2Predicate {
 
 	@Override
 	public Boolean evaluate(Evaluator eval) {
+		logger.trace("Evaluating AND");
 		if (predicates == null) {
+			logger.trace("predicates is null");
 			Boolean b1 = boolExpr1.evaluate(eval);
 			Boolean b2 = boolExpr2.evaluate(eval);
 			if (b1 != null && b2 != null && b1  && b2) {
-					return isNegatedRVal(true);
-				} else {
+				return isNegatedRVal(true);
+			} else {
+				return isNegatedRVal(false);
+			}
+		} else {
+			logger.trace("predicated is not null");
+			for (K2Predicate p : predicates) {
+				logger.trace("Evaluation passed to {}", p.getClass().getName());
+				if (!p.evaluate(eval)) {
 					return isNegatedRVal(false);
 				}
-			} else {
-				for (K2Predicate p : predicates) {
-					if (!p.evaluate(eval)) {
-						return isNegatedRVal(false);
-					}
-				}
-				return isNegatedRVal(true);
 			}
+			return isNegatedRVal(true);
+		}
 	}
 
 	@Override

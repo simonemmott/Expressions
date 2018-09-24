@@ -50,9 +50,10 @@ public class PredicateEquals extends AbstractPredicate implements K2Predicate {
 
 	@Override
 	public Boolean evaluate(Evaluator eval) {
-		if (value1 == null ||  value2 == null) return isNegatedRVal(false);
+		
+		if (value1 == null ||  value2 == null) { logger.trace("value 1 oe value 2 is null. returning FALSE"); return isNegatedRVal(false); }
 		Object v1 = value1.evaluate(eval);
-		if (v1 == null) return isNegatedRVal(false);
+		if (v1 == null) { logger.trace("value 1 evaluates to null"); return isNegatedRVal(false); }
 		Object v2;
 		
 		if (value2 instanceof K2Expression) {
